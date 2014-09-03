@@ -70,6 +70,11 @@
   "action":"sound",
   "local-file":"laugh.caf",
   "executed":false
+  },
+  {
+  "time":2.0,
+  "action":"vibrate",
+  "executed":false
   }
   
   ]

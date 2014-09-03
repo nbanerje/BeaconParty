@@ -7,8 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "OMDScreenColorSpec.h"
 
 @interface Beacon_PartyTests : XCTestCase
+
+@property (strong, nonatomic) OMDScreenColorSpec *colorSpec;
 
 @end
 
@@ -30,5 +33,23 @@
 {
     XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }
+
+- (void)testScreenColorSpec {
+    _colorSpec = [[OMDScreenColorSpec alloc] initWithColor1:[UIColor orangeColor] color2:[UIColor purpleColor]];
+    //_colorSpec.view = self.view;
+    _colorSpec.frequency = 2;
+    [_colorSpec block]();
+    [NSTimer scheduledTimerWithTimeInterval:2.0
+                                     target:self
+                                   selector:@selector(stop)
+                                   userInfo:nil
+                                    repeats:NO];
+    
+}
+
+- (void)stop {
+    [_colorSpec stopBlock]();
+}
+
 
 @end

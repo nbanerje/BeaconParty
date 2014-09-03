@@ -15,50 +15,69 @@ schedule-spec ::=
                         }
 
 sequence-spec ::=
-                        {
-                            "time in seconds from epoch" : action-spec
-                            [,"time in seconds from epoch" : action-spec]
-                        }
+                        [
+                            action-spec
+                            [,action-spec]
+                        ]
        
 action-spec ::= 
-                        {
                             screen-color-spec |
+                            stop-spec|
                             url-spec |
-                            play-sound-spec |
-                            flash-spec
-                        }  
+                            sound-spec |
+                            flash-spec |
+                            vibrate-spec
+
                          
 screen-color-spec ::=
                         { 
-                            "action": "screen color"
-                            ,"r": integer
-                            ,"g": integer
-                            ,"b" : integer
+                            "executed":0
+                            ,"time" : float in seconds from epoch
+                            ,"action": "color"
+                            ,"r1": float
+                            ,"g1": float
+                            ,"b1" : float
+                            ,"a1" : float
+                            ,"r2": float
+                            ,"g2": float
+                            ,"b2" : float
+                            ,"a2" : float
                             [,"frequency": float]
+                            [,"delay": float]
+                            
                         } 
 
 url-spec ::=
                         { 
-                             "action": "url"
+                            "executed":0
+                            ,"action": "url"
                             ,"url": string
                         }
 
-play-sound-spec ::= 
+sound-spec ::= 
                         {
-                              "action": "sound"
+                             "executed":0
+                             ,"action": "sound"
                              ,"loop": boolean
                             [,"local-file": string | "url" : string]
                         }
 
 flash-spec ::=
-                        {
-                             "action":"flash"
+                        {   "executed":0
+                            ,"action":"flash"
                             ,"frequency": float
-                            [,"brightness": integer]
+                           [,"brightness": float 0-1]
+                        }
+
+stop-flash-spec ::=
+                        {   "executed":0
+                            ,"action":"stop-flash"
                         }
 
 vibrate-spec ::= 
                         {
+                            "executed":0
+                            "action":"vibrate"
                             "frequency": float
                         }
 ```

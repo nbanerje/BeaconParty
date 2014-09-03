@@ -17,8 +17,6 @@
 
 @interface OMDBeaconParty : NSObject <CLLocationManagerDelegate>
 
-@property (strong, nonatomic) CLBeaconRegion *beaconRegion;
-@property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) UITextView *debugTextView;
 @property (weak, nonatomic) id <OMDBeaconPartyDelegate> delegate;
 

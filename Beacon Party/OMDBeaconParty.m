@@ -12,11 +12,9 @@
 @interface OMDBeaconParty()
 
 - (void)initRegion:(NSString*)UUID identifier:(NSString*)identifier;
-@property (strong, nonatomic) NSNumber *bestBeaconMinor;
-@property (assign, nonatomic) NSUInteger bestBeaconIndex;
-@property (assign, nonatomic) CLProximity bestProximity;
-@property (assign, nonatomic) NSInteger bestRssi;
-@property (assign, nonatomic) double bestAccuracy;
+@property (strong, nonatomic) CLBeacon *bestBeacon;
+@property (strong, nonatomic) CLBeaconRegion *beaconRegion;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -30,11 +28,6 @@
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.delegate = self;
         [self initRegion:UUID identifier:identifier];
-        self.bestBeaconIndex = -1;
-        self.bestProximity = CLProximityUnknown;
-        self.bestRssi = -999;
-        self.bestAccuracy = ~0ul;
-        
     }
     return self;
     
@@ -54,41 +47,27 @@
     DLog(@"Entered Region: %@", [region debugDescription]);
 }
 
--(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
+- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
     DLog(@"Exited Region: %@", [region debugDescription]);
 }
 
--(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region {
-    NSUInteger index = 0;
-    BOOL foundBetter = NO;
-    for (CLBeacon *beacon in beacons) {
-        //TODO: Determine the best way to know if we should choose a better beacon
-        BOOL betterCondition = beacon.proximity != CLProximityUnknown &&
-                               beacon.minor.intValue != _bestBeaconMinor.intValue &&
-                               beacon.rssi > _bestRssi &&
-                               beacon.accuracy < self.bestAccuracy;
-        
-        //DLog(@"C minor:%d prox:%d acc:%f rssi:%d", _bestBeaconMinor.intValue, _bestProximity, _bestAccuracy, _bestRssi);
-        //DLog(@"B minor:%d prox:%d acc:%f rssi:%d", beacon.minor.intValue, beacon.proximity, beacon.accuracy, beacon.rssi);
-        
-        
-        if(betterCondition) {
-            DLog(@"Found better beacon idx:%lu minor:%d", (unsigned long)index, beacon.minor.intValue);
-            self.bestProximity = beacon.proximity;
-            self.bestAccuracy = beacon.accuracy;
-            self.bestRssi = beacon.rssi;
-            self.bestBeaconIndex = index;
-            self.bestBeaconMinor = [beacon.minor copy];
-            foundBetter = YES;
-        }
-        index++;
-        
-    }
-
-    if(foundBetter) {
-        [self.delegate updateWithBeacon:beacons[self.bestBeaconIndex]];
+- (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region {
+    NSPredicate *predicateIrrelevantBeacons =
+        [NSPredicate predicateWithFormat:@"(self.accuracy != -1) AND ((self.proximity != %d) OR (self.proximity != %d))", CLProximityFar,CLProximityUnknown];
+    NSArray *relevantsBeacons = [beacons filteredArrayUsingPredicate: predicateIrrelevantBeacons];
+    NSPredicate *predicateMin = [NSPredicate predicateWithFormat:@"self.accuracy == %@.@min.accuracy", relevantsBeacons];
+    CLBeacon *closestBeacon = nil;
+    NSArray *closestArray = [relevantsBeacons filteredArrayUsingPredicate:predicateMin];
+    
+    if ([closestArray count] > 0) {
+        closestBeacon = [closestArray objectAtIndex:0];
     }
     
+    if (closestBeacon && closestBeacon != _bestBeacon) {
+        _bestBeacon = closestBeacon;
+        DLog(@"Found better beacon minor:%@", [_bestBeacon debugDescription]);
+        [self.delegate updateWithBeacon:_bestBeacon];
+    }
 
 }
 
@@ -96,9 +75,9 @@
 rangingBeaconsDidFailForRegion:(CLBeaconRegion *)region
               withError:(NSError *)error {
     DLog(@"Error %@",[error debugDescription]);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
+//    });
 }
 
 - (void)locationManager:(CLLocationManager *)manager

@@ -3,9 +3,11 @@ BeaconParty
 
 ```
 schedule-object ::=
-                        {
-                            "schedule" : schedule-spec
-                        }
+                        [ 
+                              schedule-spec1
+                            [,schedule-spec2]
+                            [,schedule-specn]
+                        ]
 
 schedule-spec ::=
                         {    "uuid"  : string
@@ -16,8 +18,9 @@ schedule-spec ::=
 
 sequence-spec ::=
                         [
-                            action-spec
-                            [,action-spec]
+                              action-spec1
+                            [,action-spec2]
+                            [,action-specn]
                         ]
        
 action-spec ::= 

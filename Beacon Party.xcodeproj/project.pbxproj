@@ -95,14 +95,16 @@
 		4956C71119B802F200661366 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4956C6F919B8021D00661366 /* CoreTelephony.framework */; };
 		4956C71319B803B900661366 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4956C71219B803B900661366 /* AirshipConfig.plist */; };
 		4956C71419B803B900661366 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4956C71219B803B900661366 /* AirshipConfig.plist */; };
+		49A4C96719B966FF002C496F /* OMDBeaconPartySchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A4C96619B966FF002C496F /* OMDBeaconPartySchedule.m */; };
+		49A4C96819B966FF002C496F /* OMDBeaconPartySchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A4C96619B966FF002C496F /* OMDBeaconPartySchedule.m */; };
 		49D5850B19B7038400ADB36D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D5850A19B7038400ADB36D /* AudioToolbox.framework */; };
 		49D5850D19B705CF00ADB36D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D5850C19B705CF00ADB36D /* AVFoundation.framework */; };
 		49D5851019B7077100ADB36D /* LARSTorch.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D5850F19B7077100ADB36D /* LARSTorch.m */; };
 		49D5851119B7077100ADB36D /* LARSTorch.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D5850F19B7077100ADB36D /* LARSTorch.m */; };
 		49D5851319B70C9300ADB36D /* laugh.caf in Resources */ = {isa = PBXBuildFile; fileRef = 49D5851219B70C9300ADB36D /* laugh.caf */; };
 		49D5851419B70C9300ADB36D /* laugh.caf in Resources */ = {isa = PBXBuildFile; fileRef = 49D5851219B70C9300ADB36D /* laugh.caf */; };
-		49E3BD3019B0EADC007A8B12 /* OMDBeaconPartySchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E3BD2F19B0EADC007A8B12 /* OMDBeaconPartySchedule.m */; };
-		49E3BD3119B0EADC007A8B12 /* OMDBeaconPartySchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E3BD2F19B0EADC007A8B12 /* OMDBeaconPartySchedule.m */; };
+		49E3BD3019B0EADC007A8B12 /* OMDBeaconPartyScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E3BD2F19B0EADC007A8B12 /* OMDBeaconPartyScheduler.m */; };
+		49E3BD3119B0EADC007A8B12 /* OMDBeaconPartyScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E3BD2F19B0EADC007A8B12 /* OMDBeaconPartyScheduler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -305,13 +307,15 @@
 		4956C6FE19B8021D00661366 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4956C71219B803B900661366 /* AirshipConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = AirshipConfig.plist; sourceTree = SOURCE_ROOT; };
 		497EF9FC19B80851004A4C1A /* Beacon Party.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Beacon Party.entitlements"; sourceTree = "<group>"; };
+		49A4C96519B966FF002C496F /* OMDBeaconPartySchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDBeaconPartySchedule.h; sourceTree = "<group>"; };
+		49A4C96619B966FF002C496F /* OMDBeaconPartySchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMDBeaconPartySchedule.m; sourceTree = "<group>"; };
 		49D5850A19B7038400ADB36D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		49D5850C19B705CF00ADB36D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		49D5850E19B7077100ADB36D /* LARSTorch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LARSTorch.h; sourceTree = "<group>"; };
 		49D5850F19B7077100ADB36D /* LARSTorch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LARSTorch.m; sourceTree = "<group>"; };
 		49D5851219B70C9300ADB36D /* laugh.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = laugh.caf; sourceTree = "<group>"; };
-		49E3BD2E19B0EADC007A8B12 /* OMDBeaconPartySchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDBeaconPartySchedule.h; sourceTree = "<group>"; };
-		49E3BD2F19B0EADC007A8B12 /* OMDBeaconPartySchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMDBeaconPartySchedule.m; sourceTree = "<group>"; };
+		49E3BD2E19B0EADC007A8B12 /* OMDBeaconPartyScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDBeaconPartyScheduler.h; sourceTree = "<group>"; };
+		49E3BD2F19B0EADC007A8B12 /* OMDBeaconPartyScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMDBeaconPartyScheduler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,6 +413,8 @@
 		493EF58D19A9B04A0047A96B /* Beacon Party */ = {
 			isa = PBXGroup;
 			children = (
+				49A4C96519B966FF002C496F /* OMDBeaconPartySchedule.h */,
+				49A4C96619B966FF002C496F /* OMDBeaconPartySchedule.m */,
 				497EF9FC19B80851004A4C1A /* Beacon Party.entitlements */,
 				49D5850E19B7077100ADB36D /* LARSTorch.h */,
 				49D5850F19B7077100ADB36D /* LARSTorch.m */,
@@ -423,8 +429,8 @@
 				493EF5C619A9B0730047A96B /* OMDBeaconParty.h */,
 				493EF5C719A9B0730047A96B /* OMDBeaconParty.m */,
 				4915F93619B0268500577FAD /* Debug.h */,
-				49E3BD2E19B0EADC007A8B12 /* OMDBeaconPartySchedule.h */,
-				49E3BD2F19B0EADC007A8B12 /* OMDBeaconPartySchedule.m */,
+				49E3BD2E19B0EADC007A8B12 /* OMDBeaconPartyScheduler.h */,
+				49E3BD2F19B0EADC007A8B12 /* OMDBeaconPartyScheduler.m */,
 				4904946E19B6C3CF00A092E3 /* OMDScreenColorSpec.h */,
 				4904946F19B6C3CF00A092E3 /* OMDScreenColorSpec.m */,
 				4956C71219B803B900661366 /* AirshipConfig.plist */,
@@ -920,7 +926,7 @@
 				4956C6C819B8015E00661366 /* UAInboxAlertHandler.m in Sources */,
 				4956C6C719B8015E00661366 /* UADateUtils.m in Sources */,
 				4956C6DB19B8015E00661366 /* UAPushSettingsChannelInfoViewController.m in Sources */,
-				49E3BD3019B0EADC007A8B12 /* OMDBeaconPartySchedule.m in Sources */,
+				49E3BD3019B0EADC007A8B12 /* OMDBeaconPartyScheduler.m in Sources */,
 				4956C6CA19B8015E00661366 /* UAInboxMessageListController.m in Sources */,
 				4956C6E019B8015E00661366 /* UAPushSettingsViewController.m in Sources */,
 				4956C6DD19B8015E00661366 /* UAPushSettingsTagsViewController.m in Sources */,
@@ -928,6 +934,7 @@
 				493EF59819A9B04A0047A96B /* AppDelegate.m in Sources */,
 				4956C6CD19B8015E00661366 /* UAInboxUI.m in Sources */,
 				4956C6D719B8015E00661366 /* UAPushMoreSettingsViewController.m in Sources */,
+				49A4C96719B966FF002C496F /* OMDBeaconPartySchedule.m in Sources */,
 				493EF59419A9B04A0047A96B /* main.m in Sources */,
 				493EF5C819A9B0730047A96B /* OMDBeaconParty.m in Sources */,
 				4956C6D519B8015E00661366 /* UALocationSettingsViewController.m in Sources */,
@@ -938,8 +945,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49A4C96819B966FF002C496F /* OMDBeaconPartySchedule.m in Sources */,
 				49D5851119B7077100ADB36D /* LARSTorch.m in Sources */,
-				49E3BD3119B0EADC007A8B12 /* OMDBeaconPartySchedule.m in Sources */,
+				49E3BD3119B0EADC007A8B12 /* OMDBeaconPartyScheduler.m in Sources */,
 				493EF5BD19A9B04A0047A96B /* Beacon_PartyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

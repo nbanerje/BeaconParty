@@ -63,7 +63,7 @@
         closestBeacon = [closestArray objectAtIndex:0];
     }
     
-    if (closestBeacon && closestBeacon != _bestBeacon) {
+    if (closestBeacon && closestBeacon.minor != _bestBeacon.minor) {
         _bestBeacon = closestBeacon;
         DLog(@"Found better beacon minor:%@", [_bestBeacon debugDescription]);
         [self.delegate updateWithBeacon:_bestBeacon];

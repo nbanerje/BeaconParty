@@ -135,7 +135,7 @@ static LARSTorch *__sharedTorch = nil;
 - (void)setTorchState:(LARSTorchState)torchOn{
 #if !TARGET_IPHONE_SIMULATOR
     if ([self systemVersion] < 5.0f){
-        TOLFlashLogInfo(@"Using pre-5.0 flash method: iOS %1.1f", self.systemVersion);
+        //TOLFlashLogInfo(@"Using pre-5.0 flash method: iOS %1.1f", self.systemVersion);
         if (self.torchSession == nil) {
             _torchSession = [[AVCaptureSession alloc] init];
         }
@@ -198,7 +198,7 @@ static LARSTorch *__sharedTorch = nil;
     }
     else{
         //the only required methods for devices with >iOS 5.0
-        TOLFlashLogInfo(@"Using post-5.0 torch method: iOS %1.1f", self.systemVersion);
+        //TOLFlashLogInfo(@"Using post-5.0 torch method: iOS %1.1f", self.systemVersion);
         NSError *lockError = nil;
         if(self.torchDevice && [self.torchDevice lockForConfiguration:&lockError] == NO){
             TOLFlashLogError(@"%@ Lock error: %@\nReason: %@", self.class, [lockError localizedDescription], [lockError localizedFailureReason]);

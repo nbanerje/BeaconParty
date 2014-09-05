@@ -2,166 +2,96 @@
 //  OMDBeaconPartySchedule.m
 //  Beacon Party
 //
-//  Created by Neel Banerjee on 8/29/14.
+//  Created by Neel Banerjee on 9/4/14.
 //  Copyright (c) 2014 Neel Banerjee. All rights reserved.
 //
-
-#import "OMDBeaconPartySchedule.h"
-#import "OMDScreenColorSpec.h"
 #import "Debug.h"
-#import <AudioToolbox/AudioToolbox.h>
-#import <AVFoundation/AVFoundation.h>
-#import "LARSTorch.h"
-
-#define JITTER 0.5
+#import "OMDBeaconPartySchedule.h"
 
 @interface OMDBeaconPartySchedule()
-
-- (void) runAction:(NSDictionary*)action;
+@property (strong, nonatomic) OMDBeaconPartyScheduler *scheduler;
+@property (strong, nonatomic) OMDBeaconParty *beaconParty;
+@property (weak,nonatomic) UITextView *debugTextView;
+@property (weak,nonatomic) CLBeacon *currentBeacon;
 
 @end
 
-
 @implementation OMDBeaconPartySchedule
 
-+ (id)scheduler {
-    static OMDBeaconPartySchedule *scheduler = nil;
-    static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken, ^{
-        scheduler = [[self alloc] init];
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            [scheduler startLoop];
-        });
-    });
-    return scheduler;
-}
+- (instancetype)initWithJSON:(NSString*)path view:(UIView*)view debugTextView:(UITextView*)debugTextView epoch:(NSDate*)epoch uuid:(NSString*)uuid identifier:(NSString*)identifier {
 
-
-- (instancetype)init
-{
     self = [super init];
     if (self) {
-        _continueMainLoop = YES;
+        
+        _debugTextView = debugTextView;
+        
+        //Load JSON base schedule
+        NSError *error = nil;
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"Sample" ofType:@"json"];
+        NSArray *json = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:path] options:NSJSONReadingMutableContainers error: &error];
+        if(error) {
+            DLog(@"%@",[error debugDescription]);
+        }
+        DLog(@"JSON Loaded: %@",[json debugDescription]);
+        
+        _schedule = json;
+        
+        //Setup Beacon Region Monitoring
+        _beaconParty = [[OMDBeaconParty alloc] init:uuid identifier:identifier debugTextView:debugTextView];
+        _beaconParty.delegate = self;
+        
+        _scheduler = [OMDBeaconPartyScheduler scheduler]; 
+        _scheduler.epoch = epoch;
+        _scheduler.view = view;
+        _scheduler.debugTextView = _debugTextView;
+
     }
     return self;
 }
 
-- (void) startLoop {
-    NSTimeInterval currentOffsetFromEpoch;
-    while (_continueMainLoop) {
-        if(_epoch && _schedules) {
-            currentOffsetFromEpoch = [[NSDate date] timeIntervalSinceDate:_epoch];
-            NSNumber *num = [NSNumber numberWithFloat:currentOffsetFromEpoch];
-            NSArray *filteredarray = [_schedules filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"((%K == nil OR %K == 0) AND %K <= %@)",@"executed",@"executed",@"time",num]];
-            for (NSMutableDictionary *action in filteredarray) {
-                if([[NSNumber numberWithBool:NO] compare:action[@"executed"]] == NSOrderedSame) {
-                    [action setValue:@1 forKey:@"executed"];
-                    DLog(@"Dispatching action %@", [action debugDescription]);
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self runAction:action];
-                    });
-                }
-            }
-            
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(%K > %@)",@"time",num];
-            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"time" ascending:YES];
-            NSArray *results = [[_schedules filteredArrayUsingPredicate:predicate] sortedArrayUsingDescriptors:[NSArray arrayWithObject:descriptor]];
-            
-            if([results count]>0) {
-                float nextTime = ((NSNumber*)results[0][@"time"]).floatValue;
-                currentOffsetFromEpoch = [[NSDate date] timeIntervalSinceDate:_epoch];
-                [NSThread sleepForTimeInterval:nextTime-currentOffsetFromEpoch];
-            }
-            
-            filteredarray = [_schedules filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(%K == 0)",@"executed",num]];
-            if([filteredarray count] == 0 )
-                _continueMainLoop = NO;
+-(void) loadScheduleFromJsonData:(NSData*)data {
+    //Load JSON base schedule
+    NSError *error = nil;
+    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: &error];
+    if(error) {
+        DLog(@"%@",[error debugDescription]);
+    }
+    DLog(@"JSON Loaded: %@",[json debugDescription]);
+    
+    self.schedule = json;
 
-        }
-        
+}
+
+-(void) setSchedule:(NSMutableArray*)schedule {
+    _schedule = schedule;
+    [self selectSequenceFromBeacon:_currentBeacon];
+    _scheduler.continueMainLoop = YES;
+    [_scheduler startLoop];
+    
+}
+
+-(void) selectSequenceFromBeacon:(CLBeacon*)beacon {
+    NSString *uuid = beacon.proximityUUID.UUIDString;
+    NSNumber *major = beacon.major;
+    NSNumber *minor = beacon.minor;
+    
+    //Find the schedule sequence that matches this beacon
+    NSArray *filteredarray = [_schedule filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(%K == %@ AND %K == %@ AND %K == %@)",@"uuid",uuid,@"major",major,@"minor",minor]];
+    if(filteredarray.count > 1) {
+        DLog(@"Error found %d objects for beacon should only have one.",filteredarray.count);
+    }
+    
+    //Assign the correct sequence for the beacon region to the schedule and start the scheduler
+    if(filteredarray && filteredarray.count >=1) {
+        //self.scheduler.sequences = [NSMutableArray arrayWithArray:filteredarray[0][@"sequence"]];
+        self.scheduler.sequences = filteredarray[0][@"sequence"];
     }
 }
 
-- (void) runAction:(NSDictionary*)action {
-    //remove any webview from the view
-    [[self.view viewWithTag:1] removeFromSuperview];
-    if([action[@"action"] isEqualToString:@"color"]) {
-        OMDScreenColorSpec *colorSpec = [[OMDScreenColorSpec alloc] initWithR1:action[@"r1"] g1:action[@"g2"] b1:action[@"b1"] a1:action[@"a1"] r2:action[@"r2"] g2:action[@"g2"] b2:action[@"b2"] a2:action[@"a2"]];
-        colorSpec.view = _view;
-        colorSpec.debugTextView = _debugTextView;
-        [colorSpec block]();
-    } else if([action[@"action"] isEqualToString:@"stop"]) {
-        _view.backgroundColor = [UIColor clearColor];
-        [_view.layer removeAllAnimations];
-    } else if([action[@"action"] isEqualToString:@"stop-flash"]) {
-        _continueTorch = NO;
-    } else if([action[@"action"] isEqualToString:@"url"]) {
-        UIWebView *aWebView =[[UIWebView alloc] initWithFrame:_view.frame];
-        aWebView.tag = 1;
-        [aWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:action[@"url"]]]];
-        aWebView.delegate=self;
-        //[self.view addSubview:aWebView];
-        [self.view insertSubview:aWebView belowSubview:_debugTextView];
-    } else if([action[@"action"] isEqualToString:@"sound"]) {
-        NSString *localSoundName = action[@"local-file"];
-        if(localSoundName) {
-            SystemSoundID soundID;
-            NSString *soundPath = [[NSBundle mainBundle]
-                                    pathForResource:localSoundName ofType:nil];
-            if(soundPath) {
-                NSURL *soundUrl = [NSURL fileURLWithPath:soundPath];
-                AudioServicesCreateSystemSoundID((__bridge CFURLRef)(soundUrl), &soundID);
-                AudioServicesPlaySystemSound(soundID);
-            }
-        } else if([action objectForKey:@"url"]) {
-            NSError *error;
-            AVAudioPlayer *backgroundMusicPlayer = [[AVAudioPlayer alloc]
-                                          initWithContentsOfURL:[action objectForKey:@"url"] error:&error];
-            [backgroundMusicPlayer prepareToPlay];
-            [backgroundMusicPlayer play];
-            if(error) {
-                DLog(@"%@",[error debugDescription]);
-            }
-        }
-    } else if([action[@"action"] isEqualToString:@"vibrate"]) {
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-    } else if([action[@"action"] isEqualToString:@"flash"]) {
-        _continueTorch = YES;
-        float period = ((NSNumber*)action[@"frequency"]).floatValue;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            LARSTorch *torch = [LARSTorch sharedTorch];
-            
-            while(_continueTorch) {
-                if(action[@"brightness"]) {
-                    [torch setTorchOnWithLevel:((NSNumber*)action[@"brightness"]).floatValue];
-                } else {
-                    [torch setTorchState:LARSTorchStateOn];
-                }
-                [NSThread sleepForTimeInterval:period/2.0];
-                [torch setTorchState:LARSTorchStateOff];
-                [NSThread sleepForTimeInterval:period/2.0];
-            }
-            
-        });
-        
-    }
-    
+#pragma mark OMDBeaconParty Delegate
+- (void)updateWithBeacon:(CLBeacon*) beacon {
+    _currentBeacon = beacon;
+    [self selectSequenceFromBeacon:_currentBeacon];
 }
-
-#pragma mark UIWebView delegate methods
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    return YES;
-}
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-    
-}
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    
-}
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    
-}
-
 
 @end

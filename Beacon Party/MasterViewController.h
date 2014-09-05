@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "OMDBeaconParty.h"
 
-@interface MasterViewController : UIViewController <OMDBeaconPartyDelegate>
+@interface MasterViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITextView *debugTextView;
 

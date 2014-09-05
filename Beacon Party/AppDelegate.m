@@ -9,9 +9,27 @@
 #import "AppDelegate.h"
 
 #import "MasterViewController.h"
-#import "UAirship.h"
-#import "UAPush.h"
+
 #import "UAConfig.h"
+
+#define FETCH_URL_STR @"http://omdesignllc.com/sample.json"
+
+UIBackgroundFetchResult(^fetchURLData)(NSString*,OMDBeaconPartySchedule*)  = ^UIBackgroundFetchResult (NSString* url,OMDBeaconPartySchedule* schedule){
+    NSURLSession *sharedSession = [NSURLSession sharedSession];
+    NSURLSessionDataTask *task = [sharedSession dataTaskWithURL:[NSURL URLWithString:url] completionHandler:
+                                  ^(NSData *data, NSURLResponse *response, NSError *error){
+                                      if(error) {
+                                          NSLog(@"Failed %@",[error debugDescription]);
+                                      } else {
+                                          if(response) {
+                                              [schedule loadScheduleFromJsonData:data];
+                                              NSLog(@"fetch data");
+                                          }
+                                      }
+                                  }];
+    [task resume];
+    return UIBackgroundFetchResultNewData;
+};
 
 @implementation AppDelegate
 
@@ -39,6 +57,7 @@
     // You may also simply call [UAirship takeOff] without any arguments if you want
     // to use the default config loaded from AirshipConfig.plist
     [UAirship takeOff:config];
+    [UAPush shared].pushNotificationDelegate = self;
     
     // Print out the application configuration for debugging (optional)
     UA_LDEBUG(@"Config:\n%@", [config description]);
@@ -56,6 +75,8 @@
                                          UIRemoteNotificationTypeAlert);
     
     [[UAPush shared] setPushEnabled:YES];
+
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
     return YES;
 }
@@ -182,5 +203,58 @@
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
+
+#pragma mark - Background fetch delegate methods
+
+-(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    UIBackgroundFetchResult fetchResult = fetchURLData(FETCH_URL_STR,_schedule);
+    completionHandler(fetchResult);
+}
+
+#pragma mark - Push Delegate
+- (void)receivedForegroundNotification:(NSDictionary *)notification
+                fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    
+    UA_LDEBUG(@"Received a notification while the app was already in the foreground");
+
+    UIBackgroundFetchResult fetchResult = UIBackgroundFetchResultNoData;
+    // Do something with your customData JSON, then entire notification is also available
+    if(notification[@"data-url"]) {
+        fetchResult = fetchURLData(FETCH_URL_STR,_schedule);
+    }
+    // Be sure to call the completion handler with a UIBackgroundFetchResult
+    
+    completionHandler(fetchResult);
+}
+
+- (void)launchedFromNotification:(NSDictionary *)notification
+          fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+    
+    UA_LDEBUG(@"The application was launched or resumed from a notification");
+    
+    UIBackgroundFetchResult fetchResult = UIBackgroundFetchResultNoData;
+    // Do something with your customData JSON, then entire notification is also available
+    if(notification[@"data-url"]) {
+        fetchResult = fetchURLData(FETCH_URL_STR,_schedule);
+    }
+    // Be sure to call the completion handler with a UIBackgroundFetchResult
+    
+    completionHandler(fetchResult);
+}
+
+- (void)receivedBackgroundNotification:(NSDictionary *)notification
+                fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    
+    UIBackgroundFetchResult fetchResult = UIBackgroundFetchResultNoData;
+    // Do something with your customData JSON, then entire notification is also available
+    if(notification[@"data-url"]) {
+        fetchResult = fetchURLData(FETCH_URL_STR,_schedule);
+    }
+    // Be sure to call the completion handler with a UIBackgroundFetchResult
+    
+    completionHandler(fetchResult);
+}
+
 
 @end

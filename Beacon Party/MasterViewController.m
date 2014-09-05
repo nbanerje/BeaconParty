@@ -10,38 +10,13 @@
 #import "OMDScreenColorSpec.h"
 #import "OMDBeaconPartySchedule.h"
 #import "Debug.h"
+#import "AppDelegate.h"
 
 @interface MasterViewController ()
-@property (strong,nonatomic) OMDBeaconParty *beaconParty;
-@property (strong, nonatomic) OMDScreenColorSpec *colorSpec;
-@property (strong, nonatomic) OMDBeaconPartySchedule *scheduler;
+@property (strong,nonatomic) OMDBeaconPartySchedule* schedule;
 @end
 
 @implementation MasterViewController
-
-+ (NSArray *)colorArray
-{
-    static NSArray *theArray;
-    if (!theArray)
-    {
-        theArray = [[NSArray alloc] initWithObjects:[UIColor blackColor],
-                                                    [UIColor darkGrayColor],
-                                                    [UIColor lightGrayColor],
-                                                    [UIColor whiteColor],
-                                                    [UIColor grayColor],
-                                                    [UIColor redColor],
-                                                    [UIColor greenColor],
-                                                    [UIColor blueColor],
-                                                    [UIColor cyanColor],
-                                                    [UIColor yellowColor],
-                                                    [UIColor magentaColor],
-                                                    [UIColor orangeColor],
-                                                    [UIColor purpleColor],
-                                                    [UIColor brownColor],
-                                                    nil];
-    }
-    return theArray;
-}
 
 - (void)awakeFromNib
 {
@@ -51,11 +26,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if(!_schedule) {
+        _schedule = [[OMDBeaconPartySchedule alloc] initWithJSON:[[NSBundle mainBundle] pathForResource:@"Sample" ofType:@"json"] view:self.view debugTextView:_debugTextView epoch:[NSDate date] uuid:@"BF5094D9-5849-47ED-8FA1-983A748A9586" identifier:@"is.ziggy"];
+        AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+        appDelegate.schedule = _schedule;
+    }
     
+    /*
     _beaconParty = [[OMDBeaconParty alloc] init:@"BF5094D9-5849-47ED-8FA1-983A748A9586" identifier:@"com.omdesignllc.beaconparty" debugTextView:_debugTextView];
     _beaconParty.delegate = self;
     
-    _scheduler = [OMDBeaconPartySchedule scheduler];
+    _scheduler = [OMDBeaconPartyScheduler scheduler];
     
     NSError *error = nil;
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Sample" ofType:@"json"];
@@ -68,7 +49,7 @@
     _scheduler.schedules = JSON;
     _scheduler.view = self.view;
     _scheduler.debugTextView = _debugTextView;
-    
+    */
     
     
     
@@ -77,13 +58,5 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark BeaconParty Delegate
-- (void)updateWithBeacon:(CLBeacon*) beacon {
-    //Check to see what the app should be doing given the current beacon
-    self.view.backgroundColor = [MasterViewController colorArray][beacon.minor.intValue];
-    DLog(@"Setting Color to %@ in minor: %d",self.view.backgroundColor.debugDescription,beacon.minor.intValue);
-    
 }
 @end

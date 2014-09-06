@@ -70,6 +70,8 @@
         CLBeaconRegion *beaconRegion = (CLBeaconRegion*)region;
         NSString *beaconTag = [NSString stringWithFormat:@"%@"
                                ,beaconRegion.proximityUUID.UUIDString];
+        // Remove any in_ tags
+        [shared removeTagsFromCurrentDevice:[[shared tags] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] 'in_'"]]];
         // Remove any out_ tags
         [shared removeTagsFromCurrentDevice:[[shared tags] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] 'out_'"]]];
         // Set the new beacon out tag

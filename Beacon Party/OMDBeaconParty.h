@@ -20,8 +20,6 @@
 @property (weak, nonatomic) UITextView *debugTextView;
 @property (weak, nonatomic) id <OMDBeaconPartyDelegate> delegate;
 
-- (id)init:(NSString*)UUID identifier:(NSString*)identifier debugTextView:(UITextView*)debugTextView;
-
-
+- (id)init:(NSString*)UUID identifier:(NSString*)identifier;
 @end
 

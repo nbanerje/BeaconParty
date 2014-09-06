@@ -11,46 +11,77 @@
 @interface OMDBeaconPartySchedule()
 @property (strong, nonatomic) OMDBeaconPartyScheduler *scheduler;
 @property (strong, nonatomic) OMDBeaconParty *beaconParty;
-@property (weak,nonatomic) UITextView *debugTextView;
 @property (weak,nonatomic) CLBeacon *currentBeacon;
 
 @end
 
 @implementation OMDBeaconPartySchedule
 
-- (instancetype)initWithJSON:(NSString*)path view:(UIView*)view debugTextView:(UITextView*)debugTextView epoch:(NSDate*)epoch uuid:(NSString*)uuid identifier:(NSString*)identifier {
-
-    self = [super init];
-    if (self) {
-        
-        _debugTextView = debugTextView;
-        
-        //Load JSON base schedule
-        NSError *error = nil;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"Sample" ofType:@"json"];
-        NSArray *json = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:path] options:NSJSONReadingMutableContainers error: &error];
-        if(error) {
-            DLog(@"%@",[error debugDescription]);
-        }
-        DLog(@"JSON Loaded: %@",[json debugDescription]);
-        
-        _schedule = json;
-        
-        //Setup Beacon Region Monitoring
-        _beaconParty = [[OMDBeaconParty alloc] init:uuid identifier:identifier debugTextView:debugTextView];
-        _beaconParty.delegate = self;
-        
-        _scheduler = [OMDBeaconPartyScheduler scheduler]; 
-        _scheduler.epoch = epoch;
-        _scheduler.view = view;
-        _scheduler.debugTextView = _debugTextView;
-
-    }
-    return self;
++(instancetype) shared {
+    static OMDBeaconPartySchedule *schedule = nil;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        schedule = [[self alloc] init];
+    });
+    return schedule;
 }
 
+
+
++(void) saveData:(NSData*)data {
+    //Now save data to disk.
+    NSString *filePath = ((NSURL*)[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]).path;
+    filePath = [filePath stringByAppendingPathComponent:@"schedule.json"];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+       BOOL saved =  [[NSFileManager defaultManager] createFileAtPath:filePath
+                                                contents:data
+                                              attributes:nil];
+        NSLog(@"Updated schedule.json %hhd",saved);
+    });
+    
+}
+
++(void) reloadData {
+    //Now save data to disk.
+    NSString *filePath = ((NSURL*)[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]).path;
+    filePath = [filePath stringByAppendingPathComponent:@"schedule.json"];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSData *restoredData =  [[NSFileManager defaultManager] contentsAtPath:filePath];
+        if(restoredData) {
+            [[OMDBeaconPartySchedule shared] loadScheduleFromJsonData:restoredData];
+        }
+        
+    });
+    
+}
+
+- (void) setEpoch:(NSDate*)epoch uuid:(NSString*)uuid identifier:(NSString*)identifier {
+
+    //Setup Beacon Region Monitoring
+    _beaconParty = [[OMDBeaconParty alloc] init:uuid identifier:identifier];
+    _beaconParty.delegate = self;
+
+    _scheduler = [OMDBeaconPartyScheduler scheduler];
+    _scheduler.epoch = epoch;
+    
+#ifdef DEBUG_EPOCH
+    _scheduler.epoch = [NSDate dateWithTimeIntervalSinceNow:0];
+#endif
+    _scheduler.debugTextView = _debugTextView;
+    
+    
+    //Try to reload data from docs directory if it exists
+    [OMDBeaconPartySchedule reloadData];
+}
+
+-(void) setView:(UIView *)view {
+    _view = view;
+    _scheduler.view = _view;
+    
+}
 -(void) loadScheduleFromJsonData:(NSData*)data {
-    //Load JSON base schedule
+    //Load JSON base schedule and save it in the Document directory
     NSError *error = nil;
     NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: &error];
     if(error) {
@@ -64,10 +95,7 @@
 
 -(void) setSchedule:(NSMutableArray*)schedule {
     _schedule = schedule;
-    [self selectSequenceFromBeacon:_currentBeacon];
-    _scheduler.continueMainLoop = YES;
-    [_scheduler startLoop];
-    
+    [self selectSequenceFromBeacon:_currentBeacon];    
 }
 
 -(void) selectSequenceFromBeacon:(CLBeacon*)beacon {
@@ -78,7 +106,7 @@
     //Find the schedule sequence that matches this beacon
     NSArray *filteredarray = [_schedule filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(%K == %@ AND %K == %@ AND %K == %@)",@"uuid",uuid,@"major",major,@"minor",minor]];
     if(filteredarray.count > 1) {
-        DLog(@"Error found %d objects for beacon should only have one.",filteredarray.count);
+        DLog(@"Error found %lu objects for beacon should only have one.",(unsigned long)filteredarray.count);
     }
     
     //Assign the correct sequence for the beacon region to the schedule and start the scheduler

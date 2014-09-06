@@ -1092,6 +1092,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 					DEBUG_LOGS,
+					DEBUG_EPOCH,
 				);
 				INFOPLIST_FILE = "Beacon Party/Beacon Party-Info.plist";
 				LIBRARY_SEARCH_PATHS = (

@@ -12,7 +12,11 @@
 
 @interface OMDBeaconPartySchedule : NSObject <OMDBeaconPartyDelegate>
 
-- (instancetype)initWithJSON:(NSString*)path view:(UIView*)view debugTextView:(UITextView*)debugTextView epoch:(NSDate*)epoch uuid:(NSString*)uuid identifier:(NSString*)identifier;
++(instancetype) shared;
++(void) saveData:(NSData*)data;
++(void) reloadData;
+
+-(void) setEpoch:(NSDate*)epoch uuid:(NSString*)uuid identifier:(NSString*)identifier;
 
 -(void) loadScheduleFromJsonData:(NSData*)data;
 
@@ -22,5 +26,7 @@
     schedule.
  */
 @property (strong, nonatomic) NSArray *schedule;
+@property (weak,nonatomic) UITextView *debugTextView;
+@property (weak,nonatomic) UIView *view;
 
 @end

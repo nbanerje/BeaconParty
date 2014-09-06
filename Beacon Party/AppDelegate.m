@@ -13,22 +13,30 @@
 #import "UAConfig.h"
 
 #define FETCH_URL_STR @"http://omdesignllc.com/sample.json"
+#define UUID @"BF5094D9-5849-47ED-8FA1-983A748A9586"
+typedef void(^FetchURLDataBlock)(NSString*, OMDBeaconPartySchedule*, void (^)(UIBackgroundFetchResult));
+typedef void (^BackgroundCompletion)(UIBackgroundFetchResult);
 
-UIBackgroundFetchResult(^fetchURLData)(NSString*,OMDBeaconPartySchedule*)  = ^UIBackgroundFetchResult (NSString* url,OMDBeaconPartySchedule* schedule){
+FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* schedule, BackgroundCompletion completionHandler){
     NSURLSession *sharedSession = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [sharedSession dataTaskWithURL:[NSURL URLWithString:url] completionHandler:
                                   ^(NSData *data, NSURLResponse *response, NSError *error){
                                       if(error) {
                                           NSLog(@"Failed %@",[error debugDescription]);
+                                          completionHandler(UIBackgroundFetchResultFailed);
                                       } else {
-                                          if(response) {
+                                          if(data.length >0) {
                                               [schedule loadScheduleFromJsonData:data];
+                                              [OMDBeaconPartySchedule saveData:data];
                                               NSLog(@"fetch data");
+                                              completionHandler(UIBackgroundFetchResultNewData);
+                                          }
+                                          else {
+                                              completionHandler(UIBackgroundFetchResultNoData);
                                           }
                                       }
                                   }];
     [task resume];
-    return UIBackgroundFetchResultNewData;
 };
 
 @implementation AppDelegate
@@ -77,7 +85,8 @@ UIBackgroundFetchResult(^fetchURLData)(NSString*,OMDBeaconPartySchedule*)  = ^UI
     [[UAPush shared] setPushEnabled:YES];
 
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
-    
+    _schedule = [OMDBeaconPartySchedule shared];
+    [_schedule setEpoch:[NSDate dateWithTimeIntervalSince1970:0] uuid:UUID identifier:@"is.ziggy"];
     return YES;
 }
 							
@@ -190,7 +199,7 @@ UIBackgroundFetchResult(^fetchURLData)(NSString*,OMDBeaconPartySchedule*)  = ^UI
          
          */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+        //abort();
     }    
     
     return _persistentStoreCoordinator;
@@ -208,8 +217,8 @@ UIBackgroundFetchResult(^fetchURLData)(NSString*,OMDBeaconPartySchedule*)  = ^UI
 
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
-    UIBackgroundFetchResult fetchResult = fetchURLData(FETCH_URL_STR,_schedule);
-    completionHandler(fetchResult);
+    fetchURLData(FETCH_URL_STR,_schedule,completionHandler);
+    
 }
 
 #pragma mark - Push Delegate
@@ -218,14 +227,12 @@ UIBackgroundFetchResult(^fetchURLData)(NSString*,OMDBeaconPartySchedule*)  = ^UI
     
     UA_LDEBUG(@"Received a notification while the app was already in the foreground");
 
-    UIBackgroundFetchResult fetchResult = UIBackgroundFetchResultNoData;
-    // Do something with your customData JSON, then entire notification is also available
     if(notification[@"data-url"]) {
-        fetchResult = fetchURLData(FETCH_URL_STR,_schedule);
+        fetchURLData(FETCH_URL_STR,_schedule,completionHandler);
     }
-    // Be sure to call the completion handler with a UIBackgroundFetchResult
-    
-    completionHandler(fetchResult);
+    else {
+        completionHandler(UIBackgroundFetchResultNoData);
+    }
 }
 
 - (void)launchedFromNotification:(NSDictionary *)notification
@@ -233,27 +240,23 @@ UIBackgroundFetchResult(^fetchURLData)(NSString*,OMDBeaconPartySchedule*)  = ^UI
     
     UA_LDEBUG(@"The application was launched or resumed from a notification");
     
-    UIBackgroundFetchResult fetchResult = UIBackgroundFetchResultNoData;
-    // Do something with your customData JSON, then entire notification is also available
     if(notification[@"data-url"]) {
-        fetchResult = fetchURLData(FETCH_URL_STR,_schedule);
+        fetchURLData(FETCH_URL_STR,_schedule,completionHandler);
     }
-    // Be sure to call the completion handler with a UIBackgroundFetchResult
-    
-    completionHandler(fetchResult);
+    else {
+        completionHandler(UIBackgroundFetchResultNoData);
+    }
 }
 
 - (void)receivedBackgroundNotification:(NSDictionary *)notification
                 fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
-    UIBackgroundFetchResult fetchResult = UIBackgroundFetchResultNoData;
-    // Do something with your customData JSON, then entire notification is also available
     if(notification[@"data-url"]) {
-        fetchResult = fetchURLData(FETCH_URL_STR,_schedule);
+        fetchURLData(FETCH_URL_STR,_schedule,completionHandler);
     }
-    // Be sure to call the completion handler with a UIBackgroundFetchResult
-    
-    completionHandler(fetchResult);
+    else {
+        completionHandler(UIBackgroundFetchResultNoData);
+    }
 }
 
 

@@ -13,7 +13,7 @@
 #import "AppDelegate.h"
 
 @interface MasterViewController ()
-@property (strong,nonatomic) OMDBeaconPartySchedule* schedule;
+@property (weak,nonatomic) OMDBeaconPartySchedule* schedule;
 @end
 
 @implementation MasterViewController
@@ -27,9 +27,10 @@
 {
     [super viewDidLoad];
     if(!_schedule) {
-        _schedule = [[OMDBeaconPartySchedule alloc] initWithJSON:[[NSBundle mainBundle] pathForResource:@"Sample" ofType:@"json"] view:self.view debugTextView:_debugTextView epoch:[NSDate date] uuid:@"BF5094D9-5849-47ED-8FA1-983A748A9586" identifier:@"is.ziggy"];
+        
         AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-        appDelegate.schedule = _schedule;
+        appDelegate.schedule.view = self.view;
+        appDelegate.schedule.debugTextView = _debugTextView;
     }
     
     /*

@@ -27,28 +27,19 @@
  You could set this to be UNIX epoch and then use time since 
  1970 as your offsets. There is no concept of timezones in this approch.
  */
-@property (strong, atomic) NSDate *epoch;
+@property (strong, nonatomic) NSDate *epoch;
 
 /**
  This array is used to hold the sequence spec array of dictionary 
  objects which contain a time offset from the epoch and an action spec.
  */
-@property (strong, atomic) NSArray *sequences;
+@property (strong, nonatomic) NSArray *sequences;
 
-/**
- This value can be used to stop the scheduler. If you stop the scheduler you
- will need to restart the scheduler with the startLoop method after setting
- continueMainLoop = YES;
- */
-@property (assign, atomic) BOOL continueMainLoop;
 
-@property (assign, atomic) BOOL continueTorch;
 
-/**
- Start the loop scheduler. This is started automatically by instantiating 
- the scheduler singleton.
- */
-- (void) startLoop;
+@property (assign, nonatomic) BOOL continueTorch;
+
+
 
 /**
  The scheduler singleton. Use this to start the scheduler.

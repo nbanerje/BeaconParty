@@ -7,6 +7,7 @@
 //
 #import "OMDBeaconParty.h"
 #import "Debug.h"
+#import "UAPush.h"
 
 
 @interface OMDBeaconParty()
@@ -20,11 +21,10 @@
 
 @implementation OMDBeaconParty
 
-- (id)init:(NSString*)UUID identifier:(NSString*)identifier debugTextView:(UITextView*)debugTextView {
+- (id)init:(NSString*)UUID identifier:(NSString*)identifier {
     self = [super init];
     
     if(self) {
-        self.debugTextView = debugTextView;
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.delegate = self;
         [self initRegion:UUID identifier:identifier];
@@ -37,6 +37,9 @@
     NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:UUID];
     self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:identifier];
     self.beaconRegion.notifyEntryStateOnDisplay = YES;
+    self.beaconRegion.notifyOnEntry = YES;
+    self.beaconRegion.notifyOnExit = YES;
+    
     [self.locationManager startMonitoringForRegion:self.beaconRegion];
     [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
     DLog(@"startMonitoringForRegion");
@@ -45,10 +48,34 @@
 #pragma mark CLLocationManagerDelegate
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
     DLog(@"Entered Region: %@", [region debugDescription]);
+    if([region isKindOfClass:[CLBeaconRegion class]]) {
+//        UAPush *shared = [UAPush shared];
+//        CLBeaconRegion *beaconRegion = (CLBeaconRegion*)region;
+//        NSString *beaconTag = [NSString stringWithFormat:@"%@_%@_%@"
+//                               ,beaconRegion.proximityUUID.UUIDString
+//                               ,beaconRegion.major
+//                               ,beaconRegion.minor];
+//        // Remove any in_ tags
+//        [shared removeTagsFromCurrentDevice:[[shared tags] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] 'in_'"]]];
+//        // Set the new beacon in tag
+//        [shared addTagToCurrentDevice:[@"in_" stringByAppendingString:beaconTag]];
+//        [shared updateRegistration];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
     DLog(@"Exited Region: %@", [region debugDescription]);
+    if([region isKindOfClass:[CLBeaconRegion class]]) {
+        UAPush *shared = [UAPush shared];
+        CLBeaconRegion *beaconRegion = (CLBeaconRegion*)region;
+        NSString *beaconTag = [NSString stringWithFormat:@"%@"
+                               ,beaconRegion.proximityUUID.UUIDString];
+        // Remove any out_ tags
+        [shared removeTagsFromCurrentDevice:[[shared tags] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] 'out_'"]]];
+        // Set the new beacon out tag
+        [shared addTagToCurrentDevice:[@"out_" stringByAppendingString:beaconTag]];
+        [shared updateRegistration];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region {
@@ -64,9 +91,24 @@
     }
     
     if (closestBeacon && closestBeacon.minor != _bestBeacon.minor) {
+        UAPush *shared = [UAPush shared];
+        
         _bestBeacon = closestBeacon;
         DLog(@"Found better beacon minor:%@", [_bestBeacon debugDescription]);
+
+        NSString *beaconTag = [NSString stringWithFormat:@"%@_%@_%@"
+                               ,_bestBeacon.proximityUUID.UUIDString
+                               ,_bestBeacon.major
+                               ,_bestBeacon.minor];
+        // Remove any in_ tags
+        [shared removeTagsFromCurrentDevice:[[shared tags] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] 'in_' OR SELF beginswith[c] 'out_'"]]];
+        // Set the new beacon in tag
+        [shared addTagToCurrentDevice:[@"in_" stringByAppendingString:beaconTag]];
+        [shared updateRegistration];
+
         [self.delegate updateWithBeacon:_bestBeacon];
+        
+       
     }
 
 }

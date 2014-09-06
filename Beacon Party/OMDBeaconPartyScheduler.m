@@ -19,6 +19,21 @@
 
 - (void) runAction:(NSDictionary*)action;
 
+/**
+ Start the loop scheduler. This is started automatically by instantiating
+ the scheduler singleton.
+ */
+- (void) startLoop;
+
+/**
+ This value can be used to stop the scheduler. If you stop the scheduler you
+ will need to restart the scheduler with the startLoop method after setting
+ continueMainLoop = YES;
+ */
+@property (assign, nonatomic) BOOL continueMainLoop;
+
+@property (assign,atomic) UInt16 numLoops;
+
 @end
 
 
@@ -30,9 +45,6 @@
     
     dispatch_once(&onceToken, ^{
         scheduler = [[self alloc] init];
-        
-            [scheduler startLoop];
-       
     });
     return scheduler;
 }
@@ -43,17 +55,25 @@
     self = [super init];
     if (self) {
         _continueMainLoop = YES;
+        _numLoops = 0;
     }
     return self;
 }
 
+-(void) setSequences:(NSArray *)sequences {
+    _sequences = sequences;
+    _continueMainLoop = YES;
+    [self startLoop];
+}
+
 - (void) startLoop {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        NSTimeInterval currentOffsetFromEpoch;
-        while (_continueMainLoop) {
-            @autoreleasepool {
-                if(_epoch && _sequences) {
-                    currentOffsetFromEpoch = [[NSDate date] timeIntervalSinceDate:_epoch];
+    
+    if (_numLoops==0) {
+        ++_numLoops;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            while (_continueMainLoop) {
+                @autoreleasepool {
+                    NSTimeInterval currentOffsetFromEpoch = [[NSDate date] timeIntervalSinceDate:_epoch];
                     NSNumber *num = [NSNumber numberWithFloat:currentOffsetFromEpoch];
                     NSArray *filteredarray = [_sequences filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"((%K == nil OR %K == 0) AND %K <= %@)",@"executed",@"executed",@"time",num]];
                     for (NSMutableDictionary *action in filteredarray) {
@@ -77,16 +97,19 @@
                         [NSThread sleepForTimeInterval:nextTime-currentOffsetFromEpoch];
                     }
                     
-                    //End the loop when all sequence are in the past or have been execuetd
+                    //End the loop when all sequence are in the past or have been executed
                     if(_sequences) {
-                        filteredarray = [_sequences filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(%K == 0 || %K <= %@)",@"executed",@"time",num]];
+                        filteredarray = [_sequences filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(%K == 0 || %K >= %@)",@"executed",@"time",num]];
                         if(filteredarray && [filteredarray count] == 0 )
                             _continueMainLoop = NO;
                     }
                 }
+                
             }
-        }
-     });
+            _numLoops--;
+        });
+
+    }
 }
 
 - (void) runAction:(NSDictionary*)action {

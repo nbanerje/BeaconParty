@@ -11,7 +11,7 @@
 #import "Debug.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
-#import "LARSTorch.h"
+#import "OMDTorch.h"
 
 #define JITTER 0.5
 
@@ -33,6 +33,8 @@
 @property (assign, nonatomic) BOOL continueMainLoop;
 
 @property (assign,atomic) UInt16 numLoops;
+
+@property (strong,nonatomic) OMDTorch *torch;
 
 @end
 
@@ -56,6 +58,10 @@
     if (self) {
         _continueMainLoop = YES;
         _numLoops = 0;
+        _torch = [OMDTorch shared];
+        backgroundAudioQueue = dispatch_queue_create("is.ziggy.audiobackground", NULL);
+        backgroundQueue = dispatch_queue_create("is.ziggy.background", NULL);
+        
     }
     return self;
 }
@@ -70,7 +76,7 @@
     
     if (_numLoops==0) {
         ++_numLoops;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        dispatch_async(backgroundQueue, ^{
             while (_continueMainLoop) {
                 @autoreleasepool {
                     NSTimeInterval currentOffsetFromEpoch = [[NSDate date] timeIntervalSinceDate:_epoch];
@@ -117,6 +123,13 @@
     [[self.view viewWithTag:1] removeFromSuperview];
     if([action[@"action"] isEqualToString:@"color"]) {
         OMDScreenColorSpec *colorSpec = [[OMDScreenColorSpec alloc] initWithR1:action[@"r1"] g1:action[@"g2"] b1:action[@"b1"] a1:action[@"a1"] r2:action[@"r2"] g2:action[@"g2"] b2:action[@"b2"] a2:action[@"a2"]];
+        if(action[@"frequency"]){
+            colorSpec.frequency = ((NSNumber*)action[@"frequency"]).floatValue;
+        }
+        
+        if(action[@"delay"]){
+            colorSpec.delay = ((NSNumber*)action[@"delay"]).floatValue;
+        }
         colorSpec.view = _view;
         colorSpec.debugTextView = _debugTextView;
         dispatch_async(dispatch_get_main_queue(), ^{[colorSpec block]();});
@@ -124,7 +137,7 @@
         _view.backgroundColor = [UIColor clearColor];
         [_view.layer removeAllAnimations];
     } else if([action[@"action"] isEqualToString:@"stop-flash"]) {
-        _continueTorch = NO;
+        _torch.continueTorch = NO;
     } else if([action[@"action"] isEqualToString:@"url"]) {
         UIWebView *aWebView =[[UIWebView alloc] initWithFrame:_view.frame];
         aWebView.tag = 1;
@@ -144,36 +157,35 @@
                 AudioServicesPlaySystemSound(soundID);
             }
         } else if([action objectForKey:@"url"]) {
-            NSError *error;
-            AVAudioPlayer *backgroundMusicPlayer = [[AVAudioPlayer alloc]
-                                          initWithContentsOfURL:[action objectForKey:@"url"] error:&error];
-            [backgroundMusicPlayer prepareToPlay];
-            [backgroundMusicPlayer play];
-            if(error) {
-                DLog(@"%@",[error debugDescription]);
-            }
+            dispatch_async(backgroundAudioQueue, ^{
+                NSURL *url = [NSURL URLWithString:[action objectForKey:@"url"]];
+                NSError *error;
+                AVAudioPlayer *backgroundMusicPlayer = [[AVAudioPlayer alloc]
+                                                        initWithData:[NSData dataWithContentsOfURL:url] error:&error];
+                if(action[@"loop"]) {
+                    BOOL loop = ((NSNumber*)action[@"loop"]).boolValue;
+                    if (loop) {
+                        backgroundMusicPlayer.numberOfLoops = -1;
+                    }
+                }
+                [backgroundMusicPlayer prepareToPlay];
+                [backgroundMusicPlayer play];
+                if(error) {
+                    DLog(@"%@",[error debugDescription]);
+                }
+
+            });
         }
     } else if([action[@"action"] isEqualToString:@"vibrate"]) {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     } else if([action[@"action"] isEqualToString:@"flash"]) {
-        _continueTorch = YES;
-        float period = ((NSNumber*)action[@"frequency"]).floatValue;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            LARSTorch *torch = [LARSTorch sharedTorch];
-            
-            while(_continueTorch) {
-                if(action[@"brightness"]) {
-                    [torch setTorchOnWithLevel:((NSNumber*)action[@"brightness"]).floatValue];
-                } else {
-                    [torch setTorchState:LARSTorchStateOn];
-                }
-                [NSThread sleepForTimeInterval:period/2.0];
-                [torch setTorchState:LARSTorchStateOff];
-                [NSThread sleepForTimeInterval:period/2.0];
-            }
-            
-        });
+        _torch.frequency = action[@"frequency"];
+        _torch.brightness = action[@"brightness"];
         
+        if(!_torch.continueTorch) {
+            _torch.continueTorch = YES;
+            [_torch startTorching];
+        }
     }
     
 }

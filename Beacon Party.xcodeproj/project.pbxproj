@@ -105,6 +105,8 @@
 		49D5851419B70C9300ADB36D /* laugh.caf in Resources */ = {isa = PBXBuildFile; fileRef = 49D5851219B70C9300ADB36D /* laugh.caf */; };
 		49E3BD3019B0EADC007A8B12 /* OMDBeaconPartyScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E3BD2F19B0EADC007A8B12 /* OMDBeaconPartyScheduler.m */; };
 		49E3BD3119B0EADC007A8B12 /* OMDBeaconPartyScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E3BD2F19B0EADC007A8B12 /* OMDBeaconPartyScheduler.m */; };
+		49F5CF7619BBE7B1007CF934 /* OMDTorch.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F5CF7519BBE7B1007CF934 /* OMDTorch.m */; };
+		49F5CF7719BBE7B1007CF934 /* OMDTorch.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F5CF7519BBE7B1007CF934 /* OMDTorch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -316,6 +318,8 @@
 		49D5851219B70C9300ADB36D /* laugh.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = laugh.caf; sourceTree = "<group>"; };
 		49E3BD2E19B0EADC007A8B12 /* OMDBeaconPartyScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDBeaconPartyScheduler.h; sourceTree = "<group>"; };
 		49E3BD2F19B0EADC007A8B12 /* OMDBeaconPartyScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMDBeaconPartyScheduler.m; sourceTree = "<group>"; };
+		49F5CF7419BBE7B1007CF934 /* OMDTorch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDTorch.h; sourceTree = "<group>"; };
+		49F5CF7519BBE7B1007CF934 /* OMDTorch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMDTorch.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -431,6 +435,8 @@
 				4915F93619B0268500577FAD /* Debug.h */,
 				49E3BD2E19B0EADC007A8B12 /* OMDBeaconPartyScheduler.h */,
 				49E3BD2F19B0EADC007A8B12 /* OMDBeaconPartyScheduler.m */,
+				49F5CF7419BBE7B1007CF934 /* OMDTorch.h */,
+				49F5CF7519BBE7B1007CF934 /* OMDTorch.m */,
 				4904946E19B6C3CF00A092E3 /* OMDScreenColorSpec.h */,
 				4904946F19B6C3CF00A092E3 /* OMDScreenColorSpec.m */,
 				4956C71219B803B900661366 /* AirshipConfig.plist */,
@@ -911,6 +917,7 @@
 				4956C6E119B8015E00661366 /* UAPushUI.m in Sources */,
 				4956C6DF19B8015E00661366 /* UAPushSettingsUserInfoViewController.m in Sources */,
 				4956C6CC19B8015E00661366 /* UAInboxNavUI.m in Sources */,
+				49F5CF7619BBE7B1007CF934 /* OMDTorch.m in Sources */,
 				4956C6DE19B8015E00661366 /* UAPushSettingsTokenViewController.m in Sources */,
 				49D5851019B7077100ADB36D /* LARSTorch.m in Sources */,
 				4956C6D919B8015E00661366 /* UAPushSettingsAddTagViewController.m in Sources */,
@@ -949,6 +956,7 @@
 				49D5851119B7077100ADB36D /* LARSTorch.m in Sources */,
 				49E3BD3119B0EADC007A8B12 /* OMDBeaconPartyScheduler.m in Sources */,
 				493EF5BD19A9B04A0047A96B /* Beacon_PartyTests.m in Sources */,
+				49F5CF7719BBE7B1007CF934 /* OMDTorch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

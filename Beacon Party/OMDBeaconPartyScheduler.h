@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 /** Class to represent the Shceduler singleton
  */
-@interface OMDBeaconPartyScheduler : NSObject <UIWebViewDelegate>
+@interface OMDBeaconPartyScheduler : NSObject <UIWebViewDelegate> {
+    dispatch_queue_t backgroundAudioQueue;
+    dispatch_queue_t backgroundQueue;
+}
 
 /**
  View to which all effects are applied
@@ -37,7 +40,7 @@
 
 
 
-@property (assign, nonatomic) BOOL continueTorch;
+
 
 
 

@@ -81,6 +81,5 @@ vibrate-spec ::=
                         {
                             "executed":0
                             "action":"vibrate"
-                            "frequency": float
                         }
 ```

@@ -14,6 +14,12 @@
 
 #define FETCH_URL_STR @"http://omdesignllc.com/sample.json"
 #define UUID @"BF5094D9-5849-47ED-8FA1-983A748A9586"
+
+#define OMDPICURL @"http://omdesignllc.com"
+#define PATH @"checkKey.php"
+#define UPLOAD_PATH @"postPic.php"
+#define DB_FILENAME @"media.sql"
+
 typedef void(^FetchURLDataBlock)(NSString*, OMDBeaconPartySchedule*, void (^)(UIBackgroundFetchResult));
 typedef void (^BackgroundCompletion)(UIBackgroundFetchResult);
 
@@ -87,6 +93,51 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     _schedule = [OMDBeaconPartySchedule shared];
     [_schedule setEpoch:[NSDate dateWithTimeIntervalSince1970:0] uuid:UUID identifier:@"is.ziggy"];
+    
+    //Pics Snapping Portion
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker.
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-11960342-5"];
+    // Set the log level to verbose.
+    [[GAI sharedInstance].logger setLogLevel:kGAILogLevelError];
+    self.cred = [[OmDesignCredential alloc] init];
+    
+    [[OMDMediaDB sharedInstance] initWithFilename:DB_FILENAME];
+    [[OMDMediaDB sharedInstance] createEditableCopyOfDatabaseIfNeeded];
+    [[OMDMediaDB sharedInstance] initializeDatabase];
+    
+    UIDevice *device = [UIDevice currentDevice];
+    device.batteryMonitoringEnabled = YES;
+    [self batteryStatus:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyFailed) name:@"KeyFailed" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyPassed) name:@"KeyPassed" object:nil];
+	
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(batteryStatus:) name:UIDeviceBatteryStateDidChangeNotification object:nil];
+    
+	self.settingsDictionary = [[NSMutableDictionary alloc] initWithCapacity:10];
+	
+	self.key = [NSMutableString stringWithCapacity:10];
+	[self.key setString:@""];
+	NSDictionary *savedDict = [SaveData applicationPlistFromFile:@"key.plist"];
+	//If the key exists, use it
+	if(savedDict != nil) {
+		[self.settingsDictionary addEntriesFromDictionary:savedDict];
+		if([self.settingsDictionary objectForKey:@"key"] != nil) {
+			[self.key setString:[self.settingsDictionary objectForKey:@"key"]];
+		}
+    }
+    
+	[[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    
+
     return YES;
 }
 							
@@ -94,28 +145,45 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    [self setSaveKey];
+    [[OMDMediaDB sharedInstance] setUploadPaused:YES];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [self setSaveKey];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [self setSaveKey];
+    OMDMediaDB *mediaDB = [OMDMediaDB sharedInstance];
+    mediaDB.uploadPaused = NO;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [self setSaveKey];
+    OMDMediaDB *mediaDB = [OMDMediaDB sharedInstance];
+    mediaDB.uploadPaused = NO;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+    
+    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [self setSaveKey];
+    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:@"KeyFailed"];
+    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:@"KeyPassed"];
+    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:UIDeviceBatteryStateDidChangeNotification];
 }
 
 - (void)saveContext
@@ -258,6 +326,61 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
         completionHandler(UIBackgroundFetchResultNoData);
     }
 }
+
+#pragma mark copied methods from pic capture
+- (void)setSaveKey {
+	[self.settingsDictionary setObject:self.key forKey:@"key"];
+	[SaveData writeApplicationPlist:self.settingsDictionary toFile:@"key.plist"];
+}
+
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+    [[OMDMediaDB sharedInstance] killUploadsAndPause];
+}
+
+-(void)keyPassed {
+	
+    
+    [self setSaveKey];
+    
+    OMDMediaDB *mediaDB = [OMDMediaDB sharedInstance];
+    [mediaDB startUploading:OMDPICURL path:UPLOAD_PATH];
+    
+    self.keyPassedAlertView = [[UIAlertView alloc] initWithTitle:@"Great!"
+                                                         message:@"You're authorized! Start taking pics!"
+                                                        delegate:self cancelButtonTitle:@"Sweet!" otherButtonTitles:nil];
+    
+	[self.keyPassedAlertView show];
+    
+    // May return nil if a tracker has not yet been initialized with a property ID.
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"credential"     // Event category (required)
+                                                          action:@"key_passed"  // Event action (required)
+                                                           label:self.key          // Event label
+                                                           value:nil] build]];    // Event value
+	
+}
+
+-(void)keyFailed {
+	self.keyFailedAlertView = [[UIAlertView alloc] initWithTitle:@"Sorry..."
+                                                         message:@"Wrong key. Tap on key to re-entering it. Maybe you mistyped?"
+                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[self.keyFailedAlertView show];
+	
+}
+
+- (void)batteryStatus:(NSNotification *)notification
+{
+    UIDevice *device = [UIDevice currentDevice];
+    NSLog(@"State: %i Charge: %f", device.batteryState, device.batteryLevel);
+    if(device.batteryState == UIDeviceBatteryStateCharging && [[NSUserDefaults standardUserDefaults] boolForKey:@"display_on_charging"]) {
+        [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    }
+    else {
+        [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+    }
+}
+
 
 
 @end

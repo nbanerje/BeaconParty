@@ -13,6 +13,7 @@
 
 -(IBAction)tappedButtion:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 @end

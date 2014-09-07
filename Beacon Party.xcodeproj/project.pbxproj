@@ -109,8 +109,6 @@
 		49F5CF7719BBE7B1007CF934 /* OMDTorch.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F5CF7519BBE7B1007CF934 /* OMDTorch.m */; };
 		49F5CF8519BBF33F007CF934 /* media.sql in Resources */ = {isa = PBXBuildFile; fileRef = 49F5CF7B19BBF33F007CF934 /* media.sql */; };
 		49F5CF8619BBF33F007CF934 /* media.sql in Resources */ = {isa = PBXBuildFile; fileRef = 49F5CF7B19BBF33F007CF934 /* media.sql */; };
-		49F5CF8719BBF33F007CF934 /* libweddingsnaplib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F5CF8419BBF33F007CF934 /* libweddingsnaplib.a */; };
-		49F5CF8819BBF33F007CF934 /* libweddingsnaplib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F5CF8419BBF33F007CF934 /* libweddingsnaplib.a */; };
 		49F5CF8F19BBF4B1007CF934 /* 56-cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F5CF8A19BBF4B1007CF934 /* 56-cloud.png */; };
 		49F5CF9019BBF4B1007CF934 /* 56-cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F5CF8A19BBF4B1007CF934 /* 56-cloud.png */; };
 		49F5CF9119BBF4B1007CF934 /* 8588.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F5CF8B19BBF4B1007CF934 /* 8588.png */; };
@@ -166,6 +164,10 @@
 		49F5CFF619BC035A007CF934 /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = 49F5CFDA19BC035A007CF934 /* VERSION */; };
 		49F5CFF919BC04DA007CF934 /* OpenGLWaveformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F5CFF819BC04DA007CF934 /* OpenGLWaveformViewController.m */; };
 		49F5CFFA19BC04DA007CF934 /* OpenGLWaveformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F5CFF819BC04DA007CF934 /* OpenGLWaveformViewController.m */; };
+		49F5D00219BC3B86007CF934 /* ziggy-sm.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F5D00119BC3B86007CF934 /* ziggy-sm.png */; };
+		49F5D00319BC3B86007CF934 /* ziggy-sm.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F5D00119BC3B86007CF934 /* ziggy-sm.png */; };
+		49F5D00619BC3D0C007CF934 /* libweddingsnaplib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F5D00519BC3D0C007CF934 /* libweddingsnaplib.a */; };
+		49F5D00719BC3D0C007CF934 /* libweddingsnaplib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F5D00519BC3D0C007CF934 /* libweddingsnaplib.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -382,14 +384,12 @@
 		49F5CF7A19BBF33F007CF934 /* AVCamPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamPreviewView.h; sourceTree = "<group>"; };
 		49F5CF7B19BBF33F007CF934 /* media.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = media.sql; sourceTree = "<group>"; };
 		49F5CF7C19BBF33F007CF934 /* OmDesignCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmDesignCredential.h; sourceTree = "<group>"; };
-		49F5CF7D19BBF33F007CF934 /* OMDFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDFirstViewController.h; sourceTree = "<group>"; };
 		49F5CF7E19BBF33F007CF934 /* OMDImageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDImageDetailViewController.h; sourceTree = "<group>"; };
 		49F5CF7F19BBF33F007CF934 /* OMDMainNavigatioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDMainNavigatioViewController.h; sourceTree = "<group>"; };
 		49F5CF8019BBF33F007CF934 /* OMDPhotoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDPhotoCollectionViewController.h; sourceTree = "<group>"; };
 		49F5CF8119BBF33F007CF934 /* OMDSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDSecondViewController.h; sourceTree = "<group>"; };
 		49F5CF8219BBF33F007CF934 /* SaveData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveData.h; sourceTree = "<group>"; };
 		49F5CF8319BBF33F007CF934 /* weddingsnaplib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = weddingsnaplib.h; sourceTree = "<group>"; };
-		49F5CF8419BBF33F007CF934 /* libweddingsnaplib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libweddingsnaplib.a; path = ../libweddingsnaplib.a; sourceTree = "<group>"; };
 		49F5CF8A19BBF4B1007CF934 /* 56-cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "56-cloud.png"; sourceTree = "<group>"; };
 		49F5CF8B19BBF4B1007CF934 /* 8588.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8588.png; sourceTree = "<group>"; };
 		49F5CF8C19BBF4B1007CF934 /* key_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key_bw.png; sourceTree = "<group>"; };
@@ -445,6 +445,9 @@
 		49F5CFDA19BC035A007CF934 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
 		49F5CFF719BC04DA007CF934 /* OpenGLWaveformViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLWaveformViewController.h; sourceTree = "<group>"; };
 		49F5CFF819BC04DA007CF934 /* OpenGLWaveformViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLWaveformViewController.m; sourceTree = "<group>"; };
+		49F5D00119BC3B86007CF934 /* ziggy-sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ziggy-sm.png"; sourceTree = "<group>"; };
+		49F5D00419BC3BB7007CF934 /* OMDFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDFirstViewController.h; sourceTree = "<group>"; };
+		49F5D00519BC3D0C007CF934 /* libweddingsnaplib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libweddingsnaplib.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -454,6 +457,7 @@
 			files = (
 				49F5CFAC19BBF63C007CF934 /* iAd.framework in Frameworks */,
 				4956C70019B8021D00661366 /* CoreBluetooth.framework in Frameworks */,
+				49F5D00619BC3D0C007CF934 /* libweddingsnaplib.a in Frameworks */,
 				4956C70119B8021D00661366 /* CoreLocation.framework in Frameworks */,
 				4956C70219B8021D00661366 /* CoreTelephony.framework in Frameworks */,
 				4956C70319B8021D00661366 /* libsqlite3.dylib in Frameworks */,
@@ -466,7 +470,6 @@
 				4956C6C519B8015E00661366 /* libUAirship-4.0.3.a in Frameworks */,
 				49D5850D19B705CF00ADB36D /* AVFoundation.framework in Frameworks */,
 				49D5850B19B7038400ADB36D /* AudioToolbox.framework in Frameworks */,
-				49F5CF8719BBF33F007CF934 /* libweddingsnaplib.a in Frameworks */,
 				493EF58819A9B04A0047A96B /* CoreGraphics.framework in Frameworks */,
 				493EF58C19A9B04A0047A96B /* CoreData.framework in Frameworks */,
 				493EF58619A9B04A0047A96B /* Foundation.framework in Frameworks */,
@@ -479,7 +482,7 @@
 			files = (
 				4956C71019B802F200661366 /* CoreLocation.framework in Frameworks */,
 				4956C71119B802F200661366 /* CoreTelephony.framework in Frameworks */,
-				49F5CF8819BBF33F007CF934 /* libweddingsnaplib.a in Frameworks */,
+				49F5D00719BC3D0C007CF934 /* libweddingsnaplib.a in Frameworks */,
 				4956C70819B802E500661366 /* CFNetwork.framework in Frameworks */,
 				4956C70919B802E500661366 /* CoreBluetooth.framework in Frameworks */,
 				4956C70A19B802E500661366 /* CoreGraphics.framework in Frameworks */,
@@ -912,7 +915,7 @@
 		49F5CF7819BBF33F007CF934 /* WeddingSnap */ = {
 			isa = PBXGroup;
 			children = (
-				49F5CF8419BBF33F007CF934 /* libweddingsnaplib.a */,
+				49F5D00519BC3D0C007CF934 /* libweddingsnaplib.a */,
 				49F5CFB319BBF884007CF934 /* GAI.h */,
 				49F5CFB419BBF884007CF934 /* GAIDictionaryBuilder.h */,
 				49F5CFB519BBF884007CF934 /* GAIFields.h */,
@@ -929,6 +932,7 @@
 		49F5CF7919BBF33F007CF934 /* weddingsnaplib */ = {
 			isa = PBXGroup;
 			children = (
+				49F5D00419BC3BB7007CF934 /* OMDFirstViewController.h */,
 				49F5CFB119BBF809007CF934 /* AFHTTPClient.h */,
 				49F5CFB219BBF809007CF934 /* AFHTTPRequestOperation.h */,
 				49F5CFAF19BBF7E8007CF934 /* OMDSQLLite.h */,
@@ -938,7 +942,6 @@
 				49F5CFAE19BBF79F007CF934 /* OMDMediaDB.h */,
 				49F5CFAD19BBF778007CF934 /* Reachability.h */,
 				49F5CF7C19BBF33F007CF934 /* OmDesignCredential.h */,
-				49F5CF7D19BBF33F007CF934 /* OMDFirstViewController.h */,
 				49F5CF7E19BBF33F007CF934 /* OMDImageDetailViewController.h */,
 				49F5CF7F19BBF33F007CF934 /* OMDMainNavigatioViewController.h */,
 				49F5CF8019BBF33F007CF934 /* OMDPhotoCollectionViewController.h */,
@@ -953,6 +956,7 @@
 		49F5CF8919BBF496007CF934 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				49F5D00119BC3B86007CF934 /* ziggy-sm.png */,
 				49F5CF9919BBF4CF007CF934 /* key_256.png */,
 				49F5CF9A19BBF4CF007CF934 /* Camera-256.png */,
 				49F5CF9B19BBF4CF007CF934 /* 30-key.png */,
@@ -1118,6 +1122,7 @@
 				49F5CFA319BBF4CF007CF934 /* 30-key.png in Resources */,
 				4956C6EA19B8015E00661366 /* UAPushLocalization.bundle in Resources */,
 				49F5CF8519BBF33F007CF934 /* media.sql in Resources */,
+				49F5D00219BC3B86007CF934 /* ziggy-sm.png in Resources */,
 				4956C6E719B8015E00661366 /* top-detail@2x.png in Resources */,
 				4956C6EB19B8015E00661366 /* UAPushMoreSettingsView.xib in Resources */,
 				49F5CF9F19BBF4CF007CF934 /* key_256.png in Resources */,
@@ -1170,6 +1175,7 @@
 				49F5CFF419BC035A007CF934 /* CHANGELOG in Resources */,
 				49F5CFA819BBF4CF007CF934 /* rotate_camera-1282.png in Resources */,
 				49F5CFA419BBF4CF007CF934 /* 30-key.png in Resources */,
+				49F5D00319BC3B86007CF934 /* ziggy-sm.png in Resources */,
 				49F5CFA019BBF4CF007CF934 /* key_256.png in Resources */,
 				49F5CFA619BBF4CF007CF934 /* 86-camera.png in Resources */,
 				49F5CF9419BBF4B1007CF934 /* key_bw.png in Resources */,
@@ -1406,6 +1412,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Airship",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "458357cb-0b39-473d-b721-74df90bab3c7";
@@ -1428,6 +1435,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Airship",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "458357cb-0b39-473d-b721-74df90bab3c7";
@@ -1454,6 +1462,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -1476,6 +1485,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";

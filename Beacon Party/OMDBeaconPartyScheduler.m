@@ -13,8 +13,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import "OMDTorch.h"
 
-#define JITTER 0.5
-
 @interface OMDBeaconPartyScheduler()
 
 - (void) runAction:(NSDictionary*)action;
@@ -72,6 +70,11 @@
     [self startLoop];
 }
 
+-(void) setBeacon:(CLBeacon *)beacon {
+    _beacon = beacon;
+    _torch.beacon = beacon;
+}
+
 - (void) startLoop {
     
     if (_numLoops==0) {
@@ -86,9 +89,7 @@
                         if([[NSNumber numberWithBool:NO] compare:action[@"executed"]] == NSOrderedSame) {
                             [action setValue:@1 forKey:@"executed"];
                             DLog(@"Dispatching action %@", [action debugDescription]);
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                [self runAction:action];
-                            });
+                            [self runAction:action];
                         }
                     }
                     
@@ -120,7 +121,8 @@
 
 - (void) runAction:(NSDictionary*)action {
     //remove any webview from the view
-    [[self.view viewWithTag:1] removeFromSuperview];
+    dispatch_async(dispatch_get_main_queue(), ^{[[self.view viewWithTag:1] removeFromSuperview];});
+    
     if([action[@"action"] isEqualToString:@"color"]) {
         OMDScreenColorSpec *colorSpec = [[OMDScreenColorSpec alloc] initWithR1:action[@"r1"] g1:action[@"g2"] b1:action[@"b1"] a1:action[@"a1"] r2:action[@"r2"] g2:action[@"g2"] b2:action[@"b2"] a2:action[@"a2"]];
         if(action[@"frequency"]){
@@ -134,17 +136,21 @@
         colorSpec.debugTextView = _debugTextView;
         dispatch_async(dispatch_get_main_queue(), ^{[colorSpec block]();});
     } else if([action[@"action"] isEqualToString:@"stop"]) {
-        _view.backgroundColor = [UIColor clearColor];
-        [_view.layer removeAllAnimations];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _view.backgroundColor = [UIColor clearColor];
+            [_view.layer removeAllAnimations];
+        });
     } else if([action[@"action"] isEqualToString:@"stop-flash"]) {
         _torch.continueTorch = NO;
     } else if([action[@"action"] isEqualToString:@"url"]) {
-        UIWebView *aWebView =[[UIWebView alloc] initWithFrame:_view.frame];
-        aWebView.tag = 1;
-        [aWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:action[@"url"]]]];
-        aWebView.delegate=self;
-        //[self.view addSubview:aWebView];
-        [self.view insertSubview:aWebView belowSubview:_debugTextView];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIWebView *aWebView =[[UIWebView alloc] initWithFrame:_view.frame];
+            aWebView.tag = 1;
+            [aWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:action[@"url"]]]];
+            aWebView.delegate=self;
+            //[self.view addSubview:aWebView];
+            [self.view insertSubview:aWebView belowSubview:_debugTextView];
+        });
     } else if([action[@"action"] isEqualToString:@"sound"]) {
         NSString *localSoundName = action[@"local-file"];
         if(localSoundName) {
@@ -181,11 +187,19 @@
     } else if([action[@"action"] isEqualToString:@"flash"]) {
         _torch.frequency = action[@"frequency"];
         _torch.brightness = action[@"brightness"];
-        
-        if(!_torch.continueTorch) {
-            _torch.continueTorch = YES;
-            [_torch startTorching];
+        [_torch startTorching:OMDTorchModeFlash];
+    } else if([action[@"action"] isEqualToString:@"twinkle"]) {
+        if (action[@"max-frequency"]) {
+            _torch.maxFrequency = action[@"max-frequency"];
         }
+        
+        if (action[@"offset"]) {
+            _torch.maxFrequency = action[@"offset"];
+        }
+        
+        [_torch startTorching:OMDTorchModeTwinkle];
+        
+        
     }
     
 }

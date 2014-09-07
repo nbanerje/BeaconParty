@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 /** Class to represent the Shceduler singleton
  */
 @interface OMDBeaconPartyScheduler : NSObject <UIWebViewDelegate> {
@@ -37,6 +38,12 @@
  objects which contain a time offset from the epoch and an action spec.
  */
 @property (strong, nonatomic) NSArray *sequences;
+
+
+/**
+ Beacon on which the current schedule is operating on.
+ */
+@property (weak, nonatomic) CLBeacon *beacon;
 
 
 

@@ -18,14 +18,16 @@
 
 
 @interface OMDFirstViewController : GAITrackedViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate,ADBannerViewDelegate>
+@property (weak, nonatomic) IBOutlet UIView *holderView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *overlayImageView;
 
 @property (strong, nonatomic) OmDesignCredential* cred;
 @property (strong, nonatomic) NSMutableString *key;
 @property (strong,nonatomic) Reachability* reach;
 @property (readwrite, nonatomic) BOOL enableAd;
 
-@property (weak, nonatomic) IBOutlet UIImageView  *cameraIcon;
+@property (weak, nonatomic) IBOutlet UIImageView  *stillImage;
 @property (weak, nonatomic) IBOutlet UIImageView  *capturedImage;
 @property (weak, nonatomic) IBOutlet UILabel *noCameraLabel;
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
@@ -40,6 +42,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *previewTopSpace;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBarTopSpace;
 
+- (IBAction)toggleCamPreview:(id)sender;
 
 -(IBAction) manualUploadPressed:(id) sender;
 -(IBAction)picCollectionGesture:(UITapGestureRecognizer *)recognizer;

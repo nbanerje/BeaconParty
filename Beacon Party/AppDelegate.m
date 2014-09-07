@@ -12,6 +12,8 @@
 
 #import "UAConfig.h"
 
+#import "UATagUtils.h"
+
 #define FETCH_URL_STR @"http://omdesignllc.com/sample.json"
 #define UUID @"BF5094D9-5849-47ED-8FA1-983A748A9586"
 
@@ -89,7 +91,16 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
                                          UIRemoteNotificationTypeAlert);
     
     [[UAPush shared] setPushEnabled:YES];
-
+    
+    [[UAPush shared] addTagsToCurrentDevice:[UATagUtils createTags:UATagTypeCountry|UATagTypeDeviceType|UATagTypeLanguage|UATagTypeTimeZone|UATagTypeTimeZoneAbbreviation]];
+    
+    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
+    NSString *build = infoDictionary[(NSString*)kCFBundleVersionKey];
+    
+    [[UAPush shared] addTagToCurrentDevice:build];
+    [[UAPush shared] updateRegistration];
+    
+    
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     _schedule = [OMDBeaconPartySchedule shared];
     [_schedule setEpoch:[NSDate dateWithTimeIntervalSince1970:0] uuid:UUID identifier:@"is.ziggy"];

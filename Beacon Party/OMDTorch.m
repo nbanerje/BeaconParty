@@ -16,26 +16,47 @@
     dispatch_once(&onceToken, ^{
         shared = [[self alloc] init];
         shared.continueTorch = NO;
+        shared.maxFrequency = [NSNumber numberWithFloat:MAX_TWINKLE_FREQUENCY];
+        shared.offset = 0;
     });
     return shared;
 }
 
-- (void)startTorching {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        LARSTorch *torch = [LARSTorch sharedTorch];
-        while(_continueTorch) {
-            float period = 1.0/self.frequency.floatValue;
-            if(self.brightness) {
-                [torch setTorchOnWithLevel:self.brightness.floatValue];
-            } else {
-                [torch setTorchState:LARSTorchStateOn];
-            }
-            [NSThread sleepForTimeInterval:period/2.0];
-            [torch setTorchState:LARSTorchStateOff];
-            [NSThread sleepForTimeInterval:period/2.0];
-        }
+- (void)startTorching:(OMDTorchMode) mode {
+    if(!_continueTorch) {
+        _continueTorch = YES;
         
-    });
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            LARSTorch *torch = [LARSTorch sharedTorch];
+            while(_continueTorch) {
+                if(_beacon && mode == OMDTorchModeTwinkle) {
+                    double distance = self.beacon.accuracy;
+                    float frequency = 0.0;
+                    if(distance>=0.0){
+                        if(distance == 0) {
+                            frequency = _maxFrequency.floatValue;
+                        }
+                        else {
+                            frequency = 1/distance * _maxFrequency.floatValue + _offset.floatValue;
+                        }
+                        _frequency = [NSNumber numberWithFloat:frequency];
+                        _brightness = [NSNumber numberWithFloat:1.0];
+                    }
+                }
+                
+                float period = 1.0/_frequency.floatValue;
+                if(_brightness) {
+                    [torch setTorchOnWithLevel:_brightness.floatValue];
+                } else {
+                    [torch setTorchState:LARSTorchStateOn];
+                }
+                [NSThread sleepForTimeInterval:period/2.0];
+                [torch setTorchState:LARSTorchStateOff];
+                [NSThread sleepForTimeInterval:period/2.0];
+            }
+            
+        });
+    }
 }
 
 @end

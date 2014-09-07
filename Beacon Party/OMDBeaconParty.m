@@ -92,7 +92,8 @@
         closestBeacon = [closestArray objectAtIndex:0];
     }
     
-    if (closestBeacon && closestBeacon.minor != _bestBeacon.minor) {
+    if (closestBeacon ){
+        //&& closestBeacon.minor != _bestBeacon.minor) {
         UAPush *shared = [UAPush shared];
         
         _bestBeacon = closestBeacon;

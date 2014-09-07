@@ -58,9 +58,18 @@
   /*
    Start the microphone
    */
-  [self.microphone startFetchingAudio];
-  self.microphoneTextLabel.text = @"Microphone On";
+  //[self.microphone startFetchingAudio];
+  //self.microphoneTextLabel.text = @"Microphone On";
   
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [self.microphone startFetchingAudio];
+    self.microphoneTextLabel.text = @"Microphone On";
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.microphone stopFetchingAudio];
 }
 
 #pragma mark - Actions

@@ -8,6 +8,7 @@
 
 #import "EffectsViewController.h"
 #import "OMDTorch.h"
+#import "OMDScreenColorSpec.h"
 #define FAST_TORCH_FREQ 40.0
 #define SLOW_TORCH_FREQ 4.0
 @interface EffectsViewController ()
@@ -61,7 +62,11 @@
             [OMDTorch shared].frequency = (sender == _fastStrobeButton) ?  [NSNumber numberWithFloat:FAST_TORCH_FREQ] : [NSNumber numberWithFloat:SLOW_TORCH_FREQ];
         }
     } else if (sender == _rainbowFadeButton) {
-        
+        _rainbowView.hidden = NO;
+        OMDScreenColorSpec *colorSpec = [[OMDScreenColorSpec alloc] init];
+        colorSpec.frequency = 1;
+        colorSpec.view = _rainbowView;
+        [colorSpec rainbowBlock]();
     }
 }
 @end

@@ -59,7 +59,7 @@ static const NSString* BEACON_COLOR_ACTION = @"color";
         float period = 1.0/_frequency;
         float halfCyclePeriod = period / 2.0;
         _view.backgroundColor = _color1;
-        [UIView animateKeyframesWithDuration:period delay:_delay options:UIViewKeyframeAnimationOptionAutoreverse|
+        [UIView animateKeyframesWithDuration:period delay:_delay options:
          UIViewKeyframeAnimationOptionRepeat animations:^{
              [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:halfCyclePeriod animations:^{
                  _view.backgroundColor = _color1;
@@ -68,6 +68,40 @@ static const NSString* BEACON_COLOR_ACTION = @"color";
                  _view.backgroundColor = _color2;
              }];
              
+         } completion:nil];
+    };
+    return block;
+}
+
+/** Start the rainbow block
+ */
+- (void(^)(void)) rainbowBlock {
+    int numOfColors = 7;
+    NSArray *colorArray = [NSArray arrayWithObjects:[UIColor redColor],
+                           [UIColor orangeColor],
+                           [UIColor yellowColor],
+                           [UIColor greenColor],
+                           [UIColor blueColor],
+                           [UIColor colorWithRed:75.0/255.0 green:0 blue:130.0/255.0 alpha:1],
+                           [UIColor colorWithRed:127.0/255.0 green:0 blue:1 alpha:1],
+                           nil];
+    void(^block)(void);
+    block = ^{
+        float period = 1.0/_frequency;
+        _view.backgroundColor = _color1;
+        
+        [UIView animateKeyframesWithDuration:period delay:_delay options:
+         UIViewKeyframeAnimationOptionRepeat animations:^{
+             
+             float nCyclePeriod = period / numOfColors;
+             float startTime = 0.0;
+             
+             for (UIColor* color in colorArray) {
+                 [UIView addKeyframeWithRelativeStartTime:startTime relativeDuration:nCyclePeriod animations:^{
+                     _view.backgroundColor = color;
+                 }];
+                 startTime +=nCyclePeriod;
+             }
          } completion:nil];
     };
     return block;

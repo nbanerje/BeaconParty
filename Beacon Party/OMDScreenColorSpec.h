@@ -34,6 +34,7 @@
                         color2:(UIColor*)color2;
 
 - (void(^)(void)) block;
+- (void(^)(void)) rainbowBlock;
 
 - (void(^)(void)) stopBlock;
 

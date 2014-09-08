@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *rainbowFadeButton;
 @property (weak, nonatomic) IBOutlet UIButton *audioSyncButton;
 - (IBAction)action:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *rainbowView;
 
 @end

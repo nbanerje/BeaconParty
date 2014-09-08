@@ -127,7 +127,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{[[self.view viewWithTag:1] removeFromSuperview];});
     
     if([action[@"action"] isEqualToString:@"color"]) {
-        OMDScreenColorSpec *colorSpec = [[OMDScreenColorSpec alloc] initWithR1:action[@"r1"] g1:action[@"g2"] b1:action[@"b1"] a1:action[@"a1"] r2:action[@"r2"] g2:action[@"g2"] b2:action[@"b2"] a2:action[@"a2"]];
+        OMDScreenColorSpec *colorSpec = [[OMDScreenColorSpec alloc] initWithR1:action[@"r1"] g1:action[@"g1"] b1:action[@"b1"] a1:action[@"a1"] r2:action[@"r2"] g2:action[@"g2"] b2:action[@"b2"] a2:action[@"a2"]];
         if(action[@"frequency"]){
             colorSpec.frequency = ((NSNumber*)action[@"frequency"]).floatValue;
         }
@@ -150,6 +150,7 @@
             if(!_aWebView) {
                 _aWebView =[[UIWebView alloc] initWithFrame:_view.frame];
                 _aWebView.delegate=self;
+                _aWebView.tag = 1;
                 [self.view insertSubview:_aWebView atIndex:0];
             }
             [_aWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:action[@"url"]]]];

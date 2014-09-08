@@ -23,7 +23,6 @@
 #define DB_FILENAME @"media.sql"
 
 
-
 //typedef void(^FetchURLDataBlock)(NSString*, OMDBeaconPartySchedule*, void (^)(UIBackgroundFetchResult));
 //typedef void (^BackgroundCompletion)(UIBackgroundFetchResult);
 

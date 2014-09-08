@@ -64,7 +64,7 @@ static const NSString* BEACON_COLOR_ACTION = @"color";
              [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:halfCyclePeriod animations:^{
                  _view.backgroundColor = _color1;
              }];
-             [UIView addKeyframeWithRelativeStartTime:halfCyclePeriod relativeDuration:period animations:^{
+             [UIView addKeyframeWithRelativeStartTime:halfCyclePeriod relativeDuration:halfCyclePeriod animations:^{
                  _view.backgroundColor = _color2;
              }];
              

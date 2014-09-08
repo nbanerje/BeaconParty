@@ -24,7 +24,12 @@
 #import "GAIDictionaryBuilder.h"
 #import "GAIFields.h"
 
+#define FETCH_URL_STR @"http://omdesignllc.com/sample.json"
 
+typedef void(^FetchURLDataBlock)(NSString*, OMDBeaconPartySchedule*, void (^)(UIBackgroundFetchResult));
+typedef void (^BackgroundCompletion)(UIBackgroundFetchResult);
+
+extern FetchURLDataBlock fetchURLData;
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,UAPushNotificationDelegate>

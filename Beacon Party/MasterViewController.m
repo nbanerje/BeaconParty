@@ -32,28 +32,6 @@
         appDelegate.schedule.view = self.view;
         appDelegate.schedule.debugTextView = _debugTextView;
     }
-    
-    /*
-    _beaconParty = [[OMDBeaconParty alloc] init:@"BF5094D9-5849-47ED-8FA1-983A748A9586" identifier:@"com.omdesignllc.beaconparty" debugTextView:_debugTextView];
-    _beaconParty.delegate = self;
-    
-    _scheduler = [OMDBeaconPartyScheduler scheduler];
-    
-    NSError *error = nil;
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Sample" ofType:@"json"];
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:path] options:NSJSONReadingMutableContainers error: &error];
-    if(error) {
-        DLog(@"%@",[error debugDescription]);
-    }
-    NSLog([JSON debugDescription]);
-    _scheduler.epoch = [NSDate date];
-    _scheduler.schedules = JSON;
-    _scheduler.view = self.view;
-    _scheduler.debugTextView = _debugTextView;
-    */
-    
-    
-    
 }
 - (void)didReceiveMemoryWarning
 {

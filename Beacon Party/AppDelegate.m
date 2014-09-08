@@ -14,7 +14,7 @@
 
 #import "UATagUtils.h"
 
-#define FETCH_URL_STR @"http://omdesignllc.com/sample.json"
+
 #define UUID @"BF5094D9-5849-47ED-8FA1-983A748A9586"
 
 #define OMDPICURL @"http://omdesignllc.com"
@@ -22,8 +22,10 @@
 #define UPLOAD_PATH @"postPic.php"
 #define DB_FILENAME @"media.sql"
 
-typedef void(^FetchURLDataBlock)(NSString*, OMDBeaconPartySchedule*, void (^)(UIBackgroundFetchResult));
-typedef void (^BackgroundCompletion)(UIBackgroundFetchResult);
+
+
+//typedef void(^FetchURLDataBlock)(NSString*, OMDBeaconPartySchedule*, void (^)(UIBackgroundFetchResult));
+//typedef void (^BackgroundCompletion)(UIBackgroundFetchResult);
 
 FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* schedule, BackgroundCompletion completionHandler){
     NSURLSession *sharedSession = [NSURLSession sharedSession];
@@ -37,10 +39,10 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
                                               [schedule loadScheduleFromJsonData:data];
                                               [OMDBeaconPartySchedule saveData:data];
                                               NSLog(@"fetch data");
-                                              completionHandler(UIBackgroundFetchResultNewData);
+                                              if(completionHandler) completionHandler(UIBackgroundFetchResultNewData);
                                           }
                                           else {
-                                              completionHandler(UIBackgroundFetchResultNoData);
+                                              if(completionHandler) completionHandler(UIBackgroundFetchResultNoData);
                                           }
                                       }
                                   }];
@@ -55,6 +57,8 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //Check to see if a saved schedule exists. If not download the latest.
+    
     [UAPush setDefaultPushEnabledValue:NO];
     
     // Set log level for debugging config loading (optional)
@@ -128,23 +132,24 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
     UIDevice *device = [UIDevice currentDevice];
     device.batteryMonitoringEnabled = YES;
     [self batteryStatus:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyFailed) name:@"KeyFailed" object:nil];
+	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyFailed) name:@"KeyFailed" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyPassed) name:@"KeyPassed" object:nil];
 	
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(batteryStatus:) name:UIDeviceBatteryStateDidChangeNotification object:nil];
     
 	self.settingsDictionary = [[NSMutableDictionary alloc] initWithCapacity:10];
 	
-	self.key = [NSMutableString stringWithCapacity:10];
-	[self.key setString:@""];
-	NSDictionary *savedDict = [SaveData applicationPlistFromFile:@"key.plist"];
-	//If the key exists, use it
-	if(savedDict != nil) {
-		[self.settingsDictionary addEntriesFromDictionary:savedDict];
-		if([self.settingsDictionary objectForKey:@"key"] != nil) {
-			[self.key setString:[self.settingsDictionary objectForKey:@"key"]];
-		}
-    }
+	self.key = [NSMutableString stringWithFormat:@"doe2013"];
+    [self.cred checkKey:self.key url:OMDPICURL path:PATH];
+//	[self.key setString:@""];
+//	NSDictionary *savedDict = [SaveData applicationPlistFromFile:@"key.plist"];
+//	//If the key exists, use it
+//	if(savedDict != nil) {
+//		[self.settingsDictionary addEntriesFromDictionary:savedDict];
+//		if([self.settingsDictionary objectForKey:@"key"] != nil) {
+//			[self.key setString:[self.settingsDictionary objectForKey:@"key"]];
+//		}
+//    }
     
 	[[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     

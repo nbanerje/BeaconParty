@@ -7,6 +7,7 @@
 //
 #import "Debug.h"
 #import "OMDBeaconPartySchedule.h"
+#import "AppDelegate.h" //To grab block to update schedule file
 
 @interface OMDBeaconPartySchedule()
 @property (strong, nonatomic) OMDBeaconPartyScheduler *scheduler;
@@ -42,17 +43,24 @@
     
 }
 
-+(void) reloadData {
++(BOOL) reloadData {
     //Now save data to disk.
     NSString *filePath = ((NSURL*)[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]).path;
     filePath = [filePath stringByAppendingPathComponent:@"schedule.json"];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSData *restoredData =  [[NSFileManager defaultManager] contentsAtPath:filePath];
-        if(restoredData) {
-            [[OMDBeaconPartySchedule shared] loadScheduleFromJsonData:restoredData];
-        }
-        
-    });
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+    if(fileExists) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSData *restoredData =  [[NSFileManager defaultManager] contentsAtPath:filePath];
+            if(restoredData) {
+                [[OMDBeaconPartySchedule shared] loadScheduleFromJsonData:restoredData];
+            }
+            
+        });
+        return YES;
+    }
+    else {
+        return NO;
+    }
     
 }
 
@@ -71,14 +79,22 @@
     _scheduler.debugTextView = _debugTextView;
     
     
-    //Try to reload data from docs directory if it exists
-    [OMDBeaconPartySchedule reloadData];
+    //Download data from latest link
+    if(![OMDBeaconPartySchedule reloadData]) {
+        fetchURLData(FETCH_URL_STR,self,nil);
+    }
 }
 
 -(void) setView:(UIView *)view {
     _view = view;
     _scheduler.view = _view;
     
+    
+}
+
+-(void) setDebugTextView:(UITextView*)view {
+    _debugTextView = view;
+    _scheduler.debugTextView = _debugTextView;
 }
 -(void) loadScheduleFromJsonData:(NSData*)data {
     //Load JSON base schedule and save it in the Document directory

@@ -10,6 +10,10 @@
 		4904947019B6C3D000A092E3 /* OMDScreenColorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4904946F19B6C3CF00A092E3 /* OMDScreenColorSpec.m */; };
 		4904947219B6D9A100A092E3 /* Sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4904947119B6D9A100A092E3 /* Sample.json */; };
 		4904947319B6D9A100A092E3 /* Sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4904947119B6D9A100A092E3 /* Sample.json */; };
+		490E63CD19BD765900A9BE21 /* media.sql in Resources */ = {isa = PBXBuildFile; fileRef = 490E63C019BD765900A9BE21 /* media.sql */; };
+		490E63CE19BD765900A9BE21 /* media.sql in Resources */ = {isa = PBXBuildFile; fileRef = 490E63C019BD765900A9BE21 /* media.sql */; };
+		490E63CF19BD765900A9BE21 /* libweddingsnaplib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 490E63CC19BD765900A9BE21 /* libweddingsnaplib.a */; };
+		490E63D019BD765900A9BE21 /* libweddingsnaplib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 490E63CC19BD765900A9BE21 /* libweddingsnaplib.a */; };
 		493EF58619A9B04A0047A96B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493EF58519A9B04A0047A96B /* Foundation.framework */; };
 		493EF58819A9B04A0047A96B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493EF58719A9B04A0047A96B /* CoreGraphics.framework */; };
 		493EF58A19A9B04A0047A96B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493EF58919A9B04A0047A96B /* UIKit.framework */; };
@@ -97,6 +101,8 @@
 		4956C71419B803B900661366 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4956C71219B803B900661366 /* AirshipConfig.plist */; };
 		49A4C96719B966FF002C496F /* OMDBeaconPartySchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A4C96619B966FF002C496F /* OMDBeaconPartySchedule.m */; };
 		49A4C96819B966FF002C496F /* OMDBeaconPartySchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A4C96619B966FF002C496F /* OMDBeaconPartySchedule.m */; };
+		49A63B6219BD7BEB004548FC /* ziggy-sm.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A63B6119BD7BEB004548FC /* ziggy-sm.png */; };
+		49A63B6319BD7BEB004548FC /* ziggy-sm.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A63B6119BD7BEB004548FC /* ziggy-sm.png */; };
 		49D5850B19B7038400ADB36D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D5850A19B7038400ADB36D /* AudioToolbox.framework */; };
 		49D5850D19B705CF00ADB36D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D5850C19B705CF00ADB36D /* AVFoundation.framework */; };
 		49D5851019B7077100ADB36D /* LARSTorch.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D5850F19B7077100ADB36D /* LARSTorch.m */; };
@@ -107,8 +113,6 @@
 		49E3BD3119B0EADC007A8B12 /* OMDBeaconPartyScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E3BD2F19B0EADC007A8B12 /* OMDBeaconPartyScheduler.m */; };
 		49F5CF7619BBE7B1007CF934 /* OMDTorch.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F5CF7519BBE7B1007CF934 /* OMDTorch.m */; };
 		49F5CF7719BBE7B1007CF934 /* OMDTorch.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F5CF7519BBE7B1007CF934 /* OMDTorch.m */; };
-		49F5CF8519BBF33F007CF934 /* media.sql in Resources */ = {isa = PBXBuildFile; fileRef = 49F5CF7B19BBF33F007CF934 /* media.sql */; };
-		49F5CF8619BBF33F007CF934 /* media.sql in Resources */ = {isa = PBXBuildFile; fileRef = 49F5CF7B19BBF33F007CF934 /* media.sql */; };
 		49F5CF8F19BBF4B1007CF934 /* 56-cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F5CF8A19BBF4B1007CF934 /* 56-cloud.png */; };
 		49F5CF9019BBF4B1007CF934 /* 56-cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F5CF8A19BBF4B1007CF934 /* 56-cloud.png */; };
 		49F5CF9119BBF4B1007CF934 /* 8588.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F5CF8B19BBF4B1007CF934 /* 8588.png */; };
@@ -164,10 +168,8 @@
 		49F5CFF619BC035A007CF934 /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = 49F5CFDA19BC035A007CF934 /* VERSION */; };
 		49F5CFF919BC04DA007CF934 /* OpenGLWaveformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F5CFF819BC04DA007CF934 /* OpenGLWaveformViewController.m */; };
 		49F5CFFA19BC04DA007CF934 /* OpenGLWaveformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F5CFF819BC04DA007CF934 /* OpenGLWaveformViewController.m */; };
-		49F5D00219BC3B86007CF934 /* ziggy-sm.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F5D00119BC3B86007CF934 /* ziggy-sm.png */; };
-		49F5D00319BC3B86007CF934 /* ziggy-sm.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F5D00119BC3B86007CF934 /* ziggy-sm.png */; };
-		49F5D00619BC3D0C007CF934 /* libweddingsnaplib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F5D00519BC3D0C007CF934 /* libweddingsnaplib.a */; };
-		49F5D00719BC3D0C007CF934 /* libweddingsnaplib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F5D00519BC3D0C007CF934 /* libweddingsnaplib.a */; };
+		49F5D00919BD0540007CF934 /* Main_iPhone2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49F5D00819BD0540007CF934 /* Main_iPhone2.storyboard */; };
+		49F5D00A19BD0540007CF934 /* Main_iPhone2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49F5D00819BD0540007CF934 /* Main_iPhone2.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +186,29 @@
 		4904946E19B6C3CF00A092E3 /* OMDScreenColorSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDScreenColorSpec.h; sourceTree = "<group>"; };
 		4904946F19B6C3CF00A092E3 /* OMDScreenColorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMDScreenColorSpec.m; sourceTree = "<group>"; };
 		4904947119B6D9A100A092E3 /* Sample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Sample.json; path = ../Sample.json; sourceTree = "<group>"; };
+		490E63B619BD765900A9BE21 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		490E63B719BD765900A9BE21 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		490E63B819BD765900A9BE21 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		490E63B919BD765900A9BE21 /* AVCamPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamPreviewView.h; sourceTree = "<group>"; };
+		490E63BA19BD765900A9BE21 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		490E63BB19BD765900A9BE21 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		490E63BC19BD765900A9BE21 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		490E63BD19BD765900A9BE21 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		490E63BE19BD765900A9BE21 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		490E63BF19BD765900A9BE21 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		490E63C019BD765900A9BE21 /* media.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = media.sql; sourceTree = "<group>"; };
+		490E63C119BD765900A9BE21 /* OmDesignCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmDesignCredential.h; sourceTree = "<group>"; };
+		490E63C219BD765900A9BE21 /* OMDFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDFirstViewController.h; sourceTree = "<group>"; };
+		490E63C319BD765900A9BE21 /* OMDImageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDImageDetailViewController.h; sourceTree = "<group>"; };
+		490E63C419BD765900A9BE21 /* OMDMainNavigatioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDMainNavigatioViewController.h; sourceTree = "<group>"; };
+		490E63C519BD765900A9BE21 /* OMDMediaDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDMediaDB.h; sourceTree = "<group>"; };
+		490E63C619BD765900A9BE21 /* OMDPhotoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDPhotoCollectionViewController.h; sourceTree = "<group>"; };
+		490E63C719BD765900A9BE21 /* OMDSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDSecondViewController.h; sourceTree = "<group>"; };
+		490E63C819BD765900A9BE21 /* OMDSQLLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDSQLLite.h; sourceTree = "<group>"; };
+		490E63C919BD765900A9BE21 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		490E63CA19BD765900A9BE21 /* SaveData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveData.h; sourceTree = "<group>"; };
+		490E63CB19BD765900A9BE21 /* weddingsnaplib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = weddingsnaplib.h; sourceTree = "<group>"; };
+		490E63CC19BD765900A9BE21 /* libweddingsnaplib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libweddingsnaplib.a; sourceTree = "<group>"; };
 		4915F93619B0268500577FAD /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
 		493EF58219A9B04A0047A96B /* Beacon Party.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beacon Party.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		493EF58519A9B04A0047A96B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -372,6 +397,9 @@
 		497EF9FC19B80851004A4C1A /* Beacon Party.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Beacon Party.entitlements"; sourceTree = "<group>"; };
 		49A4C96519B966FF002C496F /* OMDBeaconPartySchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDBeaconPartySchedule.h; sourceTree = "<group>"; };
 		49A4C96619B966FF002C496F /* OMDBeaconPartySchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMDBeaconPartySchedule.m; sourceTree = "<group>"; };
+		49A63B5B19BD7798004548FC /* OMDMediaObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMDMediaObject.h; sourceTree = "<group>"; };
+		49A63B5D19BD77C1004548FC /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		49A63B6119BD7BEB004548FC /* ziggy-sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ziggy-sm.png"; sourceTree = "<group>"; };
 		49D5850A19B7038400ADB36D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		49D5850C19B705CF00ADB36D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		49D5850E19B7077100ADB36D /* LARSTorch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LARSTorch.h; sourceTree = "<group>"; };
@@ -381,15 +409,6 @@
 		49E3BD2F19B0EADC007A8B12 /* OMDBeaconPartyScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMDBeaconPartyScheduler.m; sourceTree = "<group>"; };
 		49F5CF7419BBE7B1007CF934 /* OMDTorch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDTorch.h; sourceTree = "<group>"; };
 		49F5CF7519BBE7B1007CF934 /* OMDTorch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMDTorch.m; sourceTree = "<group>"; };
-		49F5CF7A19BBF33F007CF934 /* AVCamPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamPreviewView.h; sourceTree = "<group>"; };
-		49F5CF7B19BBF33F007CF934 /* media.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = media.sql; sourceTree = "<group>"; };
-		49F5CF7C19BBF33F007CF934 /* OmDesignCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmDesignCredential.h; sourceTree = "<group>"; };
-		49F5CF7E19BBF33F007CF934 /* OMDImageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDImageDetailViewController.h; sourceTree = "<group>"; };
-		49F5CF7F19BBF33F007CF934 /* OMDMainNavigatioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDMainNavigatioViewController.h; sourceTree = "<group>"; };
-		49F5CF8019BBF33F007CF934 /* OMDPhotoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDPhotoCollectionViewController.h; sourceTree = "<group>"; };
-		49F5CF8119BBF33F007CF934 /* OMDSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDSecondViewController.h; sourceTree = "<group>"; };
-		49F5CF8219BBF33F007CF934 /* SaveData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveData.h; sourceTree = "<group>"; };
-		49F5CF8319BBF33F007CF934 /* weddingsnaplib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = weddingsnaplib.h; sourceTree = "<group>"; };
 		49F5CF8A19BBF4B1007CF934 /* 56-cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "56-cloud.png"; sourceTree = "<group>"; };
 		49F5CF8B19BBF4B1007CF934 /* 8588.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8588.png; sourceTree = "<group>"; };
 		49F5CF8C19BBF4B1007CF934 /* key_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key_bw.png; sourceTree = "<group>"; };
@@ -402,19 +421,6 @@
 		49F5CF9D19BBF4CF007CF934 /* rotate_camera-1282.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rotate_camera-1282.png"; sourceTree = "<group>"; };
 		49F5CF9E19BBF4CF007CF934 /* images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = images.png; sourceTree = "<group>"; };
 		49F5CFAB19BBF63C007CF934 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
-		49F5CFAD19BBF778007CF934 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		49F5CFAE19BBF79F007CF934 /* OMDMediaDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDMediaDB.h; sourceTree = "<group>"; };
-		49F5CFAF19BBF7E8007CF934 /* OMDSQLLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDSQLLite.h; sourceTree = "<group>"; };
-		49F5CFB019BBF7E8007CF934 /* OMDMediaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDMediaObject.h; sourceTree = "<group>"; };
-		49F5CFB119BBF809007CF934 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
-		49F5CFB219BBF809007CF934 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
-		49F5CFB319BBF884007CF934 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
-		49F5CFB419BBF884007CF934 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
-		49F5CFB519BBF884007CF934 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
-		49F5CFB619BBF884007CF934 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
-		49F5CFB719BBF884007CF934 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
-		49F5CFB819BBF884007CF934 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		49F5CFB919BBF8BE007CF934 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
 		49F5CFBA19BBFC8D007CF934 /* OMDFirstViewController+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OMDFirstViewController+Extras.h"; sourceTree = "<group>"; };
 		49F5CFBB19BBFC8D007CF934 /* OMDFirstViewController+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OMDFirstViewController+Extras.m"; sourceTree = "<group>"; };
 		49F5CFC019BC035A007CF934 /* AEFloatConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFloatConverter.h; sourceTree = "<group>"; };
@@ -445,9 +451,7 @@
 		49F5CFDA19BC035A007CF934 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
 		49F5CFF719BC04DA007CF934 /* OpenGLWaveformViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLWaveformViewController.h; sourceTree = "<group>"; };
 		49F5CFF819BC04DA007CF934 /* OpenGLWaveformViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLWaveformViewController.m; sourceTree = "<group>"; };
-		49F5D00119BC3B86007CF934 /* ziggy-sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ziggy-sm.png"; sourceTree = "<group>"; };
-		49F5D00419BC3BB7007CF934 /* OMDFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDFirstViewController.h; sourceTree = "<group>"; };
-		49F5D00519BC3D0C007CF934 /* libweddingsnaplib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libweddingsnaplib.a; sourceTree = "<group>"; };
+		49F5D00819BD0540007CF934 /* Main_iPhone2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone2.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -457,7 +461,7 @@
 			files = (
 				49F5CFAC19BBF63C007CF934 /* iAd.framework in Frameworks */,
 				4956C70019B8021D00661366 /* CoreBluetooth.framework in Frameworks */,
-				49F5D00619BC3D0C007CF934 /* libweddingsnaplib.a in Frameworks */,
+				490E63CF19BD765900A9BE21 /* libweddingsnaplib.a in Frameworks */,
 				4956C70119B8021D00661366 /* CoreLocation.framework in Frameworks */,
 				4956C70219B8021D00661366 /* CoreTelephony.framework in Frameworks */,
 				4956C70319B8021D00661366 /* libsqlite3.dylib in Frameworks */,
@@ -482,7 +486,7 @@
 			files = (
 				4956C71019B802F200661366 /* CoreLocation.framework in Frameworks */,
 				4956C71119B802F200661366 /* CoreTelephony.framework in Frameworks */,
-				49F5D00719BC3D0C007CF934 /* libweddingsnaplib.a in Frameworks */,
+				490E63D019BD765900A9BE21 /* libweddingsnaplib.a in Frameworks */,
 				4956C70819B802E500661366 /* CFNetwork.framework in Frameworks */,
 				4956C70919B802E500661366 /* CoreBluetooth.framework in Frameworks */,
 				4956C70A19B802E500661366 /* CoreGraphics.framework in Frameworks */,
@@ -501,6 +505,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		490E63B419BD765900A9BE21 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				490E63B519BD765900A9BE21 /* weddingsnaplib */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		490E63B519BD765900A9BE21 /* weddingsnaplib */ = {
+			isa = PBXGroup;
+			children = (
+				49A63B5B19BD7798004548FC /* OMDMediaObject.h */,
+				490E63B619BD765900A9BE21 /* AFHTTPClient.h */,
+				490E63B719BD765900A9BE21 /* AFHTTPRequestOperation.h */,
+				49A63B5D19BD77C1004548FC /* AFURLConnectionOperation.h */,
+				490E63B819BD765900A9BE21 /* AFNetworkActivityIndicatorManager.h */,
+				490E63B919BD765900A9BE21 /* AVCamPreviewView.h */,
+				490E63BA19BD765900A9BE21 /* GAI.h */,
+				490E63BB19BD765900A9BE21 /* GAIDictionaryBuilder.h */,
+				490E63BC19BD765900A9BE21 /* GAIFields.h */,
+				490E63BD19BD765900A9BE21 /* GAILogger.h */,
+				490E63BE19BD765900A9BE21 /* GAITrackedViewController.h */,
+				490E63BF19BD765900A9BE21 /* GAITracker.h */,
+				490E63C019BD765900A9BE21 /* media.sql */,
+				490E63C119BD765900A9BE21 /* OmDesignCredential.h */,
+				490E63C219BD765900A9BE21 /* OMDFirstViewController.h */,
+				490E63C319BD765900A9BE21 /* OMDImageDetailViewController.h */,
+				490E63C419BD765900A9BE21 /* OMDMainNavigatioViewController.h */,
+				490E63C519BD765900A9BE21 /* OMDMediaDB.h */,
+				490E63C619BD765900A9BE21 /* OMDPhotoCollectionViewController.h */,
+				490E63C719BD765900A9BE21 /* OMDSecondViewController.h */,
+				490E63C819BD765900A9BE21 /* OMDSQLLite.h */,
+				490E63C919BD765900A9BE21 /* Reachability.h */,
+				490E63CA19BD765900A9BE21 /* SaveData.h */,
+				490E63CB19BD765900A9BE21 /* weddingsnaplib.h */,
+			);
+			path = weddingsnaplib;
+			sourceTree = "<group>";
+		};
 		493EF57919A9B04A0047A96B = {
 			isa = PBXGroup;
 			children = (
@@ -558,6 +601,7 @@
 				49D5850F19B7077100ADB36D /* LARSTorch.m */,
 				493EF59619A9B04A0047A96B /* AppDelegate.h */,
 				493EF59719A9B04A0047A96B /* AppDelegate.m */,
+				49F5D00819BD0540007CF934 /* Main_iPhone2.storyboard */,
 				493EF59919A9B04A0047A96B /* Main_iPhone.storyboard */,
 				49F5CFBA19BBFC8D007CF934 /* OMDFirstViewController+Extras.h */,
 				49F5CFBB19BBFC8D007CF934 /* OMDFirstViewController+Extras.m */,
@@ -915,48 +959,18 @@
 		49F5CF7819BBF33F007CF934 /* WeddingSnap */ = {
 			isa = PBXGroup;
 			children = (
-				49F5D00519BC3D0C007CF934 /* libweddingsnaplib.a */,
-				49F5CFB319BBF884007CF934 /* GAI.h */,
-				49F5CFB419BBF884007CF934 /* GAIDictionaryBuilder.h */,
-				49F5CFB519BBF884007CF934 /* GAIFields.h */,
-				49F5CFB619BBF884007CF934 /* GAILogger.h */,
-				49F5CFB719BBF884007CF934 /* GAITrackedViewController.h */,
-				49F5CFB819BBF884007CF934 /* GAITracker.h */,
+				490E63B419BD765900A9BE21 /* include */,
+				490E63CC19BD765900A9BE21 /* libweddingsnaplib.a */,
 				49F5CF8919BBF496007CF934 /* Images */,
-				49F5CF7919BBF33F007CF934 /* weddingsnaplib */,
 			);
 			name = WeddingSnap;
 			path = include;
 			sourceTree = "<group>";
 		};
-		49F5CF7919BBF33F007CF934 /* weddingsnaplib */ = {
-			isa = PBXGroup;
-			children = (
-				49F5D00419BC3BB7007CF934 /* OMDFirstViewController.h */,
-				49F5CFB119BBF809007CF934 /* AFHTTPClient.h */,
-				49F5CFB219BBF809007CF934 /* AFHTTPRequestOperation.h */,
-				49F5CFAF19BBF7E8007CF934 /* OMDSQLLite.h */,
-				49F5CFB019BBF7E8007CF934 /* OMDMediaObject.h */,
-				49F5CF7A19BBF33F007CF934 /* AVCamPreviewView.h */,
-				49F5CF7B19BBF33F007CF934 /* media.sql */,
-				49F5CFAE19BBF79F007CF934 /* OMDMediaDB.h */,
-				49F5CFAD19BBF778007CF934 /* Reachability.h */,
-				49F5CF7C19BBF33F007CF934 /* OmDesignCredential.h */,
-				49F5CF7E19BBF33F007CF934 /* OMDImageDetailViewController.h */,
-				49F5CF7F19BBF33F007CF934 /* OMDMainNavigatioViewController.h */,
-				49F5CF8019BBF33F007CF934 /* OMDPhotoCollectionViewController.h */,
-				49F5CF8119BBF33F007CF934 /* OMDSecondViewController.h */,
-				49F5CFB919BBF8BE007CF934 /* AFNetworkActivityIndicatorManager.h */,
-				49F5CF8219BBF33F007CF934 /* SaveData.h */,
-				49F5CF8319BBF33F007CF934 /* weddingsnaplib.h */,
-			);
-			path = weddingsnaplib;
-			sourceTree = "<group>";
-		};
 		49F5CF8919BBF496007CF934 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				49F5D00119BC3B86007CF934 /* ziggy-sm.png */,
+				49A63B6119BD7BEB004548FC /* ziggy-sm.png */,
 				49F5CF9919BBF4CF007CF934 /* key_256.png */,
 				49F5CF9A19BBF4CF007CF934 /* Camera-256.png */,
 				49F5CF9B19BBF4CF007CF934 /* 30-key.png */,
@@ -1119,10 +1133,9 @@
 				4956C6F319B8015E00661366 /* UAPushSettingsView.xib in Resources */,
 				4956C6CE19B8015E00661366 /* list-image-placeholder.png in Resources */,
 				4956C6EF19B8015E00661366 /* UAPushSettingsSoundsViewController.xib in Resources */,
+				49F5D00919BD0540007CF934 /* Main_iPhone2.storyboard in Resources */,
 				49F5CFA319BBF4CF007CF934 /* 30-key.png in Resources */,
 				4956C6EA19B8015E00661366 /* UAPushLocalization.bundle in Resources */,
-				49F5CF8519BBF33F007CF934 /* media.sql in Resources */,
-				49F5D00219BC3B86007CF934 /* ziggy-sm.png in Resources */,
 				4956C6E719B8015E00661366 /* top-detail@2x.png in Resources */,
 				4956C6EB19B8015E00661366 /* UAPushMoreSettingsView.xib in Resources */,
 				49F5CF9F19BBF4CF007CF934 /* key_256.png in Resources */,
@@ -1136,6 +1149,8 @@
 				4956C6EC19B8015E00661366 /* UAPushSettingsAddTagViewController.xib in Resources */,
 				49F5CF9119BBF4B1007CF934 /* 8588.png in Resources */,
 				4956C6E819B8015E00661366 /* UALocationSettingsViewController.xib in Resources */,
+				490E63CD19BD765900A9BE21 /* media.sql in Resources */,
+				49A63B6219BD7BEB004548FC /* ziggy-sm.png in Resources */,
 				4904947219B6D9A100A092E3 /* Sample.json in Resources */,
 				4956C6E919B8015E00661366 /* UAMapPresentationViewController.xib in Resources */,
 				4956C6EE19B8015E00661366 /* UAPushSettingsChannelInfoViewController.xib in Resources */,
@@ -1164,7 +1179,9 @@
 			files = (
 				493EF5BB19A9B04A0047A96B /* InfoPlist.strings in Resources */,
 				4904947319B6D9A100A092E3 /* Sample.json in Resources */,
+				49A63B6319BD7BEB004548FC /* ziggy-sm.png in Resources */,
 				49F5CF9219BBF4B1007CF934 /* 8588.png in Resources */,
+				49F5D00A19BD0540007CF934 /* Main_iPhone2.storyboard in Resources */,
 				49F5CFF619BC035A007CF934 /* VERSION in Resources */,
 				49F5CFAA19BBF4CF007CF934 /* images.png in Resources */,
 				49F5CF9619BBF4B1007CF934 /* capture.png in Resources */,
@@ -1175,12 +1192,11 @@
 				49F5CFF419BC035A007CF934 /* CHANGELOG in Resources */,
 				49F5CFA819BBF4CF007CF934 /* rotate_camera-1282.png in Resources */,
 				49F5CFA419BBF4CF007CF934 /* 30-key.png in Resources */,
-				49F5D00319BC3B86007CF934 /* ziggy-sm.png in Resources */,
 				49F5CFA019BBF4CF007CF934 /* key_256.png in Resources */,
 				49F5CFA619BBF4CF007CF934 /* 86-camera.png in Resources */,
 				49F5CF9419BBF4B1007CF934 /* key_bw.png in Resources */,
 				49F5CF9819BBF4B1007CF934 /* Very-Basic-Upload-icon.png in Resources */,
-				49F5CF8619BBF33F007CF934 /* media.sql in Resources */,
+				490E63CE19BD765900A9BE21 /* media.sql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1415,7 +1431,7 @@
 					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "458357cb-0b39-473d-b721-74df90bab3c7";
+				PROVISIONING_PROFILE = "1013dfb6-0e78-4594-b148-b0d265dbafa0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1438,7 +1454,7 @@
 					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "458357cb-0b39-473d-b721-74df90bab3c7";
+				PROVISIONING_PROFILE = "1013dfb6-0e78-4594-b148-b0d265dbafa0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

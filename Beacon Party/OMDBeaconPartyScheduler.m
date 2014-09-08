@@ -13,6 +13,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "OMDTorch.h"
 
+
 @interface OMDBeaconPartyScheduler()
 
 - (void) runAction:(NSDictionary*)action;
@@ -33,6 +34,8 @@
 @property (assign,atomic) UInt16 numLoops;
 
 @property (strong,nonatomic) OMDTorch *torch;
+
+@property (strong,nonatomic) UIWebView *aWebView;
 
 @end
 
@@ -144,12 +147,14 @@
         _torch.continueTorch = NO;
     } else if([action[@"action"] isEqualToString:@"url"]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIWebView *aWebView =[[UIWebView alloc] initWithFrame:_view.frame];
-            aWebView.tag = 1;
-            [aWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:action[@"url"]]]];
-            aWebView.delegate=self;
-            //[self.view addSubview:aWebView];
-            [self.view insertSubview:aWebView belowSubview:_debugTextView];
+            if(!_aWebView) {
+                _aWebView =[[UIWebView alloc] initWithFrame:_view.frame];
+                _aWebView.delegate=self;
+                [self.view insertSubview:_aWebView atIndex:0];
+            }
+            [_aWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:action[@"url"]]]];
+            
+            //[self.view insertSubview:aWebView belowSubview:_debugTextView];
         });
     } else if([action[@"action"] isEqualToString:@"sound"]) {
         NSString *localSoundName = action[@"local-file"];
@@ -215,7 +220,7 @@
     
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    
+    DLog(@"%@",[error debugDescription]);
 }
 
 

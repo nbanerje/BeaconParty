@@ -14,7 +14,7 @@
 
 +(instancetype) shared;
 +(void) saveData:(NSData*)data;
-+(void) reloadData;
++(BOOL) reloadData;
 
 -(void) setEpoch:(NSDate*)epoch uuid:(NSString*)uuid identifier:(NSString*)identifier;
 

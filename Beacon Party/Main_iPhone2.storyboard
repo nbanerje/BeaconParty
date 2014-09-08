@@ -93,10 +93,10 @@
             </objects>
             <point key="canvasLocation" x="-2291" y="-1744"/>
         </scene>
-        <!--View Controller-->
+        <!--About Event View Controller-->
         <scene sceneID="ERG-eh-5u1">
             <objects>
-                <viewController id="wU9-q2-9iD" sceneMemberID="viewController">
+                <viewController id="wU9-q2-9iD" customClass="AboutEventViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nGy-Kx-OV5"/>
                         <viewControllerLayoutGuide type="bottom" id="khk-LR-rIK"/>
@@ -327,10 +327,10 @@
             </objects>
             <point key="canvasLocation" x="-1108" y="-1292"/>
         </scene>
-        <!--View Controller-->
+        <!--Web View Controller-->
         <scene sceneID="Z9G-od-ZMV">
             <objects>
-                <viewController id="nip-qR-61k" sceneMemberID="viewController">
+                <viewController id="nip-qR-61k" customClass="WebViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rEy-gt-Qei"/>
                         <viewControllerLayoutGuide type="bottom" id="UoP-cO-DHc"/>
@@ -339,15 +339,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BLV-1D-gQa">
+                            <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BLV-1D-gQa">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="nip-qR-61k" id="8Iq-jL-BEv"/>
+                                </connections>
                             </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5HD-BA-agH">
+                                <rect key="frame" x="150" y="230" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="5HD-BA-agH" secondAttribute="centerY" id="1VN-a6-4ci"/>
+                            <constraint firstAttribute="centerX" secondItem="5HD-BA-agH" secondAttribute="centerX" id="YAU-dm-aTl"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Bse-ld-TWa"/>
+                    <navigationItem key="navigationItem" id="Bse-ld-TWa">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="vFS-mc-0a4"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="loadingIndicator" destination="5HD-BA-agH" id="13p-ep-Zmb"/>
+                        <outlet property="webView" destination="BLV-1D-gQa" id="ylo-dy-02v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j3w-L1-gnw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

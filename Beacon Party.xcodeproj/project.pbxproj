@@ -111,6 +111,10 @@
 		49D5851419B70C9300ADB36D /* laugh.caf in Resources */ = {isa = PBXBuildFile; fileRef = 49D5851219B70C9300ADB36D /* laugh.caf */; };
 		49DEE76519BE081700833F77 /* EffectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DEE76419BE081700833F77 /* EffectsViewController.m */; };
 		49DEE76619BE081700833F77 /* EffectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DEE76419BE081700833F77 /* EffectsViewController.m */; };
+		49DEE76919BE2F1A00833F77 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DEE76819BE2F1A00833F77 /* WebViewController.m */; };
+		49DEE76A19BE2F1A00833F77 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DEE76819BE2F1A00833F77 /* WebViewController.m */; };
+		49DEE76D19BE334600833F77 /* AboutEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DEE76C19BE334600833F77 /* AboutEventViewController.m */; };
+		49DEE76E19BE334600833F77 /* AboutEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DEE76C19BE334600833F77 /* AboutEventViewController.m */; };
 		49E3BD3019B0EADC007A8B12 /* OMDBeaconPartyScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E3BD2F19B0EADC007A8B12 /* OMDBeaconPartyScheduler.m */; };
 		49E3BD3119B0EADC007A8B12 /* OMDBeaconPartyScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E3BD2F19B0EADC007A8B12 /* OMDBeaconPartyScheduler.m */; };
 		49F5CF7619BBE7B1007CF934 /* OMDTorch.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F5CF7519BBE7B1007CF934 /* OMDTorch.m */; };
@@ -409,6 +413,10 @@
 		49D5851219B70C9300ADB36D /* laugh.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = laugh.caf; sourceTree = "<group>"; };
 		49DEE76319BE081700833F77 /* EffectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectsViewController.h; sourceTree = "<group>"; };
 		49DEE76419BE081700833F77 /* EffectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectsViewController.m; sourceTree = "<group>"; };
+		49DEE76719BE2F1A00833F77 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		49DEE76819BE2F1A00833F77 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		49DEE76B19BE334600833F77 /* AboutEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutEventViewController.h; sourceTree = "<group>"; };
+		49DEE76C19BE334600833F77 /* AboutEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutEventViewController.m; sourceTree = "<group>"; };
 		49E3BD2E19B0EADC007A8B12 /* OMDBeaconPartyScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDBeaconPartyScheduler.h; sourceTree = "<group>"; };
 		49E3BD2F19B0EADC007A8B12 /* OMDBeaconPartyScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMDBeaconPartyScheduler.m; sourceTree = "<group>"; };
 		49F5CF7419BBE7B1007CF934 /* OMDTorch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDTorch.h; sourceTree = "<group>"; };
@@ -606,6 +614,10 @@
 				493EF59619A9B04A0047A96B /* AppDelegate.h */,
 				493EF59719A9B04A0047A96B /* AppDelegate.m */,
 				49F5D00819BD0540007CF934 /* Main_iPhone2.storyboard */,
+				49DEE76B19BE334600833F77 /* AboutEventViewController.h */,
+				49DEE76C19BE334600833F77 /* AboutEventViewController.m */,
+				49DEE76719BE2F1A00833F77 /* WebViewController.h */,
+				49DEE76819BE2F1A00833F77 /* WebViewController.m */,
 				49DEE76319BE081700833F77 /* EffectsViewController.h */,
 				49DEE76419BE081700833F77 /* EffectsViewController.m */,
 				493EF59919A9B04A0047A96B /* Main_iPhone.storyboard */,
@@ -1213,6 +1225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49DEE76919BE2F1A00833F77 /* WebViewController.m in Sources */,
 				49F5CFEB19BC035A007CF934 /* EZOutput.m in Sources */,
 				49F5CFDB19BC035A007CF934 /* AEFloatConverter.m in Sources */,
 				4956C6E119B8015E00661366 /* UAPushUI.m in Sources */,
@@ -1229,6 +1242,7 @@
 				49DEE76519BE081700833F77 /* EffectsViewController.m in Sources */,
 				4956C6C919B8015E00661366 /* UAInboxMessageListCell.m in Sources */,
 				49F5CFE719BC035A007CF934 /* EZAudioPlotGLKViewController.m in Sources */,
+				49DEE76D19BE334600833F77 /* AboutEventViewController.m in Sources */,
 				4956C6CB19B8015E00661366 /* UAInboxMessageViewController.m in Sources */,
 				4956C6D419B8015E00661366 /* UALocationDemoAnnotation.m in Sources */,
 				493EF5A419A9B04A0047A96B /* MasterViewController.m in Sources */,
@@ -1267,7 +1281,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				49F5CFE019BC035A007CF934 /* EZAudioFile.m in Sources */,
+				49DEE76A19BE2F1A00833F77 /* WebViewController.m in Sources */,
 				49F5CFEE19BC035A007CF934 /* EZPlot.m in Sources */,
+				49DEE76E19BE334600833F77 /* AboutEventViewController.m in Sources */,
 				49A4C96819B966FF002C496F /* OMDBeaconPartySchedule.m in Sources */,
 				49D5851119B7077100ADB36D /* LARSTorch.m in Sources */,
 				49E3BD3119B0EADC007A8B12 /* OMDBeaconPartyScheduler.m in Sources */,

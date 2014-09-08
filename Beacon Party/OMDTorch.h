@@ -22,15 +22,16 @@ typedef enum {
 @interface OMDTorch : NSObject
 
 
-+ (id)shared;
++ (instancetype)shared;
 - (void)startTorching:(OMDTorchMode) mode;
 
 @property (strong, nonatomic) NSNumber* frequency;
 @property (strong, nonatomic) NSNumber* brightness;
 @property (assign, nonatomic) BOOL continueTorch;
+
 @property (weak, nonatomic) CLBeacon* beacon;
 @property (strong, nonatomic) NSNumber* maxFrequency;
 @property (strong, nonatomic) NSNumber* offset;
-
+@property (assign, nonatomic) BOOL inverse;
 
 @end

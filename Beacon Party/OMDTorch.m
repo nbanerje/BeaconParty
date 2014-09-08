@@ -18,6 +18,7 @@
         shared.continueTorch = NO;
         shared.maxFrequency = [NSNumber numberWithFloat:MAX_TWINKLE_FREQUENCY];
         shared.offset = 0;
+        shared.inverse = NO;
     });
     return shared;
 }
@@ -34,10 +35,12 @@
                     float frequency = 0.0;
                     if(distance>=0.0){
                         if(distance == 0) {
-                            frequency = _maxFrequency.floatValue;
+                            if(_inverse) frequency = _maxFrequency.floatValue;
+                            else frequency = 0.0;
                         }
                         else {
-                            frequency = 1/distance * _maxFrequency.floatValue + _offset.floatValue;
+                            if(_inverse) frequency = 1.0/distance * _maxFrequency.floatValue + _offset.floatValue;
+                            else frequency = distance * _maxFrequency.floatValue + _offset.floatValue;
                         }
                         _frequency = [NSNumber numberWithFloat:frequency];
                         _brightness = [NSNumber numberWithFloat:1.0];

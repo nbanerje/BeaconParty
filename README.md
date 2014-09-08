@@ -82,4 +82,13 @@ vibrate-spec ::=
                             "executed":0
                             "action":"vibrate"
                         }
+
+twinkle-spec ::=        
+                        {   "executed":0
+                            ,"action":"twinkle"
+                            ,"max-frequency": float
+                           [,"inverse": boolean]
+                           [,"offset": float]
+                           [,"brightness": float 0-1]
+                        }
 ```

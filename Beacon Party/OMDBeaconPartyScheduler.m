@@ -191,11 +191,22 @@
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     } else if([action[@"action"] isEqualToString:@"flash"]) {
         _torch.frequency = action[@"frequency"];
-        _torch.brightness = action[@"brightness"];
+        if(action[@"brightness"]) {
+            _torch.brightness = action[@"brightness"];
+        }
         [_torch startTorching:OMDTorchModeFlash];
     } else if([action[@"action"] isEqualToString:@"twinkle"]) {
         if (action[@"max-frequency"]) {
             _torch.maxFrequency = action[@"max-frequency"];
+            if(action[@"offset"]) {
+                _torch.offset = action[@"offset"];
+            }
+            if (action[@"inverse"]) {
+                _torch.inverse = ((NSNumber*)action[@"inverse"]).boolValue;
+            }
+            if(action[@"brightness"]) {
+                _torch.brightness = action[@"brightness"];
+            }
         }
         
         if (action[@"offset"]) {

@@ -177,10 +177,10 @@
             </objects>
             <point key="canvasLocation" x="-1699" y="-285"/>
         </scene>
-        <!--View Controller-->
+        <!--Effects View Controller-->
         <scene sceneID="vrJ-Tz-xMD">
             <objects>
-                <viewController id="qhw-gV-Hph" sceneMemberID="viewController">
+                <viewController id="qhw-gV-Hph" customClass="EffectsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lhz-Yn-lCa"/>
                         <viewControllerLayoutGuide type="bottom" id="wZn-oF-3vt"/>
@@ -197,50 +197,44 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QJV-fH-F7s">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Visual Effects" id="abd-wg-CtW"/>
-                                </items>
-                            </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z47-Gv-Oe8">
-                                <rect key="frame" x="20" y="154" width="80" height="30"/>
+                                <rect key="frame" x="20" y="73" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Fast Strobe">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="T25-uo-l6t" kind="push" id="Fxe-2i-Pun"/>
+                                    <action selector="action:" destination="qhw-gV-Hph" eventType="touchUpInside" id="a9m-Vw-TRl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WzM-pl-au8">
-                                <rect key="frame" x="20" y="200" width="84" height="30"/>
+                                <rect key="frame" x="20" y="119" width="84" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Slow Strobe">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="T25-uo-l6t" kind="push" id="KWf-jq-gWv"/>
+                                    <action selector="action:" destination="qhw-gV-Hph" eventType="touchUpInside" id="Fka-H4-8Qi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVh-dz-E2v">
-                                <rect key="frame" x="20" y="248" width="99" height="30"/>
+                                <rect key="frame" x="20" y="167" width="99" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Rainbow Fade">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="T25-uo-l6t" kind="push" id="IfR-h2-lQL"/>
+                                    <action selector="action:" destination="qhw-gV-Hph" eventType="touchUpInside" id="KEc-f1-KCC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwG-Bm-tcX">
-                                <rect key="frame" x="20" y="295" width="79" height="30"/>
+                                <rect key="frame" x="20" y="214" width="79" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Audio Sync">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="action:" destination="qhw-gV-Hph" eventType="touchUpInside" id="TQI-d5-OBT"/>
                                     <segue destination="tl9-VC-6px" kind="push" id="gig-E4-Fvh"/>
                                 </connections>
                             </button>
@@ -248,29 +242,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="9q9-f5-vgF"/>
+                    <connections>
+                        <outlet property="audioSyncButton" destination="zwG-Bm-tcX" id="tvX-pX-UcN"/>
+                        <outlet property="fastStrobeButton" destination="z47-Gv-Oe8" id="9TN-Cd-PV4"/>
+                        <outlet property="rainbowFadeButton" destination="IVh-dz-E2v" id="lPn-C1-diN"/>
+                        <outlet property="slowStrobeButton" destination="WzM-pl-au8" id="57b-Xg-tgU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDZ-eH-6RS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1699" y="-1744"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="cbO-RQ-9yq">
-            <objects>
-                <viewController id="T25-uo-l6t" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="SJi-Ne-xh3"/>
-                        <viewControllerLayoutGuide type="bottom" id="BS1-9L-vIL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="AfN-RA-rWt">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="BE0-fJ-bGN"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rNL-H8-NAg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1108" y="-2049"/>
         </scene>
         <!--OpenGL Waveform View Controller - Audio Sync-->
         <scene sceneID="hjJ-uD-mJ1">
@@ -1236,7 +1217,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8s3-td-ucN"/>
-        <segue reference="Fxe-2i-Pun"/>
+        <segue reference="2GC-io-Oyl"/>
     </inferredMetricsTieBreakers>
 </document>

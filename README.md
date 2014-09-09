@@ -66,12 +66,7 @@ sound-spec ::=
                              ,"action": "sound"
                              ,"loop": boolean
                             [,"local-file": string | "url" : string]
-                        }
-                        
-stop-sound-spec ::=
-                        {   "executed":0
-                            ,"time" : float in seconds from epoch
-                            ,"action":"stop-sound"
+                            [,"duration":float]
                         }
 
 flash-spec ::=

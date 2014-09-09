@@ -29,6 +29,7 @@
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             LARSTorch *torch = [LARSTorch sharedTorch];
+            if (_delay) [NSThread sleepForTimeInterval:_delay.floatValue];
             while(_continueTorch) {
                 if(_beacon && mode == OMDTorchModeTwinkle) {
                     double distance = self.beacon.accuracy;

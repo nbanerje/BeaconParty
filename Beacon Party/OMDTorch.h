@@ -28,6 +28,7 @@ typedef enum {
 @property (strong, nonatomic) NSNumber* frequency;
 @property (strong, nonatomic) NSNumber* brightness;
 @property (assign, nonatomic) BOOL continueTorch;
+@property (assign, nonatomic) NSNumber* delay;
 
 @property (weak, nonatomic) CLBeacon* beacon;
 @property (strong, nonatomic) NSNumber* maxFrequency;

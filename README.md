@@ -47,12 +47,14 @@ screen-color-spec ::=
                             ,"a2" : float
                             [,"frequency": float]
                             [,"delay": float]
+                            [,"rand": boolean] (If set delay is set to a random number bewteen 0 and the delay value.)
                             
                         } 
 
 url-spec ::=
                         { 
                             "executed":0
+                            ,"time" : float in seconds from epoch
                             ,"action": "url"
                             ,"url": string
                         }
@@ -60,27 +62,39 @@ url-spec ::=
 sound-spec ::= 
                         {
                              "executed":0
+                             ,"time" : float in seconds from epoch
                              ,"action": "sound"
                              ,"loop": boolean
                             [,"local-file": string | "url" : string]
                         }
+                        
+stop-sound-spec ::=
+                        {   "executed":0
+                            ,"time" : float in seconds from epoch
+                            ,"action":"stop-sound"
+                        }
 
 flash-spec ::=
                         {   "executed":0
+                            ,"time" : float in seconds from epoch
                             ,"action":"flash"
                             ,"frequency": float
                            [,"brightness": float 0-1]
+                           [,"delay": float]
+                           [,"rand": boolean] (If set delay is set to a random number bewteen 0 and the delay value.)
                         }
 
 stop-flash-spec ::=
                         {   "executed":0
+                            ,"time" : float in seconds from epoch
                             ,"action":"stop-flash"
                         }
 
 vibrate-spec ::= 
                         {
                             "executed":0
-                            "action":"vibrate"
+                            ,"time" : float in seconds from epoch
+                            ,"action":"vibrate"
                         }
 
 twinkle-spec ::=        
@@ -90,5 +104,18 @@ twinkle-spec ::=
                            [,"inverse": boolean]
                            [,"offset": float]
                            [,"brightness": float 0-1]
+                           [,"delay": float]
+                           [,"rand": boolean] (If set delay is set to a random number bewteen 0 and the delay value.)
                         }
+
+rainbow-spec ::=
+                        { 
+                            "executed":0
+                            ,"time" : float in seconds from epoch
+                            ,"action": "rainbow"
+                            [,"frequency": float]
+                            [,"delay": float]
+                            [,"rand": boolean] (If set delay is set to a random number bewteen 0 and the delay value.)
+                            
+                        } 
 ```

@@ -311,7 +311,7 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
     UA_LDEBUG(@"Received a notification while the app was already in the foreground");
 
     if(notification[@"data-url"]) {
-        fetchURLData(FETCH_URL_STR,_schedule,completionHandler);
+        fetchURLData(notification[@"data-url"],_schedule,completionHandler);
     }
     else {
         completionHandler(UIBackgroundFetchResultNoData);
@@ -324,7 +324,7 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
     UA_LDEBUG(@"The application was launched or resumed from a notification");
     
     if(notification[@"data-url"]) {
-        fetchURLData(FETCH_URL_STR,_schedule,completionHandler);
+        fetchURLData(notification[@"data-url"],_schedule,completionHandler);
     }
     else {
         completionHandler(UIBackgroundFetchResultNoData);
@@ -335,7 +335,7 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
                 fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
     if(notification[@"data-url"]) {
-        fetchURLData(FETCH_URL_STR,_schedule,completionHandler);
+        fetchURLData(notification[@"data-url"],_schedule,completionHandler);
     }
     else {
         completionHandler(UIBackgroundFetchResultNoData);

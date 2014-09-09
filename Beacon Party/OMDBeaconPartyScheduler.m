@@ -24,6 +24,8 @@
  */
 - (void) startLoop;
 
+- (void)stopSounds:(NSTimer*)timer;
+
 /**
  This value can be used to stop the scheduler. If you stop the scheduler you
  will need to restart the scheduler with the startLoop method after setting
@@ -31,11 +33,13 @@
  */
 @property (assign, nonatomic) BOOL continueMainLoop;
 
-@property (assign,atomic) UInt16 numLoops;
+@property (assign, atomic) UInt16 numLoops;
 
-@property (strong,nonatomic) OMDTorch *torch;
+@property (strong, nonatomic) OMDTorch *torch;
 
-@property (strong,nonatomic) UIWebView *aWebView;
+@property (strong, nonatomic) UIWebView *aWebView;
+@property (strong, nonatomic) AVAudioPlayer *backgroundMusicPlayer;
+@property (strong, nonatomic) NSTimer *timer;
 
 @end
 
@@ -121,23 +125,39 @@
 
     }
 }
-
+#define ARC4RANDOM_MAX      0x100000000
 - (void) runAction:(NSDictionary*)action {
     //remove any webview from the view
     dispatch_async(dispatch_get_main_queue(), ^{[[self.view viewWithTag:1] removeFromSuperview];});
     
-    if([action[@"action"] isEqualToString:@"color"]) {
-        OMDScreenColorSpec *colorSpec = [[OMDScreenColorSpec alloc] initWithR1:action[@"r1"] g1:action[@"g1"] b1:action[@"b1"] a1:action[@"a1"] r2:action[@"r2"] g2:action[@"g2"] b2:action[@"b2"] a2:action[@"a2"]];
-        if(action[@"frequency"]){
-            colorSpec.frequency = ((NSNumber*)action[@"frequency"]).floatValue;
+    if ([action[@"action"] isEqualToString:@"color"] || [action[@"action"] isEqualToString:@"rainbow"]) {
+        OMDScreenColorSpec *colorSpec;
+        if([action[@"action"] isEqualToString:@"color"])
+            colorSpec = [[OMDScreenColorSpec alloc] initWithR1:action[@"r1"] g1:action[@"g1"] b1:action[@"b1"] a1:action[@"a1"] r2:action[@"r2"] g2:action[@"g2"] b2:action[@"b2"] a2:action[@"a2"]];
+        else {
+            colorSpec =[[OMDScreenColorSpec alloc] init];
         }
         
-        if(action[@"delay"]){
-            colorSpec.delay = ((NSNumber*)action[@"delay"]).floatValue;
+        if (action[@"frequency"]){
+            colorSpec.frequency = ((NSNumber*)action[@"frequency"]).floatValue;
+        } else {
+            colorSpec.frequency = 1;
         }
+        
+        if (action[@"delay"] && action[@"rand"] == nil ){
+            colorSpec.delay = ((NSNumber*)action[@"delay"]).floatValue;
+        } else if (action[@"delay"] && ((NSNumber*)action[@"rand"]).boolValue == YES) {
+             colorSpec.delay = floorf(((float)arc4random() / ARC4RANDOM_MAX) * ((NSNumber*)action[@"delay"]).floatValue);
+        } else {
+            colorSpec.delay = 0;
+        }
+        
         colorSpec.view = _view;
         colorSpec.debugTextView = _debugTextView;
-        dispatch_async(dispatch_get_main_queue(), ^{[colorSpec block]();});
+        if([action[@"action"] isEqualToString:@"color"])
+            dispatch_async(dispatch_get_main_queue(), ^{[colorSpec block]();});
+        else
+            dispatch_async(dispatch_get_main_queue(), ^{[colorSpec rainbowBlock]();});
     } else if([action[@"action"] isEqualToString:@"stop"]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             _view.backgroundColor = [UIColor clearColor];
@@ -147,10 +167,10 @@
         _torch.continueTorch = NO;
     } else if([action[@"action"] isEqualToString:@"url"]) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            [_view.layer removeAllAnimations];
             if(!_aWebView) {
                 _aWebView =[[UIWebView alloc] initWithFrame:_view.frame];
                 _aWebView.delegate=self;
-                _aWebView.tag = 1;
                 [self.view insertSubview:_aWebView atIndex:0];
             }
             [_aWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:action[@"url"]]]];
@@ -159,66 +179,98 @@
         });
     } else if([action[@"action"] isEqualToString:@"sound"]) {
         NSString *localSoundName = action[@"local-file"];
+        NSURL *soundUrl;
         if(localSoundName) {
-            SystemSoundID soundID;
             NSString *soundPath = [[NSBundle mainBundle]
                                     pathForResource:localSoundName ofType:nil];
             if(soundPath) {
-                NSURL *soundUrl = [NSURL fileURLWithPath:soundPath];
-                AudioServicesCreateSystemSoundID((__bridge CFURLRef)(soundUrl), &soundID);
-                AudioServicesPlaySystemSound(soundID);
+                soundUrl = [NSURL fileURLWithPath:soundPath];
             }
-        } else if([action objectForKey:@"url"]) {
-            dispatch_async(backgroundAudioQueue, ^{
-                NSURL *url = [NSURL URLWithString:[action objectForKey:@"url"]];
-                NSError *error;
-                AVAudioPlayer *backgroundMusicPlayer = [[AVAudioPlayer alloc]
-                                                        initWithData:[NSData dataWithContentsOfURL:url] error:&error];
-                if(action[@"loop"]) {
-                    BOOL loop = ((NSNumber*)action[@"loop"]).boolValue;
-                    if (loop) {
-                        backgroundMusicPlayer.numberOfLoops = -1;
-                    }
-                }
-                [backgroundMusicPlayer prepareToPlay];
-                [backgroundMusicPlayer play];
-                if(error) {
-                    DLog(@"%@",[error debugDescription]);
-                }
-
-            });
+        } else if(action[@"url"]) {
+            soundUrl = [NSURL URLWithString:action[@"url"]];
         }
+        dispatch_async(backgroundAudioQueue, ^{
+            NSError *error;
+            _backgroundMusicPlayer = [[AVAudioPlayer alloc]
+                                                    initWithData:[NSData dataWithContentsOfURL:soundUrl] error:&error];
+            if(action[@"loop"]) {
+                BOOL loop = ((NSNumber*)action[@"loop"]).boolValue;
+                if (loop) {
+                    _backgroundMusicPlayer.numberOfLoops = -1;
+                }
+            }
+            [_backgroundMusicPlayer prepareToPlay];
+            [_backgroundMusicPlayer play];
+            if(error) {
+                DLog(@"%@",[error debugDescription]);
+            }
+            if(action[@"duration"]) {
+                NSTimeInterval duration = ((NSNumber*)action[@"duration"]).floatValue;
+                dispatch_async(dispatch_get_main_queue(),^{
+                   [NSTimer scheduledTimerWithTimeInterval:duration target:self selector:@selector(stopSounds:) userInfo:nil repeats:NO]; 
+                });
+            }
+            
+        });
+    } else if([action[@"action"] isEqualToString:@"stop-sound"]) {
+        dispatch_async(backgroundAudioQueue, ^{ [_backgroundMusicPlayer stop];});
     } else if([action[@"action"] isEqualToString:@"vibrate"]) {
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        });
     } else if([action[@"action"] isEqualToString:@"flash"]) {
+        //Torching is done on a seperate thread
         _torch.frequency = action[@"frequency"];
         if(action[@"brightness"]) {
             _torch.brightness = action[@"brightness"];
+        } else {
+            _torch.brightness = [NSNumber numberWithFloat:1.0];
+        }
+        
+        if (action[@"delay"] && action[@"rand"] == nil ){
+            _torch.delay = (NSNumber*)action[@"delay"];
+        } else if (action[@"delay"] && ((NSNumber*)action[@"rand"]).boolValue == YES) {
+            _torch.delay = [NSNumber numberWithFloat:floorf(((float)arc4random() / ARC4RANDOM_MAX) * ((NSNumber*)action[@"delay"]).floatValue)];
+        } else {
+            _torch.delay = [NSNumber numberWithFloat:0.0];
         }
         [_torch startTorching:OMDTorchModeFlash];
     } else if([action[@"action"] isEqualToString:@"twinkle"]) {
+        //Torching is done on a seperate thread
         if (action[@"max-frequency"]) {
             _torch.maxFrequency = action[@"max-frequency"];
-            if(action[@"offset"]) {
-                _torch.offset = action[@"offset"];
-            }
-            if (action[@"inverse"]) {
-                _torch.inverse = ((NSNumber*)action[@"inverse"]).boolValue;
-            }
-            if(action[@"brightness"]) {
-                _torch.brightness = action[@"brightness"];
-            }
         }
-        
-        if (action[@"offset"]) {
-            _torch.maxFrequency = action[@"offset"];
+        if(action[@"offset"]) {
+            _torch.offset = action[@"offset"];
+        } else {
+            _torch.offset = [NSNumber numberWithFloat:0.0];
         }
-        
+        if (action[@"inverse"]) {
+            _torch.inverse = ((NSNumber*)action[@"inverse"]).boolValue;
+        } else {
+            _torch.inverse = NO;
+        }
+        if(action[@"brightness"]) {
+            _torch.brightness = action[@"brightness"];
+        } else {
+            _torch.brightness = [NSNumber numberWithFloat:1.0];
+        }
+        if (action[@"delay"] && action[@"rand"] == nil ){
+            _torch.delay = (NSNumber*)action[@"delay"];
+        } else if (action[@"delay"] && ((NSNumber*)action[@"rand"]).boolValue == YES) {
+            _torch.delay = [NSNumber numberWithFloat:floorf(((float)arc4random() / ARC4RANDOM_MAX) * ((NSNumber*)action[@"delay"]).floatValue)];
+        } else {
+            _torch.delay = [NSNumber numberWithFloat:0];
+        }
         [_torch startTorching:OMDTorchModeTwinkle];
         
         
     }
     
+}
+
+- (void)stopSounds:(NSTimer*)timer {
+    dispatch_async(backgroundAudioQueue, ^{ [_backgroundMusicPlayer stop];});
 }
 
 #pragma mark UIWebView delegate methods

@@ -12,7 +12,7 @@
 @interface OMDBeaconPartySchedule()
 @property (strong, nonatomic) OMDBeaconPartyScheduler *scheduler;
 @property (strong, nonatomic) OMDBeaconParty *beaconParty;
-@property (weak,nonatomic) CLBeacon *currentBeacon;
+@property (strong,nonatomic) CLBeacon *currentBeacon;
 
 @end
 
@@ -111,32 +111,42 @@
 
 -(void) setSchedule:(NSMutableArray*)schedule {
     _schedule = schedule;
-    [self selectSequenceFromBeacon:_currentBeacon];    
+    [self selectSequenceFromBeacon:_currentBeacon isNewMinorValue:NO];
 }
 
--(void) selectSequenceFromBeacon:(CLBeacon*)beacon {
+-(void) selectSequenceFromBeacon:(CLBeacon*)beacon isNewMinorValue:(BOOL)isNewMinorValue {
     NSString *uuid = beacon.proximityUUID.UUIDString;
     NSNumber *major = beacon.major;
     NSNumber *minor = beacon.minor;
     
-    //Find the schedule sequence that matches this beacon
-    NSArray *filteredarray = [_schedule filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(%K == %@ AND %K == %@ AND %K == %@)",@"uuid",uuid,@"major",major,@"minor",minor]];
-    
-    if(filteredarray.count > 1) {
-        DLog(@"Error found %lu objects for beacon should only have one.",(unsigned long)filteredarray.count);
-    }
-    
-    //Assign the correct sequence for the beacon region to the schedule and start the scheduler
-    if(filteredarray && filteredarray.count >=1) {
+    if(isNewMinorValue) {
+        //Find the schedule sequence that matches this beacon
+        NSArray *filteredarray = [_schedule filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(%K == %@ AND %K == %@ AND %K == %@)",@"uuid",uuid,@"major",major,@"minor",minor]];
+        
+        if(filteredarray.count > 1) {
+            DLog(@"Error found %lu objects for beacon should only have one.",(unsigned long)filteredarray.count);
+        }
+        
+        //Assign the correct sequence for the beacon region to the schedule and start the scheduler
+        if(filteredarray && filteredarray.count >=1) {
+            self.scheduler.beacon = beacon;
+            self.scheduler.sequences = filteredarray[0][@"sequence"];
+        }
+    } else {
         self.scheduler.beacon = beacon;
-        self.scheduler.sequences = filteredarray[0][@"sequence"];
     }
 }
 
 #pragma mark OMDBeaconParty Delegate
 - (void)updateWithBeacon:(CLBeacon*) beacon {
+    BOOL isNewMinorValue = NO;
+    if(_currentBeacon == nil || _currentBeacon.minor != beacon.minor) {
+        isNewMinorValue = YES;
+        [_scheduler clearEffects];
+    }
     _currentBeacon = beacon;
-    [self selectSequenceFromBeacon:_currentBeacon];
+    
+    [self selectSequenceFromBeacon:_currentBeacon isNewMinorValue:isNewMinorValue];
 }
 
 @end

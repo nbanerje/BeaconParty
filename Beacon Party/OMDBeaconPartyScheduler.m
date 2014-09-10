@@ -160,13 +160,14 @@
             dispatch_async(dispatch_get_main_queue(), ^{[colorSpec rainbowBlock]();});
     } else if([action[@"action"] isEqualToString:@"stop"]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            _view.backgroundColor = [UIColor clearColor];
+            _view.backgroundColor = [UIColor whiteColor];
             [_view.layer removeAllAnimations];
         });
     } else if([action[@"action"] isEqualToString:@"stop-flash"]) {
         _torch.continueTorch = NO;
     } else if([action[@"action"] isEqualToString:@"url"]) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            _view.backgroundColor = [UIColor whiteColor];
             [_view.layer removeAllAnimations];
             if(!_aWebView) {
                 _aWebView =[[UIWebView alloc] initWithFrame:_view.frame];
@@ -213,7 +214,7 @@
             
         });
     } else if([action[@"action"] isEqualToString:@"stop-sound"]) {
-        dispatch_async(backgroundAudioQueue, ^{ [_backgroundMusicPlayer stop];});
+        dispatch_async(backgroundAudioQueue, ^{ if(_backgroundMusicPlayer)[_backgroundMusicPlayer stop];});
     } else if([action[@"action"] isEqualToString:@"vibrate"]) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -270,7 +271,16 @@
 }
 
 - (void)stopSounds:(NSTimer*)timer {
-    dispatch_async(backgroundAudioQueue, ^{ [_backgroundMusicPlayer stop];});
+    dispatch_async(backgroundAudioQueue, ^{ if(_backgroundMusicPlayer)[_backgroundMusicPlayer stop];});
+}
+
+- (void)clearEffects {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[self.view viewWithTag:1] removeFromSuperview]; //Remove the webview
+        _view.backgroundColor = [UIColor whiteColor];
+        [_view.layer removeAllAnimations];
+    });
+    dispatch_async(backgroundAudioQueue, ^{ if(_backgroundMusicPlayer)[_backgroundMusicPlayer stop];});
 }
 
 #pragma mark UIWebView delegate methods

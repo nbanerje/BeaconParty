@@ -55,7 +55,7 @@
  The scheduler singleton. Use this to start the scheduler.
  */
 + (id)scheduler;
-
+- (void)clearEffects;
 
 
 @end

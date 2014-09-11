@@ -12,11 +12,9 @@
 #import <Social/Social.h>
 #import "UIImage+Resize.h"
 #import "JSON.h"
-#import "GAI.h"
 
-#import "GAITrackedViewController.h"
 
-@interface ShareViewController : GAITrackedViewController <MFMailComposeViewControllerDelegate, UINavigationControllerDelegate,UIDocumentInteractionControllerDelegate>
+@interface ShareViewController : UIViewController <MFMailComposeViewControllerDelegate, UINavigationControllerDelegate,UIDocumentInteractionControllerDelegate>
 {
     UIImage *image;
     SLComposeViewController *facebook;

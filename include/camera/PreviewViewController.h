@@ -22,7 +22,6 @@
 #import "EnhanceWorker.h"
 #import "ShareViewController.h"
 
-#import "GAITrackedViewController.h"
 
 @protocol PreviewViewControllerDelegate
 
@@ -34,7 +33,7 @@
 
 typedef enum {kPreviewMode, kFilterMode, kBorderMode} PreviewViewState;
 
-@interface PreviewViewController : GAITrackedViewController <PackScrollViewDelegate, PackItemsViewControllerDelegate, FilterScrollViewDelegate, BorderScrollViewDelegate, TouchCameraViewDelegate>
+@interface PreviewViewController : UIViewController <PackScrollViewDelegate, PackItemsViewControllerDelegate, FilterScrollViewDelegate, BorderScrollViewDelegate, TouchCameraViewDelegate>
 {
     NSManagedObjectContext  *managedObjectContext;
     PreviewViewState        viewState;

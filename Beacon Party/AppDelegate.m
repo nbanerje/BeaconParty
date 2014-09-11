@@ -14,10 +14,6 @@
 
 #import "UATagUtils.h"
 #import "GalleryViewController.h"
-#import "PacksViewController.h"
-
-#import "AboutViewController.h"
-#import "HelpViewController.h"
 #import "ShareViewController.h"
 
 #define UUID @"BF5094D9-5849-47ED-8FA1-983A748A9586"
@@ -62,7 +58,6 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [GalleryViewController class];
-    [PacksViewController class];
     [ShareViewController class];
     
     

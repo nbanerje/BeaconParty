@@ -1,7 +1,6 @@
 {
     "packs":[
-    
-        {
+            {
             "name":"Ziggy",
             "image":"ziggy.png",
             "is-paid":false,

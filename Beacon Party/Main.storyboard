@@ -36,6 +36,9 @@
                                 <rect key="frame" x="0.0" y="396" width="320" height="84"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="BaB-gQ-GEg"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -47,7 +50,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="XKN-r6-xwo" kind="push" id="T9R-4o-mvv"/>
+                                    <segue destination="vki-Ze-RvA" kind="push" id="bJm-K7-Tlu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nrw-fH-zF8">
@@ -87,6 +90,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Do6-rB-brD" secondAttribute="centerX" id="CJ6-lC-1Hv"/>
+                            <constraint firstAttribute="bottom" secondItem="Do6-rB-brD" secondAttribute="bottom" id="n8P-Sa-0vc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="a6Y-Y2-CUS"/>
@@ -382,27 +386,23 @@
             <point key="canvasLocation" x="-1108" y="-577"/>
         </scene>
         <!--Gallery View Controller-->
-        <scene sceneID="hYq-Rk-Xri">
+        <scene sceneID="uMQ-Zu-zoQ">
             <objects>
-                <viewController wantsFullScreenLayout="YES" id="XKN-r6-xwo" customClass="GalleryViewController" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="vki-Ze-RvA" customClass="GalleryViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="WBP-79-Jyb"/>
-                        <viewControllerLayoutGuide type="bottom" id="i3t-Kw-xFd"/>
+                        <viewControllerLayoutGuide type="top" id="Ub3-w3-14m"/>
+                        <viewControllerLayoutGuide type="bottom" id="ynb-gA-iXe"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ndB-iw-aJc">
+                    <view key="view" contentMode="scaleToFill" id="Yzo-WF-RSI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="home-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="gHT-on-rXw">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="home-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="df7-dE-8m4">
                                 <rect key="frame" x="0.0" y="64" width="320" height="415"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="starthere.png" translatesAutoresizingMaskIntoConstraints="NO" id="49n-CC-34V">
-                                <rect key="frame" x="113" y="39" width="95" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qN6-rK-HfV" userLabel="Button - New Pic">
-                                <rect key="frame" x="22" y="85" width="122" height="122"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fB-RV-E7l" userLabel="Button - New Pic">
+                                <rect key="frame" x="22" y="95" width="122" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="btn-newpic.png">
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -410,11 +410,11 @@
                                 <state key="selected" backgroundImage="btn-newpic-tapped.png"/>
                                 <state key="highlighted" backgroundImage="btn-newpic-tapped.png"/>
                                 <connections>
-                                    <action selector="takePhoto:" destination="XKN-r6-xwo" eventType="touchUpInside" id="DbU-1T-V0e"/>
+                                    <action selector="takePhoto:" destination="vki-Ze-RvA" eventType="touchUpInside" id="wuA-jq-Puu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGQ-Lj-B6j" userLabel="Button - Choose Pic">
-                                <rect key="frame" x="174" y="85" width="122" height="122"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4H-u9-6GE" userLabel="Button - Choose Pic">
+                                <rect key="frame" x="174" y="95" width="122" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="btn-choosepic.png">
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -422,51 +422,51 @@
                                 <state key="selected" backgroundImage="btn-choosepic-tapped.png"/>
                                 <state key="highlighted" backgroundImage="btn-choosepic-tapped.png"/>
                                 <connections>
-                                    <action selector="choosePhoto:" destination="XKN-r6-xwo" eventType="touchUpInside" id="Ez8-iQ-8Kd"/>
+                                    <action selector="choosePhoto:" destination="vki-Ze-RvA" eventType="touchUpInside" id="BgJ-di-aDr"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Tw1-jd-gPU"/>
+                    <navigationItem key="navigationItem" id="lwV-XA-aeC"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="btnNewpic" destination="qN6-rK-HfV" id="t41-yE-UaC"/>
+                        <outlet property="btnNewpic" destination="4fB-RV-E7l" id="tNq-yN-UwV"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="enh-27-Mqg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t1y-No-DPr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2053" y="-2518"/>
+            <point key="canvasLocation" x="-2285" y="-2417"/>
         </scene>
         <!--Preview View Controller-->
-        <scene sceneID="NhX-9L-qw7">
+        <scene sceneID="7Bq-uj-Brw">
             <objects>
-                <viewController storyboardIdentifier="PreviewView" id="CpV-GB-nDb" customClass="PreviewViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PreviewView" id="wTT-Zq-mZN" customClass="PreviewViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="A9I-3e-jUJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="mmM-AH-7wd"/>
+                        <viewControllerLayoutGuide type="top" id="Ztv-lK-L0b"/>
+                        <viewControllerLayoutGuide type="bottom" id="xfU-CJ-2pu"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="SvS-jP-A83">
+                    <view key="view" contentMode="scaleToFill" id="0KZ-7p-Rad">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Fp-S4-aEx" userLabel="View - Top bar">
-                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bbS-qi-gHk" userLabel="View - Top bar">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="topbar.png" translatesAutoresizingMaskIntoConstraints="NO" id="JL0-1S-pxu">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="topbar.png" translatesAutoresizingMaskIntoConstraints="NO" id="XFT-9s-FTy">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Make it Awesome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMI-Yj-Zhk">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Make it Awesome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wen-JE-f9L">
                                         <rect key="frame" x="75" y="9" width="170" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z65-TF-wdo" userLabel="Button - Duplicate">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaE-lO-BZ9" userLabel="Button - Duplicate">
                                         <rect key="frame" x="9" y="7" width="100" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -475,10 +475,10 @@
                                         </state>
                                         <state key="highlighted" image="btn-duplicate-tapped.png"/>
                                         <connections>
-                                            <action selector="handleDuplicate:" destination="CpV-GB-nDb" eventType="touchUpInside" id="Nqh-K2-69c"/>
+                                            <action selector="handleDuplicate:" destination="wTT-Zq-mZN" eventType="touchUpInside" id="2O2-ct-f0I"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCf-HS-DLk" userLabel="Button - Remove">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHa-5c-ZxS" userLabel="Button - Remove">
                                         <rect key="frame" x="212" y="8" width="100" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -487,21 +487,21 @@
                                         </state>
                                         <state key="highlighted" image="btn-remove-tapped.png"/>
                                         <connections>
-                                            <action selector="handleRemove:" destination="CpV-GB-nDb" eventType="touchUpInside" id="U4P-kq-gkv"/>
+                                            <action selector="handleRemove:" destination="wTT-Zq-mZN" eventType="touchUpInside" id="hNi-hG-aMS"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o3z-GA-Uo6" userLabel="View - Touch Area">
-                                <rect key="frame" x="0.0" y="109" width="320" height="320"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pkk-al-rVf" userLabel="View - Touch Area">
+                                <rect key="frame" x="0.0" y="60" width="320" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L6x-Qt-5Cd">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yHp-I2-0H3">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mPQ-TY-KbA">
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="drh-9B-ntZ">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -509,43 +509,37 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Olc-0R-S6W" userLabel="View - Bottom bar">
-                                <rect key="frame" x="0.0" y="520" width="320" height="48"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m8G-AK-69l" userLabel="View - Bottom bar">
+                                <rect key="frame" x="0.0" y="534" width="320" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bottombar.png" translatesAutoresizingMaskIntoConstraints="NO" id="um8-NB-fBd">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bottombar.png" translatesAutoresizingMaskIntoConstraints="NO" id="wOi-wk-rAp">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Tv-bw-BqA">
-                                        <rect key="frame" x="139" y="14" width="42" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cg-Ib-x8V">
+                                        <rect key="frame" x="139" y="7" width="42" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZvA-XA-qCz" userLabel="Button - Cancel">
-                                        <rect key="frame" x="5" y="8" width="61" height="32"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQ2-Mc-r3E" userLabel="Button - Cancel">
+                                        <rect key="frame" x="5" y="1" width="61" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" image="btn-cancel-bottom.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                                        <state key="normal" title="Cancel"/>
                                         <state key="highlighted" image="btn-cancel-bottom-tapped.png"/>
                                         <connections>
-                                            <action selector="handleCancel:" destination="CpV-GB-nDb" eventType="touchUpInside" id="N8Z-aJ-hb6"/>
+                                            <action selector="handleCancel:" destination="wTT-Zq-mZN" eventType="touchUpInside" id="kQd-0h-X2E"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6O-DJ-UcD" userLabel="Button -Next">
-                                        <rect key="frame" x="234" y="4" width="80" height="39"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwd-Ji-0X4" userLabel="Button -Next">
+                                        <rect key="frame" x="234" y="-1" width="80" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" image="btn-next.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                                        <state key="normal" title="Next"/>
                                         <state key="highlighted" image="btn-next-tapped.png"/>
                                         <connections>
-                                            <action selector="save:" destination="CpV-GB-nDb" eventType="touchUpInside" id="dLb-ia-PQE"/>
+                                            <action selector="save:" destination="wTT-Zq-mZN" eventType="touchUpInside" id="pqc-oO-qh7"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -557,45 +551,57 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="bgView" destination="L6x-Qt-5Cd" id="u6a-pK-5v9"/>
-                        <outlet property="borderView" destination="mPQ-TY-KbA" id="T5t-tc-WyJ"/>
-                        <outlet property="btnDuplicate" destination="Z65-TF-wdo" id="px4-3N-Lq5"/>
-                        <outlet property="btnRemove" destination="RCf-HS-DLk" id="RKF-hO-KzH"/>
-                        <outlet property="btnSave" destination="L6O-DJ-UcD" id="UOk-sM-NfM"/>
-                        <outlet property="fxLabel" destination="8Tv-bw-BqA" id="tkF-ng-SIi"/>
-                        <outlet property="screenTitle" destination="tMI-Yj-Zhk" id="fsj-4S-lHy"/>
-                        <outlet property="touchArea" destination="o3z-GA-Uo6" id="bX0-sy-v0F"/>
+                        <outlet property="bgView" destination="yHp-I2-0H3" id="pFP-I1-yK8"/>
+                        <outlet property="borderView" destination="drh-9B-ntZ" id="psW-WZ-JUi"/>
+                        <outlet property="btnDuplicate" destination="VaE-lO-BZ9" id="Fdl-IA-J3B"/>
+                        <outlet property="btnRemove" destination="eHa-5c-ZxS" id="C7X-nG-vz2"/>
+                        <outlet property="btnSave" destination="cwd-Ji-0X4" id="lYw-dK-DbS"/>
+                        <outlet property="fxLabel" destination="2cg-Ib-x8V" id="ggO-8x-JVa"/>
+                        <outlet property="screenTitle" destination="Wen-JE-f9L" id="VT0-6u-hDU"/>
+                        <outlet property="touchArea" destination="pkk-al-rVf" id="337-cw-Sgd"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Sc-zA-dSx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3jP-2A-pY4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1598" y="-2518"/>
+            <point key="canvasLocation" x="-1830" y="-2417"/>
         </scene>
         <!--Share View Controller-->
-        <scene sceneID="VV8-U8-Eqb">
+        <scene sceneID="uB9-DD-XU4">
             <objects>
-                <viewController storyboardIdentifier="ShareView" id="weI-M2-Cg2" customClass="ShareViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShareView" id="qlr-yW-wk9" customClass="ShareViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="RTb-YW-FxK"/>
-                        <viewControllerLayoutGuide type="bottom" id="S2Y-pQ-ZRg"/>
+                        <viewControllerLayoutGuide type="top" id="nBp-f7-TnC"/>
+                        <viewControllerLayoutGuide type="bottom" id="JDV-m4-W80"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="E29-0P-lsP">
+                    <view key="view" contentMode="scaleToFill" id="rYF-24-r6F">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mQ1-Y6-XmP">
-                                <rect key="frame" x="0.0" y="109" width="320" height="320"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x20-qI-Xev">
+                                <rect key="frame" x="0.0" y="60" width="320" height="318"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7w7-5Z-oHu" userLabel="View - Top bar">
-                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XFX-HB-J0w" userLabel="View - Top bar">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="topbar.png" translatesAutoresizingMaskIntoConstraints="NO" id="fOf-Ut-hoN">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="topbar.png" translatesAutoresizingMaskIntoConstraints="NO" id="HOb-xr-37X">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Share It!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ky-SH-5oA">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwI-PA-mbl">
+                                        <rect key="frame" x="4" y="8" width="65" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Button" image="btn-back.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="btn-back-tapped.png"/>
+                                        <connections>
+                                            <action selector="handleShareCancel:" destination="qlr-yW-wk9" eventType="touchUpInside" id="SA0-Yn-iQl"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Share It!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFJ-LM-6ub">
                                         <rect key="frame" x="75" y="9" width="170" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -605,24 +611,36 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rwP-TH-voX" userLabel="View - Bottom bar">
-                                <rect key="frame" x="0.0" y="428" width="320" height="48"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKk-m0-67F" userLabel="View - Bottom bar">
+                                <rect key="frame" x="0.0" y="520" width="320" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bottombar.png" translatesAutoresizingMaskIntoConstraints="NO" id="2Ip-vQ-9Ip">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bottombar.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZOY-cc-8JM">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSk-N5-VwO" userLabel="Button - Twitter">
-                                        <rect key="frame" x="40" y="8" width="245" height="29"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rCf-vx-45n" userLabel="Button - Twitter">
+                                        <rect key="frame" x="4" y="8" width="97" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" image="btn-twitter.png">
+                                        <state key="normal" title="Button" image="btn-twitter.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted" image="btn-twitter-tapped.png"/>
                                         <connections>
-                                            <action selector="tweet:" destination="weI-M2-Cg2" eventType="touchUpInside" id="1MT-ch-EZd"/>
+                                            <action selector="tweet:" destination="qlr-yW-wk9" eventType="touchUpInside" id="iZv-kh-irU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXk-wx-wCK" userLabel="Button - Facebook">
+                                        <rect key="frame" x="129" y="8" width="100" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Button" image="btn-facebook.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="btn-facebook-tapped.png"/>
+                                        <connections>
+                                            <action selector="share:" destination="qlr-yW-wk9" eventType="touchUpInside" id="ylA-ry-rQQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -631,35 +649,35 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <size key="freeformSize" width="320" height="503"/>
                     <connections>
-                        <outlet property="bgView" destination="mQ1-Y6-XmP" id="jUb-Eq-dSq"/>
-                        <outlet property="screenTitle" destination="2Ky-SH-5oA" id="lCP-Ni-BYV"/>
+                        <outlet property="bgView" destination="x20-qI-Xev" id="Lgc-r5-Zw5"/>
+                        <outlet property="screenTitle" destination="CFJ-LM-6ub" id="hpK-G1-3Mo"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LWa-eK-4QX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qCV-11-E3U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1145" y="-2518"/>
+            <point key="canvasLocation" x="-1377" y="-2417"/>
         </scene>
     </scenes>
     <resources>
         <image name="bottombar.png" width="320" height="48"/>
+        <image name="btn-back-tapped.png" width="65" height="29"/>
+        <image name="btn-back.png" width="65" height="29"/>
         <image name="btn-cancel-bottom-tapped.png" width="61" height="31"/>
-        <image name="btn-cancel-bottom.png" width="61" height="31"/>
         <image name="btn-choosepic-tapped.png" width="122" height="122"/>
         <image name="btn-choosepic.png" width="122" height="122"/>
         <image name="btn-duplicate-tapped.png" width="100" height="29"/>
         <image name="btn-duplicate.png" width="100" height="29"/>
+        <image name="btn-facebook-tapped.png" width="100" height="29"/>
+        <image name="btn-facebook.png" width="100" height="29"/>
         <image name="btn-newpic-tapped.png" width="122" height="122"/>
         <image name="btn-newpic.png" width="122" height="122"/>
         <image name="btn-next-tapped.png" width="80" height="39"/>
-        <image name="btn-next.png" width="80" height="39"/>
         <image name="btn-remove-tapped.png" width="95" height="29"/>
         <image name="btn-remove.png" width="95" height="29"/>
         <image name="btn-twitter-tapped.png" width="100" height="29"/>
         <image name="btn-twitter.png" width="100" height="29"/>
         <image name="home-bg.png" width="320" height="435"/>
-        <image name="starthere.png" width="95" height="15"/>
         <image name="topbar.png" width="320" height="44"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

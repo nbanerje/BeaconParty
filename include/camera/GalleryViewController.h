@@ -17,12 +17,9 @@
 #import "PhotoWorker.h"
 #import "Photo.h"
 #import "PhotoPaginator.h"
-#import "InAppPurchaseManager.h"
-
-#import "GAITrackedViewController.h"
 
 
-@interface GalleryViewController : GAITrackedViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, TouchCameraViewDelegate, PackScrollViewDelegate,PackItemsViewControllerDelegate,
+@interface GalleryViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, TouchCameraViewDelegate, PackScrollViewDelegate,PackItemsViewControllerDelegate,
                                                     PreviewViewControllerDelegate, PhotoPaginatorDelegate, UIAlertViewDelegate>
 {
     NSManagedObjectContext     *managedObjectContext;
@@ -43,6 +40,5 @@
 }
 
 -(void)popReviewPrompt;
--(IBAction)takePhoto:(id)sender;
 
 @end

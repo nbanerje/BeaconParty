@@ -13,7 +13,12 @@
 #import "UAConfig.h"
 
 #import "UATagUtils.h"
+#import "GalleryViewController.h"
+#import "PacksViewController.h"
 
+#import "AboutViewController.h"
+#import "HelpViewController.h"
+#import "ShareViewController.h"
 
 #define UUID @"BF5094D9-5849-47ED-8FA1-983A748A9586"
 
@@ -56,6 +61,11 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [GalleryViewController class];
+    [PacksViewController class];
+    [ShareViewController class];
+    
+    
     //Check to see if a saved schedule exists. If not download the latest.
     
     [UAPush setDefaultPushEnabledValue:NO];
@@ -106,99 +116,18 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
     
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     _schedule = [OMDBeaconPartySchedule shared];
-    [_schedule setEpoch:[NSDate dateWithTimeIntervalSince1970:0] uuid:UUID identifier:@"is.ziggy"];
-    
-    //Pics Snapping Portion
-    // Optional: automatically send uncaught exceptions to Google Analytics.
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
-    
-    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
-    [GAI sharedInstance].dispatchInterval = 20;
-    
-    // Optional: set Logger to VERBOSE for debug information.
-    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-    
-    // Initialize tracker.
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-11960342-5"];
-    // Set the log level to verbose.
-    [[GAI sharedInstance].logger setLogLevel:kGAILogLevelError];
-    self.cred = [[OmDesignCredential alloc] init];
-    
-    [[OMDMediaDB sharedInstance] initWithFilename:DB_FILENAME];
-    [[OMDMediaDB sharedInstance] createEditableCopyOfDatabaseIfNeeded];
-    [[OMDMediaDB sharedInstance] initializeDatabase];
-    
-    UIDevice *device = [UIDevice currentDevice];
-    device.batteryMonitoringEnabled = YES;
-    [self batteryStatus:nil];
-	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyFailed) name:@"KeyFailed" object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyPassed) name:@"KeyPassed" object:nil];
-	
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(batteryStatus:) name:UIDeviceBatteryStateDidChangeNotification object:nil];
-    
-	self.settingsDictionary = [[NSMutableDictionary alloc] initWithCapacity:10];
-	
-	self.key = [NSMutableString stringWithFormat:@"doe2013"];
-    [self.cred checkKey:self.key url:OMDPICURL path:PATH];
-//	[self.key setString:@""];
-//	NSDictionary *savedDict = [SaveData applicationPlistFromFile:@"key.plist"];
-//	//If the key exists, use it
-//	if(savedDict != nil) {
-//		[self.settingsDictionary addEntriesFromDictionary:savedDict];
-//		if([self.settingsDictionary objectForKey:@"key"] != nil) {
-//			[self.key setString:[self.settingsDictionary objectForKey:@"key"]];
-//		}
-//    }
-    
-	[[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
-    
+    [_schedule setEpoch:[NSDate dateWithTimeIntervalSince1970:0] uuid:UUID identifier:@"is.ziggy"];    
 
     return YES;
 }
 							
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    
-    [self setSaveKey];
-    [[OMDMediaDB sharedInstance] setUploadPaused:YES];
-    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
-}
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    [self setSaveKey];
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    [self setSaveKey];
-    OMDMediaDB *mediaDB = [OMDMediaDB sharedInstance];
-    mediaDB.uploadPaused = NO;
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [self setSaveKey];
-    OMDMediaDB *mediaDB = [OMDMediaDB sharedInstance];
-    mediaDB.uploadPaused = NO;
-}
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
-    
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    [self setSaveKey];
-    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:@"KeyFailed"];
-    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:@"KeyPassed"];
-    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:UIDeviceBatteryStateDidChangeNotification];
+
 }
 
 - (void)saveContext
@@ -240,8 +169,9 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Beacon_Party" withExtension:@"momd"];
-    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    //NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Beacon_Party" withExtension:@"momd"];
+    //_managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
     return _managedObjectModel;
 }
 
@@ -249,44 +179,87 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
 // If the coordinator doesn't already exist, it is created and the application's store added to it.
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
+//    if (_persistentStoreCoordinator != nil) {
+//        return _persistentStoreCoordinator;
+//    }
+//    
+//    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"HipsterData.sqlite"];
+//    
+//    NSError *error = nil;
+//    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+//    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+//        /*
+//         Replace this implementation with code to handle the error appropriately.
+//         
+//         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
+//         
+//         Typical reasons for an error here include:
+//         * The persistent store is not accessible;
+//         * The schema for the persistent store is incompatible with current managed object model.
+//         Check the error message to determine what the actual problem was.
+//         
+//         
+//         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
+//         
+//         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
+//         * Simply deleting the existing store:
+//         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
+//         
+//         * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
+//         @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES}
+//         
+//         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
+//         
+//         */
+//        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+//        //abort();
+//    }    
+//    
+//    return _persistentStoreCoordinator;
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"datafolder"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
+        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:nil];
+    
+    //Added this to prevent data being synced to iCloud
+    [self addSkipBackupAttributeToItemAtURL:[NSURL fileURLWithPath:dataPath]];
+    
+    
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
+	
+    NSURL *storeUrl = [NSURL fileURLWithPath: [dataPath stringByAppendingPathComponent: @"HipsterData.sqlite"]];
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Beacon_Party.sqlite"];
     
-    NSError *error = nil;
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-         
-         Typical reasons for an error here include:
-         * The persistent store is not accessible;
-         * The schema for the persistent store is incompatible with current managed object model.
-         Check the error message to determine what the actual problem was.
-         
-         
-         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-         
-         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-         * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-         
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
-         @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES}
-         
-         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-         
-         */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        //abort();
-    }    
-    
+	NSError *error;
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:options error:&error]) {
+        // Handle the error.
+    }
+	
     return _persistentStoreCoordinator;
 }
+
+-(BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL
+{
+    NSLog(@"url: %@", URL);
+    
+    const char* filePath = [[URL path] fileSystemRepresentation];
+    
+    const char* attrName = "com.apple.MobileBackup";
+    u_int8_t attrValue = 1;
+    
+    int result = setxattr(filePath, attrName, &attrValue, sizeof(attrValue), 0, 0);
+    return result == 0;
+}
+
 
 #pragma mark - Application's Documents directory
 
@@ -339,60 +312,6 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
     }
     else {
         completionHandler(UIBackgroundFetchResultNoData);
-    }
-}
-
-#pragma mark copied methods from pic capture
-- (void)setSaveKey {
-	[self.settingsDictionary setObject:self.key forKey:@"key"];
-	[SaveData writeApplicationPlist:self.settingsDictionary toFile:@"key.plist"];
-}
-
-- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
-    [[OMDMediaDB sharedInstance] killUploadsAndPause];
-}
-
--(void)keyPassed {
-	
-    
-    [self setSaveKey];
-    
-    OMDMediaDB *mediaDB = [OMDMediaDB sharedInstance];
-    [mediaDB startUploading:OMDPICURL path:UPLOAD_PATH];
-    
-    self.keyPassedAlertView = [[UIAlertView alloc] initWithTitle:@"Great!"
-                                                         message:@"You're authorized! Start taking pics!"
-                                                        delegate:self cancelButtonTitle:@"Sweet!" otherButtonTitles:nil];
-    
-	[self.keyPassedAlertView show];
-    
-    // May return nil if a tracker has not yet been initialized with a property ID.
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"credential"     // Event category (required)
-                                                          action:@"key_passed"  // Event action (required)
-                                                           label:self.key          // Event label
-                                                           value:nil] build]];    // Event value
-	
-}
-
--(void)keyFailed {
-	self.keyFailedAlertView = [[UIAlertView alloc] initWithTitle:@"Sorry..."
-                                                         message:@"Wrong key. Tap on key to re-entering it. Maybe you mistyped?"
-                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	[self.keyFailedAlertView show];
-	
-}
-
-- (void)batteryStatus:(NSNotification *)notification
-{
-    UIDevice *device = [UIDevice currentDevice];
-    NSLog(@"State: %i Charge: %f", device.batteryState, device.batteryLevel);
-    if(device.batteryState == UIDeviceBatteryStateCharging && [[NSUserDefaults standardUserDefaults] boolForKey:@"display_on_charging"]) {
-        [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
-    }
-    else {
-        [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     }
 }
 

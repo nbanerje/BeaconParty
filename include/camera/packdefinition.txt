@@ -1,0 +1,17 @@
+{
+    "packs":[
+    
+        {
+            "name":"Ziggy",
+            "image":"ziggy.png",
+            "is-paid":false,
+            "is-active":true,
+            "product-id":"is.ziggy",
+            "items":[
+                {
+                    "image":"ziggy.png"
+                }
+            ]
+        }
+    ]
+}

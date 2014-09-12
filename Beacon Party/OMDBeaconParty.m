@@ -95,20 +95,26 @@
     if (closestBeacon ){
         //&& closestBeacon.minor != _bestBeacon.minor) {
         UAPush *shared = [UAPush shared];
+        BOOL updateTags = NO;
+        
+        if(closestBeacon.minor!= _bestBeacon.minor) {
+            updateTags = YES;
+        }
         
         _bestBeacon = closestBeacon;
         DLog(@"Found better beacon minor:%@", [_bestBeacon debugDescription]);
-
-        NSString *beaconTag = [NSString stringWithFormat:@"%@_%@_%@"
-                               ,_bestBeacon.proximityUUID.UUIDString
-                               ,_bestBeacon.major
-                               ,_bestBeacon.minor];
-        // Remove any in_ tags
-        [shared removeTagsFromCurrentDevice:[[shared tags] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] 'in_' OR SELF beginswith[c] 'out_'"]]];
-        // Set the new beacon in tag
-        [shared addTagToCurrentDevice:[@"in_" stringByAppendingString:beaconTag]];
-        [shared updateRegistration];
-
+        
+        if(updateTags) {
+            NSString *beaconTag = [NSString stringWithFormat:@"%@_%@_%@"
+                                   ,_bestBeacon.proximityUUID.UUIDString
+                                   ,_bestBeacon.major
+                                   ,_bestBeacon.minor];
+            // Remove any in_ tags
+            [shared removeTagsFromCurrentDevice:[[shared tags] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] 'in_' OR SELF beginswith[c] 'out_'"]]];
+            // Set the new beacon in tag
+            [shared addTagToCurrentDevice:[@"in_" stringByAppendingString:beaconTag]];
+            [shared updateRegistration];
+        }
         [self.delegate updateWithBeacon:_bestBeacon];
         
        

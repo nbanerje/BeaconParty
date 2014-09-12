@@ -90,7 +90,7 @@
             while (_continueMainLoop) {
                 @autoreleasepool {
                     NSTimeInterval currentOffsetFromEpoch = [[NSDate date] timeIntervalSinceDate:_epoch];
-                    NSNumber *num = [NSNumber numberWithFloat:currentOffsetFromEpoch];
+                    NSNumber *num = [NSNumber numberWithDouble:currentOffsetFromEpoch];
                     NSArray *filteredarray = [_sequences filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"((%K == nil OR %K == 0) AND %K <= %@)",@"executed",@"executed",@"time",num]];
                     for (NSMutableDictionary *action in filteredarray) {
                         if([[NSNumber numberWithBool:NO] compare:action[@"executed"]] == NSOrderedSame) {
@@ -106,7 +106,7 @@
                     NSArray *results = [[_sequences filteredArrayUsingPredicate:predicate] sortedArrayUsingDescriptors:[NSArray arrayWithObject:descriptor]];
                     
                     if([results count]>0) {
-                        float nextTime = ((NSNumber*)results[0][@"time"]).floatValue;
+                        double nextTime = ((NSNumber*)results[0][@"time"]).doubleValue;
                         currentOffsetFromEpoch = [[NSDate date] timeIntervalSinceDate:_epoch];
                         [NSThread sleepForTimeInterval:nextTime-currentOffsetFromEpoch];
                     }
@@ -231,9 +231,9 @@
         if (action[@"delay"] && action[@"rand"] == nil ){
             _torch.delay = (NSNumber*)action[@"delay"];
         } else if (action[@"delay"] && ((NSNumber*)action[@"rand"]).boolValue == YES) {
-            _torch.delay = [NSNumber numberWithFloat:floorf(((float)arc4random() / ARC4RANDOM_MAX) * ((NSNumber*)action[@"delay"]).floatValue)];
+            _torch.delay = [NSNumber numberWithDouble:floor(((double)arc4random() / ARC4RANDOM_MAX) * ((NSNumber*)action[@"delay"]).doubleValue)];
         } else {
-            _torch.delay = [NSNumber numberWithFloat:0.0];
+            _torch.delay = [NSNumber numberWithDouble:0.0];
         }
         [_torch startTorching:OMDTorchModeFlash];
     } else if([action[@"action"] isEqualToString:@"twinkle"]) {
@@ -244,7 +244,7 @@
         if(action[@"offset"]) {
             _torch.offset = action[@"offset"];
         } else {
-            _torch.offset = [NSNumber numberWithFloat:0.0];
+            _torch.offset = [NSNumber numberWithDouble:0.0];
         }
         if (action[@"inverse"]) {
             _torch.inverse = ((NSNumber*)action[@"inverse"]).boolValue;
@@ -254,14 +254,14 @@
         if(action[@"brightness"]) {
             _torch.brightness = action[@"brightness"];
         } else {
-            _torch.brightness = [NSNumber numberWithFloat:1.0];
+            _torch.brightness = [NSNumber numberWithDouble:1.0];
         }
         if (action[@"delay"] && action[@"rand"] == nil ){
             _torch.delay = (NSNumber*)action[@"delay"];
         } else if (action[@"delay"] && ((NSNumber*)action[@"rand"]).boolValue == YES) {
-            _torch.delay = [NSNumber numberWithFloat:floorf(((float)arc4random() / ARC4RANDOM_MAX) * ((NSNumber*)action[@"delay"]).floatValue)];
+            _torch.delay = [NSNumber numberWithDouble:floor(((double)arc4random() / ARC4RANDOM_MAX) * ((NSNumber*)action[@"delay"]).doubleValue)];
         } else {
-            _torch.delay = [NSNumber numberWithFloat:0];
+            _torch.delay = [NSNumber numberWithDouble:0];
         }
         [_torch startTorching:OMDTorchModeTwinkle];
         

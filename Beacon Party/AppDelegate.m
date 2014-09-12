@@ -18,12 +18,6 @@
 
 #define UUID @"BF5094D9-5849-47ED-8FA1-983A748A9586"
 
-#define OMDPICURL @"http://omdesignllc.com"
-#define PATH @"checkKey.php"
-#define UPLOAD_PATH @"postPic.php"
-#define DB_FILENAME @"media.sql"
-
-
 //typedef void(^FetchURLDataBlock)(NSString*, OMDBeaconPartySchedule*, void (^)(UIBackgroundFetchResult));
 //typedef void (^BackgroundCompletion)(UIBackgroundFetchResult);
 
@@ -220,7 +214,7 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
         [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:nil];
     
     //Added this to prevent data being synced to iCloud
-    [self addSkipBackupAttributeToItemAtURL:[NSURL fileURLWithPath:dataPath]];
+    //[self addSkipBackupAttributeToItemAtURL:[NSURL fileURLWithPath:dataPath]];
     
     
     if (_persistentStoreCoordinator != nil) {
@@ -242,18 +236,6 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
     return _persistentStoreCoordinator;
 }
 
--(BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL
-{
-    NSLog(@"url: %@", URL);
-    
-    const char* filePath = [[URL path] fileSystemRepresentation];
-    
-    const char* attrName = "com.apple.MobileBackup";
-    u_int8_t attrValue = 1;
-    
-    int result = setxattr(filePath, attrName, &attrValue, sizeof(attrValue), 0, 0);
-    return result == 0;
-}
 
 
 #pragma mark - Application's Documents directory
@@ -262,14 +244,6 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-}
-
-#pragma mark - Background fetch delegate methods
-
--(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
-{
-    fetchURLData(FETCH_URL_STR,_schedule,completionHandler);
-    
 }
 
 #pragma mark - Push Delegate

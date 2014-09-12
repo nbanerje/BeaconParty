@@ -74,7 +74,7 @@
     _scheduler.epoch = epoch;
     
 #ifdef DEBUG_EPOCH
-    _scheduler.epoch = [NSDate dateWithTimeIntervalSinceNow:0];
+    //_scheduler.epoch = [NSDate dateWithTimeIntervalSinceNow:0];
 #endif
     _scheduler.debugTextView = _debugTextView;
     
@@ -111,7 +111,8 @@
 
 -(void) setSchedule:(NSMutableArray*)schedule {
     _schedule = schedule;
-    [self selectSequenceFromBeacon:_currentBeacon isNewMinorValue:NO];
+    //Coerce sequence to load even if we haven't change our minor value.
+    [self selectSequenceFromBeacon:_currentBeacon isNewMinorValue:YES];
 }
 
 -(void) selectSequenceFromBeacon:(CLBeacon*)beacon isNewMinorValue:(BOOL)isNewMinorValue {

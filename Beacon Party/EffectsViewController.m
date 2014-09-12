@@ -31,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _rainbowView.hidden = YES;
     // Do any additional setup after loading the view.
 }
 
@@ -62,11 +63,17 @@
             [OMDTorch shared].frequency = (sender == _fastStrobeButton) ?  [NSNumber numberWithFloat:FAST_TORCH_FREQ] : [NSNumber numberWithFloat:SLOW_TORCH_FREQ];
         }
     } else if (sender == _rainbowFadeButton) {
-        _rainbowView.hidden = NO;
-        OMDScreenColorSpec *colorSpec = [[OMDScreenColorSpec alloc] init];
-        colorSpec.frequency = 1;
-        colorSpec.view = _rainbowView;
-        [colorSpec rainbowBlock]();
+        if(_rainbowView.hidden) {
+            _rainbowView.hidden = NO;
+            OMDScreenColorSpec *colorSpec = [[OMDScreenColorSpec alloc] init];
+            colorSpec.frequency = 1;
+            colorSpec.view = _rainbowView;
+            [colorSpec rainbowBlock]();
+        } else {
+            _rainbowView.hidden = YES;
+            [_rainbowView.layer removeAllAnimations];
+        }
+        
     }
 }
 @end

@@ -78,11 +78,6 @@
 #endif
     _scheduler.debugTextView = _debugTextView;
     
-    
-    //Download data from latest link
-    if(![OMDBeaconPartySchedule reloadData]) {
-        fetchURLData(FETCH_URL_STR,self,nil);
-    }
 }
 
 -(void) setView:(UIView *)view {

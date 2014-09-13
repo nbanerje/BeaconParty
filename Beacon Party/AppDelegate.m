@@ -16,10 +16,14 @@
 #import "GalleryViewController.h"
 #import "ShareViewController.h"
 
-#define UUID @"BF5094D9-5849-47ED-8FA1-983A748A9586"
 
-//typedef void(^FetchURLDataBlock)(NSString*, OMDBeaconPartySchedule*, void (^)(UIBackgroundFetchResult));
-//typedef void (^BackgroundCompletion)(UIBackgroundFetchResult);
+#define UUID @"BF5094D9-5849-47ED-8FA1-983A748A9586"
+#define NOTIFICATION_ALERT_VIEW 1
+
+@interface AppDelegate()
+@property (strong,nonatomic) CBCentralManager* cbManager;
+- (void) checkBluetoothAccess;
+@end
 
 FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* schedule, BackgroundCompletion completionHandler){
     NSURLSession *sharedSession = [NSURLSession sharedSession];
@@ -54,7 +58,18 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
     [GalleryViewController class];
     [ShareViewController class];
     
+    //Background Refresh Status
+    if ([UIApplication sharedApplication].backgroundRefreshStatus == UIBackgroundRefreshStatusDenied) {
+        //Alert user to turn on background refresh for the app
+    }
     
+    [self checkBluetoothAccess];
+    
+    if ([UIApplication sharedApplication].enabledRemoteNotificationTypes == UIRemoteNotificationTypeNone){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Push Notifications Needed" message:@"To get the most out of the show please enable Push Notifications." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        alert.tag = NOTIFICATION_ALERT_VIEW;
+        [alert show];
+    }
     //Check to see if a saved schedule exists. If not download the latest.
     
     [UAPush setDefaultPushEnabledValue:NO];
@@ -110,7 +125,10 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
     return YES;
 }
 							
-
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    //We need to reset the executed state to restart the latest action
+    _schedule.forceClearingExecuted = YES;
+}
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
@@ -284,6 +302,26 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
     }
 }
 
+#pragma mark Bluetooth Check
+- (void)checkBluetoothAccess {
+    
+    if(!_cbManager) {
+        _cbManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+    }
+    
+}
 
+- (void)centralManagerDidUpdateState:(CBCentralManager *)central {
+    if(central.state != CBCentralManagerStatePoweredOn) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bluetooth Needed" message:@"To get the most out of the show please enable Bluetooth." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(alertView.tag == NOTIFICATION_ALERT_VIEW) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=General"]];
+    }
+}
 
 @end

@@ -24,6 +24,11 @@
     
     dispatch_once(&onceToken, ^{
         schedule = [[self alloc] init];
+        schedule.forceClearingExecuted = NO;
+#ifdef DEBUG_EPOCH
+        [schedule loadScheduleFromJsonData:[NSData dataWithContentsOfFile:[[[NSBundle mainBundle] resourcePath]
+                                                                           stringByAppendingPathComponent:@"Sample.json"]]];
+#endif
     });
     return schedule;
 }
@@ -74,7 +79,7 @@
     _scheduler.epoch = epoch;
     
 #ifdef DEBUG_EPOCH
-    //_scheduler.epoch = [NSDate dateWithTimeIntervalSinceNow:0];
+    _scheduler.epoch = [NSDate dateWithTimeIntervalSinceNow:0];
 #endif
     _scheduler.debugTextView = _debugTextView;
     
@@ -145,7 +150,7 @@
     }
     _currentBeacon = beacon;
     
-    [self selectSequenceFromBeacon:_currentBeacon isNewMinorValue:isNewMinorValue];
+    [self selectSequenceFromBeacon:_currentBeacon isNewMinorValue:isNewMinorValue ||_forceClearingExecuted];
 }
 
 @end

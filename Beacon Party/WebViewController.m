@@ -57,7 +57,10 @@
     
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+#ifdef DEBUG
     NSLog([error debugDescription]);
+#endif
+    
 }
 
 @end

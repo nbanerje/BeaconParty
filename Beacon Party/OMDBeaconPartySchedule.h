@@ -21,12 +21,19 @@
 -(void) loadScheduleFromJsonData:(NSData*)data;
 
 /** Array that hold the current schedule for the event.
-    Initially this gets loaded from the Sample.json file, 
+    if DEBUG_EPOCH is defined this gets loaded from the Sample.json file,
     but you can overwrite the array entirely to set a new
     schedule.
  */
 @property (strong, nonatomic) NSArray *schedule;
 @property (weak,nonatomic) UITextView *debugTextView;
 @property (weak,nonatomic) UIView *view;
+
+/** 
+ flag to force clearing the executed flag for sequences.
+ Gets reset after a beacon update
+ */
+
+@property (assign,nonatomic) BOOL forceClearingExecuted;
 
 @end

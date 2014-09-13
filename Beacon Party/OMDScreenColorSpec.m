@@ -62,7 +62,7 @@ static const NSString* BEACON_COLOR_ACTION = @"color";
         _view.backgroundColor = _color1;
         [UIScreen mainScreen].brightness = _brightness;
         [UIView animateKeyframesWithDuration:period delay:_delay options:
-         UIViewKeyframeAnimationOptionRepeat animations:^{
+         UIViewKeyframeAnimationOptionRepeat|UIViewAnimationOptionAllowUserInteraction animations:^{
              [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:halfCyclePeriod animations:^{
                  _view.backgroundColor = _color1;
              }];

@@ -161,9 +161,9 @@
         colorSpec.view = _view;
         colorSpec.debugTextView = _debugTextView;
         if([action[@"action"] isEqualToString:@"color"])
-            dispatch_async(dispatch_get_main_queue(), ^{[colorSpec block]();});
+            dispatch_async(dispatch_get_main_queue(), [colorSpec block]);
         else
-            dispatch_async(dispatch_get_main_queue(), ^{[colorSpec rainbowBlock]();});
+            dispatch_async(dispatch_get_main_queue(), [colorSpec rainbowBlock]);
     } else if([action[@"action"] isEqualToString:@"stop"]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             _view.backgroundColor = [UIColor whiteColor];

@@ -34,15 +34,19 @@
 }
 
 - (void)initRegion:(NSString*)UUID identifier:(NSString*)identifier {
+    
     NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:UUID];
     self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:identifier];
     self.beaconRegion.notifyEntryStateOnDisplay = YES;
     self.beaconRegion.notifyOnEntry = YES;
     self.beaconRegion.notifyOnExit = YES;
-    
-    [self.locationManager startMonitoringForRegion:self.beaconRegion];
-    [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
-    DLog(@"startMonitoringForRegion");
+    if([CLLocationManager isMonitoringAvailableForClass:[CLBeaconRegion class]]) {
+        [self.locationManager startMonitoringForRegion:self.beaconRegion];
+        [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
+        DLog(@"startMonitoringForRegion");
+    } else {
+        DLog(@"monitoring not supported");
+    }
 }
 
 #pragma mark CLLocationManagerDelegate

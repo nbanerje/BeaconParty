@@ -349,7 +349,6 @@
 		493EF59219A9B04A0047A96B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 493EF59019A9B04A0047A96B /* InfoPlist.strings */; };
 		493EF59419A9B04A0047A96B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 493EF59319A9B04A0047A96B /* main.m */; };
 		493EF59819A9B04A0047A96B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 493EF59719A9B04A0047A96B /* AppDelegate.m */; };
-		493EF59B19A9B04A0047A96B /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 493EF59919A9B04A0047A96B /* Main_iPhone.storyboard */; };
 		493EF5A419A9B04A0047A96B /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 493EF5A319A9B04A0047A96B /* MasterViewController.m */; };
 		493EF5A919A9B04A0047A96B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 493EF5A819A9B04A0047A96B /* Images.xcassets */; };
 		493EF5B019A9B04A0047A96B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493EF5AF19A9B04A0047A96B /* XCTest.framework */; };
@@ -360,51 +359,6 @@
 		493EF5BD19A9B04A0047A96B /* Beacon_PartyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 493EF5BC19A9B04A0047A96B /* Beacon_PartyTests.m */; };
 		493EF5C819A9B0730047A96B /* OMDBeaconParty.m in Sources */ = {isa = PBXBuildFile; fileRef = 493EF5C719A9B0730047A96B /* OMDBeaconParty.m */; };
 		4956C6C519B8015E00661366 /* libUAirship-4.0.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4956C66E19B8015E00661366 /* libUAirship-4.0.3.a */; };
-		4956C6C719B8015E00661366 /* UADateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C67D19B8015E00661366 /* UADateUtils.m */; };
-		4956C6C819B8015E00661366 /* UAInboxAlertHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C67F19B8015E00661366 /* UAInboxAlertHandler.m */; };
-		4956C6C919B8015E00661366 /* UAInboxMessageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C68119B8015E00661366 /* UAInboxMessageListCell.m */; };
-		4956C6CA19B8015E00661366 /* UAInboxMessageListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C68319B8015E00661366 /* UAInboxMessageListController.m */; };
-		4956C6CB19B8015E00661366 /* UAInboxMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C68519B8015E00661366 /* UAInboxMessageViewController.m */; };
-		4956C6CC19B8015E00661366 /* UAInboxNavUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C68719B8015E00661366 /* UAInboxNavUI.m */; };
-		4956C6CD19B8015E00661366 /* UAInboxUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C68919B8015E00661366 /* UAInboxUI.m */; };
-		4956C6CE19B8015E00661366 /* list-image-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4956C68C19B8015E00661366 /* list-image-placeholder.png */; };
-		4956C6CF19B8015E00661366 /* list-image-placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4956C68D19B8015E00661366 /* list-image-placeholder@2x.png */; };
-		4956C6D019B8015E00661366 /* UAInboxLocalization.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4956C68E19B8015E00661366 /* UAInboxLocalization.bundle */; };
-		4956C6D119B8015E00661366 /* UAInboxMessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4956C68F19B8015E00661366 /* UAInboxMessageListCell.xib */; };
-		4956C6D219B8015E00661366 /* UAInboxMessageListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4956C69019B8015E00661366 /* UAInboxMessageListController.xib */; };
-		4956C6D319B8015E00661366 /* UAInboxMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4956C69119B8015E00661366 /* UAInboxMessageViewController.xib */; };
-		4956C6D419B8015E00661366 /* UALocationDemoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C69619B8015E00661366 /* UALocationDemoAnnotation.m */; };
-		4956C6D519B8015E00661366 /* UALocationSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C69819B8015E00661366 /* UALocationSettingsViewController.m */; };
-		4956C6D619B8015E00661366 /* UAMapPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C69A19B8015E00661366 /* UAMapPresentationController.m */; };
-		4956C6D719B8015E00661366 /* UAPushMoreSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C69C19B8015E00661366 /* UAPushMoreSettingsViewController.m */; };
-		4956C6D819B8015E00661366 /* UAPushNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C69E19B8015E00661366 /* UAPushNotificationHandler.m */; };
-		4956C6D919B8015E00661366 /* UAPushSettingsAddTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C6A019B8015E00661366 /* UAPushSettingsAddTagViewController.m */; };
-		4956C6DA19B8015E00661366 /* UAPushSettingsAliasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C6A219B8015E00661366 /* UAPushSettingsAliasViewController.m */; };
-		4956C6DB19B8015E00661366 /* UAPushSettingsChannelInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C6A419B8015E00661366 /* UAPushSettingsChannelInfoViewController.m */; };
-		4956C6DC19B8015E00661366 /* UAPushSettingsSoundsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C6A619B8015E00661366 /* UAPushSettingsSoundsViewController.m */; };
-		4956C6DD19B8015E00661366 /* UAPushSettingsTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C6A819B8015E00661366 /* UAPushSettingsTagsViewController.m */; };
-		4956C6DE19B8015E00661366 /* UAPushSettingsTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C6AA19B8015E00661366 /* UAPushSettingsTokenViewController.m */; };
-		4956C6DF19B8015E00661366 /* UAPushSettingsUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C6AC19B8015E00661366 /* UAPushSettingsUserInfoViewController.m */; };
-		4956C6E019B8015E00661366 /* UAPushSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C6AE19B8015E00661366 /* UAPushSettingsViewController.m */; };
-		4956C6E119B8015E00661366 /* UAPushUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956C6B019B8015E00661366 /* UAPushUI.m */; };
-		4956C6E219B8015E00661366 /* bottom-detail.png in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6B319B8015E00661366 /* bottom-detail.png */; };
-		4956C6E319B8015E00661366 /* bottom-detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6B419B8015E00661366 /* bottom-detail@2x.png */; };
-		4956C6E419B8015E00661366 /* middle-detail.png in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6B519B8015E00661366 /* middle-detail.png */; };
-		4956C6E519B8015E00661366 /* middle-detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6B619B8015E00661366 /* middle-detail@2x.png */; };
-		4956C6E619B8015E00661366 /* top-detail.png in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6B719B8015E00661366 /* top-detail.png */; };
-		4956C6E719B8015E00661366 /* top-detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6B819B8015E00661366 /* top-detail@2x.png */; };
-		4956C6E819B8015E00661366 /* UALocationSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6B919B8015E00661366 /* UALocationSettingsViewController.xib */; };
-		4956C6E919B8015E00661366 /* UAMapPresentationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6BA19B8015E00661366 /* UAMapPresentationViewController.xib */; };
-		4956C6EA19B8015E00661366 /* UAPushLocalization.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6BB19B8015E00661366 /* UAPushLocalization.bundle */; };
-		4956C6EB19B8015E00661366 /* UAPushMoreSettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6BC19B8015E00661366 /* UAPushMoreSettingsView.xib */; };
-		4956C6EC19B8015E00661366 /* UAPushSettingsAddTagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6BD19B8015E00661366 /* UAPushSettingsAddTagViewController.xib */; };
-		4956C6ED19B8015E00661366 /* UAPushSettingsAliasView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6BE19B8015E00661366 /* UAPushSettingsAliasView.xib */; };
-		4956C6EE19B8015E00661366 /* UAPushSettingsChannelInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6BF19B8015E00661366 /* UAPushSettingsChannelInfoViewController.xib */; };
-		4956C6EF19B8015E00661366 /* UAPushSettingsSoundsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6C019B8015E00661366 /* UAPushSettingsSoundsViewController.xib */; };
-		4956C6F019B8015E00661366 /* UAPushSettingsTagsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6C119B8015E00661366 /* UAPushSettingsTagsViewController.xib */; };
-		4956C6F119B8015E00661366 /* UAPushSettingsTokenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6C219B8015E00661366 /* UAPushSettingsTokenView.xib */; };
-		4956C6F219B8015E00661366 /* UAPushSettingsUserInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6C319B8015E00661366 /* UAPushSettingsUserInfoView.xib */; };
-		4956C6F319B8015E00661366 /* UAPushSettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4956C6C419B8015E00661366 /* UAPushSettingsView.xib */; };
 		4956C6F519B801B500661366 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4956C6F419B801B500661366 /* CFNetwork.framework */; };
 		4956C70019B8021D00661366 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4956C6F719B8021D00661366 /* CoreBluetooth.framework */; };
 		4956C70119B8021D00661366 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4956C6F819B8021D00661366 /* CoreLocation.framework */; };
@@ -930,7 +884,6 @@
 		493EF59519A9B04A0047A96B /* Beacon Party-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Beacon Party-Prefix.pch"; sourceTree = "<group>"; };
 		493EF59619A9B04A0047A96B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		493EF59719A9B04A0047A96B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		493EF59A19A9B04A0047A96B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		493EF5A219A9B04A0047A96B /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		493EF5A319A9B04A0047A96B /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		493EF5A819A9B04A0047A96B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -1025,72 +978,6 @@
 		4956C67419B8015E00661366 /* UADeviceRegistrar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UADeviceRegistrar.h; sourceTree = "<group>"; };
 		4956C67519B8015E00661366 /* UADeviceRegistrationPayload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UADeviceRegistrationPayload.h; sourceTree = "<group>"; };
 		4956C67619B8015E00661366 /* UAPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAPush.h; sourceTree = "<group>"; };
-		4956C67C19B8015E00661366 /* UADateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UADateUtils.h; sourceTree = "<group>"; };
-		4956C67D19B8015E00661366 /* UADateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UADateUtils.m; sourceTree = "<group>"; };
-		4956C67E19B8015E00661366 /* UAInboxAlertHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAInboxAlertHandler.h; sourceTree = "<group>"; };
-		4956C67F19B8015E00661366 /* UAInboxAlertHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAInboxAlertHandler.m; sourceTree = "<group>"; };
-		4956C68019B8015E00661366 /* UAInboxMessageListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAInboxMessageListCell.h; sourceTree = "<group>"; };
-		4956C68119B8015E00661366 /* UAInboxMessageListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAInboxMessageListCell.m; sourceTree = "<group>"; };
-		4956C68219B8015E00661366 /* UAInboxMessageListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAInboxMessageListController.h; sourceTree = "<group>"; };
-		4956C68319B8015E00661366 /* UAInboxMessageListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAInboxMessageListController.m; sourceTree = "<group>"; };
-		4956C68419B8015E00661366 /* UAInboxMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAInboxMessageViewController.h; sourceTree = "<group>"; };
-		4956C68519B8015E00661366 /* UAInboxMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAInboxMessageViewController.m; sourceTree = "<group>"; };
-		4956C68619B8015E00661366 /* UAInboxNavUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAInboxNavUI.h; sourceTree = "<group>"; };
-		4956C68719B8015E00661366 /* UAInboxNavUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAInboxNavUI.m; sourceTree = "<group>"; };
-		4956C68819B8015E00661366 /* UAInboxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAInboxUI.h; sourceTree = "<group>"; };
-		4956C68919B8015E00661366 /* UAInboxUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAInboxUI.m; sourceTree = "<group>"; };
-		4956C68C19B8015E00661366 /* list-image-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-image-placeholder.png"; sourceTree = "<group>"; };
-		4956C68D19B8015E00661366 /* list-image-placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-image-placeholder@2x.png"; sourceTree = "<group>"; };
-		4956C68E19B8015E00661366 /* UAInboxLocalization.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UAInboxLocalization.bundle; sourceTree = "<group>"; };
-		4956C68F19B8015E00661366 /* UAInboxMessageListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UAInboxMessageListCell.xib; sourceTree = "<group>"; };
-		4956C69019B8015E00661366 /* UAInboxMessageListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UAInboxMessageListController.xib; sourceTree = "<group>"; };
-		4956C69119B8015E00661366 /* UAInboxMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UAInboxMessageViewController.xib; sourceTree = "<group>"; };
-		4956C69519B8015E00661366 /* UALocationDemoAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UALocationDemoAnnotation.h; sourceTree = "<group>"; };
-		4956C69619B8015E00661366 /* UALocationDemoAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UALocationDemoAnnotation.m; sourceTree = "<group>"; };
-		4956C69719B8015E00661366 /* UALocationSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UALocationSettingsViewController.h; sourceTree = "<group>"; };
-		4956C69819B8015E00661366 /* UALocationSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UALocationSettingsViewController.m; sourceTree = "<group>"; };
-		4956C69919B8015E00661366 /* UAMapPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAMapPresentationController.h; sourceTree = "<group>"; };
-		4956C69A19B8015E00661366 /* UAMapPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAMapPresentationController.m; sourceTree = "<group>"; };
-		4956C69B19B8015E00661366 /* UAPushMoreSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAPushMoreSettingsViewController.h; sourceTree = "<group>"; };
-		4956C69C19B8015E00661366 /* UAPushMoreSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAPushMoreSettingsViewController.m; sourceTree = "<group>"; };
-		4956C69D19B8015E00661366 /* UAPushNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAPushNotificationHandler.h; sourceTree = "<group>"; };
-		4956C69E19B8015E00661366 /* UAPushNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAPushNotificationHandler.m; sourceTree = "<group>"; };
-		4956C69F19B8015E00661366 /* UAPushSettingsAddTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAPushSettingsAddTagViewController.h; sourceTree = "<group>"; };
-		4956C6A019B8015E00661366 /* UAPushSettingsAddTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAPushSettingsAddTagViewController.m; sourceTree = "<group>"; };
-		4956C6A119B8015E00661366 /* UAPushSettingsAliasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAPushSettingsAliasViewController.h; sourceTree = "<group>"; };
-		4956C6A219B8015E00661366 /* UAPushSettingsAliasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAPushSettingsAliasViewController.m; sourceTree = "<group>"; };
-		4956C6A319B8015E00661366 /* UAPushSettingsChannelInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAPushSettingsChannelInfoViewController.h; sourceTree = "<group>"; };
-		4956C6A419B8015E00661366 /* UAPushSettingsChannelInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAPushSettingsChannelInfoViewController.m; sourceTree = "<group>"; };
-		4956C6A519B8015E00661366 /* UAPushSettingsSoundsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAPushSettingsSoundsViewController.h; sourceTree = "<group>"; };
-		4956C6A619B8015E00661366 /* UAPushSettingsSoundsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAPushSettingsSoundsViewController.m; sourceTree = "<group>"; };
-		4956C6A719B8015E00661366 /* UAPushSettingsTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAPushSettingsTagsViewController.h; sourceTree = "<group>"; };
-		4956C6A819B8015E00661366 /* UAPushSettingsTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAPushSettingsTagsViewController.m; sourceTree = "<group>"; };
-		4956C6A919B8015E00661366 /* UAPushSettingsTokenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAPushSettingsTokenViewController.h; sourceTree = "<group>"; };
-		4956C6AA19B8015E00661366 /* UAPushSettingsTokenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAPushSettingsTokenViewController.m; sourceTree = "<group>"; };
-		4956C6AB19B8015E00661366 /* UAPushSettingsUserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAPushSettingsUserInfoViewController.h; sourceTree = "<group>"; };
-		4956C6AC19B8015E00661366 /* UAPushSettingsUserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAPushSettingsUserInfoViewController.m; sourceTree = "<group>"; };
-		4956C6AD19B8015E00661366 /* UAPushSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAPushSettingsViewController.h; sourceTree = "<group>"; };
-		4956C6AE19B8015E00661366 /* UAPushSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAPushSettingsViewController.m; sourceTree = "<group>"; };
-		4956C6AF19B8015E00661366 /* UAPushUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAPushUI.h; sourceTree = "<group>"; };
-		4956C6B019B8015E00661366 /* UAPushUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAPushUI.m; sourceTree = "<group>"; };
-		4956C6B319B8015E00661366 /* bottom-detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom-detail.png"; sourceTree = "<group>"; };
-		4956C6B419B8015E00661366 /* bottom-detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom-detail@2x.png"; sourceTree = "<group>"; };
-		4956C6B519B8015E00661366 /* middle-detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middle-detail.png"; sourceTree = "<group>"; };
-		4956C6B619B8015E00661366 /* middle-detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middle-detail@2x.png"; sourceTree = "<group>"; };
-		4956C6B719B8015E00661366 /* top-detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top-detail.png"; sourceTree = "<group>"; };
-		4956C6B819B8015E00661366 /* top-detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top-detail@2x.png"; sourceTree = "<group>"; };
-		4956C6B919B8015E00661366 /* UALocationSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UALocationSettingsViewController.xib; sourceTree = "<group>"; };
-		4956C6BA19B8015E00661366 /* UAMapPresentationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UAMapPresentationViewController.xib; sourceTree = "<group>"; };
-		4956C6BB19B8015E00661366 /* UAPushLocalization.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UAPushLocalization.bundle; sourceTree = "<group>"; };
-		4956C6BC19B8015E00661366 /* UAPushMoreSettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UAPushMoreSettingsView.xib; sourceTree = "<group>"; };
-		4956C6BD19B8015E00661366 /* UAPushSettingsAddTagViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UAPushSettingsAddTagViewController.xib; sourceTree = "<group>"; };
-		4956C6BE19B8015E00661366 /* UAPushSettingsAliasView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UAPushSettingsAliasView.xib; sourceTree = "<group>"; };
-		4956C6BF19B8015E00661366 /* UAPushSettingsChannelInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UAPushSettingsChannelInfoViewController.xib; sourceTree = "<group>"; };
-		4956C6C019B8015E00661366 /* UAPushSettingsSoundsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UAPushSettingsSoundsViewController.xib; sourceTree = "<group>"; };
-		4956C6C119B8015E00661366 /* UAPushSettingsTagsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UAPushSettingsTagsViewController.xib; sourceTree = "<group>"; };
-		4956C6C219B8015E00661366 /* UAPushSettingsTokenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UAPushSettingsTokenView.xib; sourceTree = "<group>"; };
-		4956C6C319B8015E00661366 /* UAPushSettingsUserInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UAPushSettingsUserInfoView.xib; sourceTree = "<group>"; };
-		4956C6C419B8015E00661366 /* UAPushSettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UAPushSettingsView.xib; sourceTree = "<group>"; };
 		4956C6F419B801B500661366 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		4956C6F619B8021D00661366 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		4956C6F719B8021D00661366 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
@@ -1675,7 +1562,6 @@
 				49DEE76819BE2F1A00833F77 /* WebViewController.m */,
 				49DEE76319BE081700833F77 /* EffectsViewController.h */,
 				49DEE76419BE081700833F77 /* EffectsViewController.m */,
-				493EF59919A9B04A0047A96B /* Main_iPhone.storyboard */,
 				493EF5A219A9B04A0047A96B /* MasterViewController.h */,
 				493EF5A319A9B04A0047A96B /* MasterViewController.m */,
 				493EF5A819A9B04A0047A96B /* Images.xcassets */,
@@ -1734,7 +1620,6 @@
 				4956C66119B8015E00661366 /* Inbox */,
 				4956C66E19B8015E00661366 /* libUAirship-4.0.3.a */,
 				4956C67019B8015E00661366 /* Push */,
-				4956C67719B8015E00661366 /* UI */,
 			);
 			path = Airship;
 			sourceTree = "<group>";
@@ -1864,167 +1749,6 @@
 				4956C67619B8015E00661366 /* UAPush.h */,
 			);
 			path = Push;
-			sourceTree = "<group>";
-		};
-		4956C67719B8015E00661366 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				4956C67819B8015E00661366 /* Default */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		4956C67819B8015E00661366 /* Default */ = {
-			isa = PBXGroup;
-			children = (
-				4956C67919B8015E00661366 /* Inbox */,
-				4956C69219B8015E00661366 /* Push */,
-			);
-			path = Default;
-			sourceTree = "<group>";
-		};
-		4956C67919B8015E00661366 /* Inbox */ = {
-			isa = PBXGroup;
-			children = (
-				4956C67A19B8015E00661366 /* Classes */,
-				4956C68A19B8015E00661366 /* Resources */,
-			);
-			path = Inbox;
-			sourceTree = "<group>";
-		};
-		4956C67A19B8015E00661366 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				4956C67B19B8015E00661366 /* Shared */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		4956C67B19B8015E00661366 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				4956C67C19B8015E00661366 /* UADateUtils.h */,
-				4956C67D19B8015E00661366 /* UADateUtils.m */,
-				4956C67E19B8015E00661366 /* UAInboxAlertHandler.h */,
-				4956C67F19B8015E00661366 /* UAInboxAlertHandler.m */,
-				4956C68019B8015E00661366 /* UAInboxMessageListCell.h */,
-				4956C68119B8015E00661366 /* UAInboxMessageListCell.m */,
-				4956C68219B8015E00661366 /* UAInboxMessageListController.h */,
-				4956C68319B8015E00661366 /* UAInboxMessageListController.m */,
-				4956C68419B8015E00661366 /* UAInboxMessageViewController.h */,
-				4956C68519B8015E00661366 /* UAInboxMessageViewController.m */,
-				4956C68619B8015E00661366 /* UAInboxNavUI.h */,
-				4956C68719B8015E00661366 /* UAInboxNavUI.m */,
-				4956C68819B8015E00661366 /* UAInboxUI.h */,
-				4956C68919B8015E00661366 /* UAInboxUI.m */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		4956C68A19B8015E00661366 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				4956C68B19B8015E00661366 /* Shared */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		4956C68B19B8015E00661366 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				4956C68C19B8015E00661366 /* list-image-placeholder.png */,
-				4956C68D19B8015E00661366 /* list-image-placeholder@2x.png */,
-				4956C68E19B8015E00661366 /* UAInboxLocalization.bundle */,
-				4956C68F19B8015E00661366 /* UAInboxMessageListCell.xib */,
-				4956C69019B8015E00661366 /* UAInboxMessageListController.xib */,
-				4956C69119B8015E00661366 /* UAInboxMessageViewController.xib */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		4956C69219B8015E00661366 /* Push */ = {
-			isa = PBXGroup;
-			children = (
-				4956C69319B8015E00661366 /* Classes */,
-				4956C6B119B8015E00661366 /* Resources */,
-			);
-			path = Push;
-			sourceTree = "<group>";
-		};
-		4956C69319B8015E00661366 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				4956C69419B8015E00661366 /* Shared */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		4956C69419B8015E00661366 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				4956C69519B8015E00661366 /* UALocationDemoAnnotation.h */,
-				4956C69619B8015E00661366 /* UALocationDemoAnnotation.m */,
-				4956C69719B8015E00661366 /* UALocationSettingsViewController.h */,
-				4956C69819B8015E00661366 /* UALocationSettingsViewController.m */,
-				4956C69919B8015E00661366 /* UAMapPresentationController.h */,
-				4956C69A19B8015E00661366 /* UAMapPresentationController.m */,
-				4956C69B19B8015E00661366 /* UAPushMoreSettingsViewController.h */,
-				4956C69C19B8015E00661366 /* UAPushMoreSettingsViewController.m */,
-				4956C69D19B8015E00661366 /* UAPushNotificationHandler.h */,
-				4956C69E19B8015E00661366 /* UAPushNotificationHandler.m */,
-				4956C69F19B8015E00661366 /* UAPushSettingsAddTagViewController.h */,
-				4956C6A019B8015E00661366 /* UAPushSettingsAddTagViewController.m */,
-				4956C6A119B8015E00661366 /* UAPushSettingsAliasViewController.h */,
-				4956C6A219B8015E00661366 /* UAPushSettingsAliasViewController.m */,
-				4956C6A319B8015E00661366 /* UAPushSettingsChannelInfoViewController.h */,
-				4956C6A419B8015E00661366 /* UAPushSettingsChannelInfoViewController.m */,
-				4956C6A519B8015E00661366 /* UAPushSettingsSoundsViewController.h */,
-				4956C6A619B8015E00661366 /* UAPushSettingsSoundsViewController.m */,
-				4956C6A719B8015E00661366 /* UAPushSettingsTagsViewController.h */,
-				4956C6A819B8015E00661366 /* UAPushSettingsTagsViewController.m */,
-				4956C6A919B8015E00661366 /* UAPushSettingsTokenViewController.h */,
-				4956C6AA19B8015E00661366 /* UAPushSettingsTokenViewController.m */,
-				4956C6AB19B8015E00661366 /* UAPushSettingsUserInfoViewController.h */,
-				4956C6AC19B8015E00661366 /* UAPushSettingsUserInfoViewController.m */,
-				4956C6AD19B8015E00661366 /* UAPushSettingsViewController.h */,
-				4956C6AE19B8015E00661366 /* UAPushSettingsViewController.m */,
-				4956C6AF19B8015E00661366 /* UAPushUI.h */,
-				4956C6B019B8015E00661366 /* UAPushUI.m */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		4956C6B119B8015E00661366 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				4956C6B219B8015E00661366 /* Shared */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		4956C6B219B8015E00661366 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				4956C6B319B8015E00661366 /* bottom-detail.png */,
-				4956C6B419B8015E00661366 /* bottom-detail@2x.png */,
-				4956C6B519B8015E00661366 /* middle-detail.png */,
-				4956C6B619B8015E00661366 /* middle-detail@2x.png */,
-				4956C6B719B8015E00661366 /* top-detail.png */,
-				4956C6B819B8015E00661366 /* top-detail@2x.png */,
-				4956C6B919B8015E00661366 /* UALocationSettingsViewController.xib */,
-				4956C6BA19B8015E00661366 /* UAMapPresentationViewController.xib */,
-				4956C6BB19B8015E00661366 /* UAPushLocalization.bundle */,
-				4956C6BC19B8015E00661366 /* UAPushMoreSettingsView.xib */,
-				4956C6BD19B8015E00661366 /* UAPushSettingsAddTagViewController.xib */,
-				4956C6BE19B8015E00661366 /* UAPushSettingsAliasView.xib */,
-				4956C6BF19B8015E00661366 /* UAPushSettingsChannelInfoViewController.xib */,
-				4956C6C019B8015E00661366 /* UAPushSettingsSoundsViewController.xib */,
-				4956C6C119B8015E00661366 /* UAPushSettingsTagsViewController.xib */,
-				4956C6C219B8015E00661366 /* UAPushSettingsTokenView.xib */,
-				4956C6C319B8015E00661366 /* UAPushSettingsUserInfoView.xib */,
-				4956C6C419B8015E00661366 /* UAPushSettingsView.xib */,
-			);
-			path = Shared;
 			sourceTree = "<group>";
 		};
 		49E8B7B119BE5C7300EE59FA /* Products */ = {
@@ -2238,9 +1962,7 @@
 				4902609019C219A800B28190 /* facialhair_strongman.png in Resources */,
 				4902612519C219A800B28190 /* PackItemView.xib in Resources */,
 				493EF5A919A9B04A0047A96B /* Images.xcassets in Resources */,
-				4956C6D019B8015E00661366 /* UAInboxLocalization.bundle in Resources */,
 				49025E7619C2199B00B28190 /* ziggy@2x.png in Resources */,
-				4956C6CF19B8015E00661366 /* list-image-placeholder@2x.png in Resources */,
 				490260C119C219A800B28190 /* frame002@2x.png in Resources */,
 				4902609A19C219A800B28190 /* fancy_champagne.png in Resources */,
 				4902608D19C219A800B28190 /* facialhair_lincolin.png in Resources */,
@@ -2259,14 +1981,11 @@
 				490260CE19C219A800B28190 /* frame009.png in Resources */,
 				4902600F19C219A800B28190 /* animal_shark.png in Resources */,
 				4902610A19C219A800B28190 /* lobster.png in Resources */,
-				4956C6F319B8015E00661366 /* UAPushSettingsView.xib in Resources */,
 				4902601B19C219A800B28190 /* bling_anchor.png in Resources */,
 				4902600919C219A800B28190 /* animal_hawk.png in Resources */,
 				4902603D19C219A800B28190 /* btn-duplicate-tapped.png in Resources */,
 				490260B519C219A800B28190 /* filter5.png in Resources */,
-				4956C6CE19B8015E00661366 /* list-image-placeholder.png in Resources */,
 				4902610F19C219A800B28190 /* luchador_fatty2.png in Resources */,
-				4956C6EF19B8015E00661366 /* UAPushSettingsSoundsViewController.xib in Resources */,
 				4902608F19C219A800B28190 /* facialhair_soulpatch.png in Resources */,
 				490260A219C219A800B28190 /* fancy_kilt.png in Resources */,
 				4902601C19C219A800B28190 /* bling_blingx2.png in Resources */,
@@ -2279,14 +1998,12 @@
 				4902613219C219A800B28190 /* photoborder_005.png in Resources */,
 				4902603C19C219A800B28190 /* btn-choosepic@2x.png in Resources */,
 				490260F319C219A800B28190 /* home-selected@2x.png in Resources */,
-				4956C6EA19B8015E00661366 /* UAPushLocalization.bundle in Resources */,
 				4902606819C219A800B28190 /* btnCancel@2x.png in Resources */,
 				4902607719C219A800B28190 /* christmas_evergreen.png in Resources */,
 				490260A819C219A800B28190 /* fancy_tophat.png in Resources */,
 				4902600B19C219A800B28190 /* animal_monkey.png in Resources */,
 				4902602319C219A800B28190 /* bling_shades.png in Resources */,
 				490260E319C219A800B28190 /* hipster_librarian.png in Resources */,
-				4956C6E719B8015E00661366 /* top-detail@2x.png in Resources */,
 				4902604019C219A800B28190 /* btn-duplicate@2x.png in Resources */,
 				4902605519C219A800B28190 /* btn-remove-tapped.png in Resources */,
 				490260BE19C219A800B28190 /* frame001.png in Resources */,
@@ -2327,7 +2044,6 @@
 				4902609D19C219A800B28190 /* fancy_disco.png in Resources */,
 				4902600519C219A800B28190 /* animal_elephant.png in Resources */,
 				4902608719C219A800B28190 /* facialhair_dali.png in Resources */,
-				4956C6EB19B8015E00661366 /* UAPushMoreSettingsView.xib in Resources */,
 				4902602019C219A800B28190 /* bling_grilltop.png in Resources */,
 				4902613719C219A800B28190 /* Settings.bundle in Resources */,
 				4902613B19C219A800B28190 /* sweater.png in Resources */,
@@ -2388,8 +2104,6 @@
 				4902602C19C219A800B28190 /* btn-back@2x.png in Resources */,
 				4902608219C219A800B28190 /* facialhair_adolf.png in Resources */,
 				4902600E19C219A800B28190 /* animal_rooster.png in Resources */,
-				4956C6E619B8015E00661366 /* top-detail.png in Resources */,
-				4956C6D219B8015E00661366 /* UAInboxMessageListController.xib in Resources */,
 				490260C819C219A800B28190 /* frame006.png in Resources */,
 				490260F019C219A800B28190 /* home-bg.png in Resources */,
 				4902600C19C219A800B28190 /* animal_panda.png in Resources */,
@@ -2398,14 +2112,12 @@
 				490260D819C219A800B28190 /* hipster.png in Resources */,
 				4902605919C219A800B28190 /* btn-save-tapped.png in Resources */,
 				4902600019C219A800B28190 /* animal_badger.png in Resources */,
-				4956C6ED19B8015E00661366 /* UAPushSettingsAliasView.xib in Resources */,
 				4902603219C219A800B28190 /* btn-camera-tapped@2x.png in Resources */,
 				4902601A19C219A800B28190 /* beardcover@2x.png in Resources */,
 				4902612219C219A800B28190 /* packdefinition.txt in Resources */,
 				4902606519C219A800B28190 /* btnCancel-tapped.png in Resources */,
 				4902608C19C219A800B28190 /* facialhair_ironandwine.png in Resources */,
 				4902612119C219A800B28190 /* MuseoSlab-700Italic.otf in Resources */,
-				4956C6E319B8015E00661366 /* bottom-detail@2x.png in Resources */,
 				4902612719C219A800B28190 /* packs-selected@2x.png in Resources */,
 				4902603819C219A800B28190 /* btn-cancel-bottom@2x.png in Resources */,
 				4902613F19C219A800B28190 /* whitebg.png in Resources */,
@@ -2424,23 +2136,18 @@
 				4902613419C219A800B28190 /* photoborder_007.png in Resources */,
 				490260CF19C219A800B28190 /* frame009@2x.png in Resources */,
 				4902613519C219A800B28190 /* photoborder_008.png in Resources */,
-				4956C6F119B8015E00661366 /* UAPushSettingsTokenView.xib in Resources */,
 				490260EF19C219A800B28190 /* hipstercover@2x.png in Resources */,
-				4956C6EC19B8015E00661366 /* UAPushSettingsAddTagViewController.xib in Resources */,
 				4902605819C219A800B28190 /* btn-remove@2x.png in Resources */,
 				4902608919C219A800B28190 /* facialhair_einstein.png in Resources */,
 				490260F619C219A800B28190 /* homeicon.png in Resources */,
 				4902611B19C219A800B28190 /* moof.png in Resources */,
-				4956C6E819B8015E00661366 /* UALocationSettingsViewController.xib in Resources */,
 				4902605619C219A800B28190 /* btn-remove-tapped@2x.png in Resources */,
 				4904947219B6D9A100A092E3 /* Sample.json in Resources */,
 				490260EB19C219A800B28190 /* hipster_snapcap.png in Resources */,
 				490260DB19C219A800B28190 /* hipster_bandana.png in Resources */,
 				490260D019C219A800B28190 /* genericbutton-tapped.png in Resources */,
 				490260CA19C219A800B28190 /* frame007.png in Resources */,
-				4956C6E919B8015E00661366 /* UAMapPresentationViewController.xib in Resources */,
 				4902610119C219A800B28190 /* icon6.png in Resources */,
-				4956C6EE19B8015E00661366 /* UAPushSettingsChannelInfoViewController.xib in Resources */,
 				4902612319C219A800B28190 /* packicon.png in Resources */,
 				4902601119C219A800B28190 /* animal_trex.png in Resources */,
 				4902600319C219A800B28190 /* animal_cobra.png in Resources */,
@@ -2460,10 +2167,8 @@
 				490260A119C219A800B28190 /* fancy_jet.png in Resources */,
 				4902611119C219A800B28190 /* luchador_kerplop.png in Resources */,
 				490260A619C219A800B28190 /* fancy_necklace.png in Resources */,
-				4956C6F019B8015E00661366 /* UAPushSettingsTagsViewController.xib in Resources */,
 				4902605B19C219A800B28190 /* btn-save.png in Resources */,
 				490260F419C219A800B28190 /* home.png in Resources */,
-				4956C6F219B8015E00661366 /* UAPushSettingsUserInfoView.xib in Resources */,
 				4902611319C219A800B28190 /* luchador_mask2.png in Resources */,
 				4902609819C219A800B28190 /* fancy_bowtie.png in Resources */,
 				4902609719C219A800B28190 /* fancy_boa.png in Resources */,
@@ -2503,7 +2208,6 @@
 				490260E619C219A800B28190 /* hipster_rocker.png in Resources */,
 				4902614019C219A800B28190 /* whitebg@2x.png in Resources */,
 				490260E819C219A800B28190 /* hipster_shades1.png in Resources */,
-				493EF59B19A9B04A0047A96B /* Main_iPhone.storyboard in Resources */,
 				490260FB19C219A800B28190 /* icon12.png in Resources */,
 				4902606219C219A800B28190 /* btn-visit-website-tapped@2x.png in Resources */,
 				4902600719C219A800B28190 /* animal_flamingo.png in Resources */,
@@ -2512,7 +2216,6 @@
 				490260FD19C219A800B28190 /* icon2.png in Resources */,
 				4902609619C219A800B28190 /* fakeiphone.png in Resources */,
 				4902607219C219A800B28190 /* christmas_bow.png in Resources */,
-				4956C6D319B8015E00661366 /* UAInboxMessageViewController.xib in Resources */,
 				490260BA19C219A800B28190 /* filter7@2x.png in Resources */,
 				4902609319C219A800B28190 /* facialhair_thunderlips.png in Resources */,
 				4902612B19C219A800B28190 /* pagedot@2x.png in Resources */,
@@ -2529,20 +2232,17 @@
 				490260CB19C219A800B28190 /* frame007@2x.png in Resources */,
 				49F5CFF319BC035A007CF934 /* CHANGELOG in Resources */,
 				490260D119C219A800B28190 /* genericbutton-tapped@2x.png in Resources */,
-				4956C6E219B8015E00661366 /* bottom-detail.png in Resources */,
 				4902602819C219A800B28190 /* bottombar@2x.png in Resources */,
 				4902604119C219A800B28190 /* btn-email-tapped.png in Resources */,
 				4902607F19C219A800B28190 /* copcover.png in Resources */,
 				4902600119C219A800B28190 /* animal_bass.png in Resources */,
 				49025E7519C2199B00B28190 /* ziggy.png in Resources */,
 				4902604319C219A800B28190 /* btn-email.png in Resources */,
-				4956C6D119B8015E00661366 /* UAInboxMessageListCell.xib in Resources */,
 				4902605319C219A800B28190 /* btn-next.png in Resources */,
 				490260AA19C219A800B28190 /* fancycover@2x.png in Resources */,
 				4902606C19C219A800B28190 /* btnUse@2x.png in Resources */,
 				4902601519C219A800B28190 /* arrow.png in Resources */,
 				4902610219C219A800B28190 /* icon7.png in Resources */,
-				4956C6E519B8015E00661366 /* middle-detail@2x.png in Resources */,
 				490260BB19C219A800B28190 /* foamfinger.png in Resources */,
 				490260BD19C219A800B28190 /* frame000@2x.png in Resources */,
 				4902601219C219A800B28190 /* animal_white_tiger.png in Resources */,
@@ -2583,7 +2283,6 @@
 				4902607919C219A800B28190 /* christmas_present.png in Resources */,
 				4902606B19C219A800B28190 /* btnUse.png in Resources */,
 				4902607519C219A800B28190 /* christmas_elf1.png in Resources */,
-				4956C6E419B8015E00661366 /* middle-detail.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2611,51 +2310,30 @@
 				49DEE76919BE2F1A00833F77 /* WebViewController.m in Sources */,
 				49F5CFEB19BC035A007CF934 /* EZOutput.m in Sources */,
 				49F5CFDB19BC035A007CF934 /* AEFloatConverter.m in Sources */,
-				4956C6E119B8015E00661366 /* UAPushUI.m in Sources */,
 				49F5CFED19BC035A007CF934 /* EZPlot.m in Sources */,
 				49F5CFDF19BC035A007CF934 /* EZAudioFile.m in Sources */,
-				4956C6DF19B8015E00661366 /* UAPushSettingsUserInfoViewController.m in Sources */,
-				4956C6CC19B8015E00661366 /* UAInboxNavUI.m in Sources */,
 				49F5CFE319BC035A007CF934 /* EZAudioPlot.m in Sources */,
 				4902608119C219A800B28190 /* DataModel.xcdatamodeld in Sources */,
 				49A15F9219C11E4A00360208 /* DataModel.xcdatamodeld in Sources */,
 				49F5CF7619BBE7B1007CF934 /* OMDTorch.m in Sources */,
-				4956C6DE19B8015E00661366 /* UAPushSettingsTokenViewController.m in Sources */,
 				49D5851019B7077100ADB36D /* LARSTorch.m in Sources */,
-				4956C6D919B8015E00661366 /* UAPushSettingsAddTagViewController.m in Sources */,
 				49DEE76519BE081700833F77 /* EffectsViewController.m in Sources */,
-				4956C6C919B8015E00661366 /* UAInboxMessageListCell.m in Sources */,
 				49F5CFE719BC035A007CF934 /* EZAudioPlotGLKViewController.m in Sources */,
 				49DEE76D19BE334600833F77 /* AboutEventViewController.m in Sources */,
-				4956C6CB19B8015E00661366 /* UAInboxMessageViewController.m in Sources */,
-				4956C6D419B8015E00661366 /* UALocationDemoAnnotation.m in Sources */,
 				493EF5A419A9B04A0047A96B /* MasterViewController.m in Sources */,
 				4904947019B6C3D000A092E3 /* OMDScreenColorSpec.m in Sources */,
-				4956C6DA19B8015E00661366 /* UAPushSettingsAliasViewController.m in Sources */,
 				49F5CFE519BC035A007CF934 /* EZAudioPlotGL.m in Sources */,
 				49F5CFEF19BC035A007CF934 /* EZRecorder.m in Sources */,
 				49F5CFF119BC035A007CF934 /* TPCircularBuffer.c in Sources */,
-				4956C6DC19B8015E00661366 /* UAPushSettingsSoundsViewController.m in Sources */,
-				4956C6D619B8015E00661366 /* UAMapPresentationController.m in Sources */,
-				4956C6C819B8015E00661366 /* UAInboxAlertHandler.m in Sources */,
-				4956C6C719B8015E00661366 /* UADateUtils.m in Sources */,
-				4956C6DB19B8015E00661366 /* UAPushSettingsChannelInfoViewController.m in Sources */,
 				49E3BD3019B0EADC007A8B12 /* OMDBeaconPartyScheduler.m in Sources */,
-				4956C6CA19B8015E00661366 /* UAInboxMessageListController.m in Sources */,
 				49F5CFDD19BC035A007CF934 /* EZAudio.m in Sources */,
 				49F5CFE919BC035A007CF934 /* EZMicrophone.m in Sources */,
-				4956C6E019B8015E00661366 /* UAPushSettingsViewController.m in Sources */,
-				4956C6DD19B8015E00661366 /* UAPushSettingsTagsViewController.m in Sources */,
 				49F5CFF919BC04DA007CF934 /* OpenGLWaveformViewController.m in Sources */,
-				4956C6D819B8015E00661366 /* UAPushNotificationHandler.m in Sources */,
 				493EF59819A9B04A0047A96B /* AppDelegate.m in Sources */,
-				4956C6CD19B8015E00661366 /* UAInboxUI.m in Sources */,
-				4956C6D719B8015E00661366 /* UAPushMoreSettingsViewController.m in Sources */,
 				49A4C96719B966FF002C496F /* OMDBeaconPartySchedule.m in Sources */,
 				49F5CFE119BC035A007CF934 /* EZAudioPlayer.m in Sources */,
 				493EF59419A9B04A0047A96B /* main.m in Sources */,
 				493EF5C819A9B0730047A96B /* OMDBeaconParty.m in Sources */,
-				4956C6D519B8015E00661366 /* UALocationSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2704,14 +2382,6 @@
 				493EF59119A9B04A0047A96B /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		493EF59919A9B04A0047A96B /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				493EF59A19A9B04A0047A96B /* Base */,
-			);
-			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 		493EF5B919A9B04A0047A96B /* InfoPlist.strings */ = {

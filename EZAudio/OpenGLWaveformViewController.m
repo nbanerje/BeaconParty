@@ -121,7 +121,6 @@
 }
 
 #pragma mark - EZMicrophoneDelegate
-#warning Thread Safety
 // Note that any callback that provides streamed audio data (like streaming microphone input) happens on a separate audio thread that should not be blocked. When we feed audio data into any of the UI components we need to explicity create a GCD block on the main thread to properly get the UI to work.
 -(void)microphone:(EZMicrophone *)microphone
  hasAudioReceived:(float **)buffer

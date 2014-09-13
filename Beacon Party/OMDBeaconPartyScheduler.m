@@ -152,6 +152,12 @@
             colorSpec.delay = 0;
         }
         
+        if (action[@"brightness"]){
+            colorSpec.brightness = ((NSNumber*)action[@"brightness"]).doubleValue;
+        } else {
+            colorSpec.brightness = 1;
+        }
+        
         colorSpec.view = _view;
         colorSpec.debugTextView = _debugTextView;
         if([action[@"action"] isEqualToString:@"color"])

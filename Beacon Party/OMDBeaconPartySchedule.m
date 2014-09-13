@@ -117,7 +117,7 @@
     
     if(isNewMinorValue) {
         //Find the schedule sequence that matches this beacon
-        NSArray *filteredarray = [_schedule filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(%K == %@ AND %K == %@ AND %K == %@)",@"uuid",uuid,@"major",major,@"minor",minor]];
+        NSMutableArray *filteredarray = [NSMutableArray arrayWithArray:[_schedule filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(%K == %@ AND %K == %@ AND %K == %@)",@"uuid",uuid,@"major",major,@"minor",minor]]];
         
         if(filteredarray.count > 1) {
             DLog(@"Error found %lu objects for beacon should only have one.",(unsigned long)filteredarray.count);
@@ -125,6 +125,9 @@
         
         //Assign the correct sequence for the beacon region to the schedule and start the scheduler
         if(filteredarray && filteredarray.count >=1) {
+            for (NSMutableDictionary *action in filteredarray[0][@"sequence"]) {
+                action[@"executed"] = [NSNumber numberWithInt:0];
+            }
             self.scheduler.beacon = beacon;
             self.scheduler.sequences = filteredarray[0][@"sequence"];
         }

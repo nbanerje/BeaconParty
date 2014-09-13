@@ -49,6 +49,7 @@ static const NSString* BEACON_COLOR_ACTION = @"color";
         _color2 = color2;
         _frequency = 1.0f;
         _delay = 0.0f;
+        _brightness = 1.0f;
     }
     return self;
 }
@@ -59,6 +60,7 @@ static const NSString* BEACON_COLOR_ACTION = @"color";
         float period = 1.0/_frequency;
         float halfCyclePeriod = period / 2.0;
         _view.backgroundColor = _color1;
+        [UIScreen mainScreen].brightness = _brightness;
         [UIView animateKeyframesWithDuration:period delay:_delay options:
          UIViewKeyframeAnimationOptionRepeat animations:^{
              [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:halfCyclePeriod animations:^{

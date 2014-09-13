@@ -48,6 +48,7 @@ screen-color-spec ::=
                             [,"frequency": float]
                             [,"delay": float]
                             [,"rand": boolean] (If set delay is set to a random number bewteen 0 and the delay value.)
+                            [,"brightness": float 0-1]
                             
                         } 
 
@@ -111,6 +112,6 @@ rainbow-spec ::=
                             [,"frequency": float]
                             [,"delay": float]
                             [,"rand": boolean] (If set delay is set to a random number bewteen 0 and the delay value.)
-                            
+                            [,"brightness": float 0-1]
                         } 
 ```

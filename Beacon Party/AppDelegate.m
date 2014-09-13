@@ -70,7 +70,8 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
         alert.tag = NOTIFICATION_ALERT_VIEW;
         [alert show];
     }
-    //Check to see if a saved schedule exists. If not download the latest.
+    
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
     
     [UAPush setDefaultPushEnabledValue:NO];
     

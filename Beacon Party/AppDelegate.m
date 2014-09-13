@@ -320,9 +320,9 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if(alertView.tag == NOTIFICATION_ALERT_VIEW) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=General"]];
-    }
+//    if(alertView.tag == NOTIFICATION_ALERT_VIEW) {
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=General"]];
+//    }
 }
 
 @end

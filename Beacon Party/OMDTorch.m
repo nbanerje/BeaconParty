@@ -20,11 +20,12 @@
         shared.offset = 0;
         shared.inverse = NO;
         shared.delay = [NSNumber numberWithDouble:0.0];
+        shared.mode = OMDTorchModeFlash;
     });
     return shared;
 }
 
-- (void)startTorching:(OMDTorchMode) mode {
+- (void)startTorching {
     if(!_continueTorch) {
         _continueTorch = YES;
         
@@ -32,7 +33,7 @@
             LARSTorch *torch = [LARSTorch sharedTorch];
             if (_delay) [NSThread sleepForTimeInterval:_delay.doubleValue];
             while(_continueTorch) {
-                if(_beacon && mode == OMDTorchModeTwinkle) {
+                if(_beacon && _mode == OMDTorchModeTwinkle) {
                     double distance = self.beacon.accuracy;
                     float frequency = 0.0;
                     if(distance>=0.0){
@@ -41,8 +42,8 @@
                             else frequency = 0.0;
                         }
                         else {
-                            if(_inverse) frequency = 1.0/distance * _maxFrequency.floatValue + _offset.floatValue;
-                            else frequency = distance * _maxFrequency.floatValue + _offset.floatValue;
+                            if(_inverse) frequency = distance * _maxFrequency.floatValue + _offset.floatValue;
+                            else frequency = 1.0/distance * _maxFrequency.floatValue + _offset.floatValue;
                         }
                         _frequency = [NSNumber numberWithFloat:frequency];
                         _brightness = [NSNumber numberWithFloat:1.0];

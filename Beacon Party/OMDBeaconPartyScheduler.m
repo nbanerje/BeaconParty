@@ -127,9 +127,6 @@
 }
 #define ARC4RANDOM_MAX      0x100000000
 - (void) runAction:(NSDictionary*)action {
-    //remove any webview from the view
-    dispatch_async(dispatch_get_main_queue(), ^{[[self.view viewWithTag:1] removeFromSuperview];});
-    
     if ([action[@"action"] isEqualToString:@"color"] || [action[@"action"] isEqualToString:@"rainbow"]) {
         OMDScreenColorSpec *colorSpec;
         if([action[@"action"] isEqualToString:@"color"])
@@ -178,13 +175,18 @@
             if(!_aWebView) {
                 _aWebView =[[UIWebView alloc] initWithFrame:_view.frame];
                 _aWebView.delegate=self;
+                _aWebView.tag = 1;
                 [self.view insertSubview:_aWebView atIndex:0];
             }
             [_aWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:action[@"url"]]]];
             
             //[self.view insertSubview:aWebView belowSubview:_debugTextView];
         });
-    } else if([action[@"action"] isEqualToString:@"sound"]) {
+    } else if([action[@"action"] isEqualToString:@"stop-url"]) {
+        //remove any webview from the view
+        dispatch_async(dispatch_get_main_queue(), ^{[[self.view viewWithTag:1] removeFromSuperview];});
+    }
+    else if([action[@"action"] isEqualToString:@"sound"]) {
         NSString *localSoundName = action[@"local-file"];
         NSURL *soundUrl;
         if(localSoundName) {
@@ -241,7 +243,9 @@
         } else {
             _torch.delay = [NSNumber numberWithDouble:0.0];
         }
-        [_torch startTorching:OMDTorchModeFlash];
+        _torch.mode = OMDTorchModeFlash;
+        [_torch startTorching];
+          
     } else if([action[@"action"] isEqualToString:@"twinkle"]) {
         //Torching is done on a seperate thread
         if (action[@"max-frequency"]) {
@@ -269,9 +273,12 @@
         } else {
             _torch.delay = [NSNumber numberWithDouble:0];
         }
-        [_torch startTorching:OMDTorchModeTwinkle];
+        _torch.mode = OMDTorchModeTwinkle;
+        [_torch startTorching];
         
         
+    } else if([action[@"action"] isEqualToString:@"stop-all"]) {
+        [self clearEffects];
     }
     
 }
@@ -285,6 +292,7 @@
         [[self.view viewWithTag:1] removeFromSuperview]; //Remove the webview
         _view.backgroundColor = [UIColor whiteColor];
         [_view.layer removeAllAnimations];
+        _torch.continueTorch = NO;
     });
     dispatch_async(backgroundAudioQueue, ^{ if(_backgroundMusicPlayer)[_backgroundMusicPlayer stop];});
 }

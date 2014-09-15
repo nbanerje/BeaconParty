@@ -59,7 +59,7 @@
         } else if([OMDTorch shared].continueTorch && sender == _slowStrobeButton && [OMDTorch shared].frequency.floatValue == SLOW_TORCH_FREQ) {
             [OMDTorch shared].continueTorch = NO;
         } else {
-            [[OMDTorch shared] startTorching:OMDTorchModeFlash];
+            [OMDTorch shared].mode = OMDTorchModeFlash;
             [OMDTorch shared].frequency = (sender == _fastStrobeButton) ?  [NSNumber numberWithFloat:FAST_TORCH_FREQ] : [NSNumber numberWithFloat:SLOW_TORCH_FREQ];
         }
     } else if (sender == _rainbowFadeButton) {

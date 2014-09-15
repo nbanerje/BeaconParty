@@ -103,10 +103,11 @@
         
         if(closestBeacon.minor!= _bestBeacon.minor) {
             updateTags = YES;
+             DLog(@"Found better beacon minor:%@", [_bestBeacon debugDescription]);
         }
         
         _bestBeacon = closestBeacon;
-        DLog(@"Found better beacon minor:%@", [_bestBeacon debugDescription]);
+       
         
         if(updateTags) {
             NSString *beaconTag = [NSString stringWithFormat:@"%@_%@_%@"

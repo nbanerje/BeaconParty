@@ -65,16 +65,16 @@
     NSString *recorderFilePath = [NSString stringWithFormat:@"%@/%@.caf", [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], @"cache"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error = nil;
-    
-    BOOL success = [fileManager removeItemAtPath:recorderFilePath error:&error];
-    
-    if(success)
-    {
-        NSLog(@"Deleted recording file");
-    }
-    else
-    {
-        NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
+    if([[NSFileManager defaultManager] fileExistsAtPath:recorderFilePath]) {
+        BOOL success = [fileManager removeItemAtPath:recorderFilePath error:&error];
+        if(success)
+        {
+            NSLog(@"Deleted recording file");
+        }
+        else
+        {
+            NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
+        }
     }
 }
 - (void)didReceiveMemoryWarning

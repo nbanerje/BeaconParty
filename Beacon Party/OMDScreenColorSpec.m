@@ -25,6 +25,13 @@ static const NSString* BEACON_COLOR_ACTION = @"color";
 
 @implementation OMDScreenColorSpec
 
+- (instancetype)init {
+    self = [super init];
+    _frequency = 1.0f;
+    _delay = 0.0f;
+    _brightness = 1.0f;
+    return self;
+}
 - (instancetype)initWithR1:(NSNumber*)r1 g1:(NSNumber*)g1 b1:(NSNumber*)b1 a1:(NSNumber*)a1
                         r2:(NSNumber*)r2 g2:(NSNumber*)g2 b2:(NSNumber*)b2 a2:(NSNumber*)a2
 {
@@ -35,6 +42,7 @@ static const NSString* BEACON_COLOR_ACTION = @"color";
         _color2 = [UIColor colorWithRed:r2.floatValue green:g2.floatValue blue:b2.floatValue alpha:a2.floatValue];
         _frequency = 1.0f;
         _delay = 0.0f;
+        _brightness = 1.0f;
     }
     return self;
 }

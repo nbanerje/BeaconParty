@@ -144,12 +144,14 @@
 - (void) test {
     self.scheduler.sequences = [NSMutableArray
                                 arrayWithArray:@[
-    [NSMutableDictionary dictionaryWithDictionary:@{@"time":@(0.0),@"action":@"particle",@"executed":@(0),@"r1":@1,@"g1":@1,@"b1":@1,@"a1":@1}],
-    [NSMutableDictionary dictionaryWithDictionary:@{@"time":@(10.0),@"action":@"particle",@"executed":@(0)}],
-    [NSMutableDictionary dictionaryWithDictionary:@{@"time":@(20.0),@"action":@"stop-particle",@"executed":@(0)}]
+    [NSMutableDictionary dictionaryWithDictionary:@{@"time":@([[NSDate date] timeIntervalSince1970]),@"action":@"particle",@"executed":@(0),@"r1":@(1),@"g1":@(0.75),@"b1":@(0),@"a1":@(1)}],
+   
+    [NSMutableDictionary dictionaryWithDictionary:@{@"time":@([[NSDate date] timeIntervalSince1970]+8),@"action":@"stop-particle",@"executed":@(0)}]
     
     ]
                                 ];
+    
+     //[NSMutableDictionary dictionaryWithDictionary:@{@"time":@([[NSDate date] timeIntervalSince1970]+20),@"action":@"particle",@"executed":@(0)}],
 }
 
 #pragma mark OMDBeaconParty Delegate

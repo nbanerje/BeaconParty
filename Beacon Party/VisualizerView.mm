@@ -21,11 +21,16 @@
     return [CAEmitterLayer class];
 }
 
+- (id)initWithFrame:(CGRect)frame {
+    self = [self initWithFrame:frame color:_color];
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame color:(UIColor*) color
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setBackgroundColor:[UIColor clearColor]];
+        [self setBackgroundColor:[UIColor blackColor]];
         emitterLayer = (CAEmitterLayer *)self.layer;
         
         // 2

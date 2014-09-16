@@ -31,7 +31,10 @@
         AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
         appDelegate.schedule.view = self.pushEffects;
         self.pushEffects.hidden = YES;
+#ifdef DEBUG
+        _debugTextView.hidden = NO;
         appDelegate.schedule.debugTextView = _debugTextView;
+#endif
         [appDelegate.schedule test];
     }
 }

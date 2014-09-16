@@ -77,12 +77,16 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
     
     // Set log level for debugging config loading (optional)
     // It will be set to the value in the loaded config upon takeOff
+#ifdef DEBUG 
     [UAirship setLogLevel:UALogLevelTrace];
+#endif
+    
     
     // Populate AirshipConfig.plist with your app's info from https://go.urbanairship.com
     // or set runtime properties here.
     UAConfig *config = [UAConfig defaultConfig];
-    
+
+    [UAirship setLogLevel:UALogLevelTrace];
     // You can then programatically override the plist values:
     // config.developmentAppKey = @"YourKey";
     // etc.

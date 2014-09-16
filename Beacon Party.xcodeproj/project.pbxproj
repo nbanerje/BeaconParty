@@ -2611,8 +2611,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "Beacon Party/Beacon Party.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Beacon Party/Beacon Party-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2632,7 +2632,7 @@
 					"$(PROJECT_DIR)/Frameworks/Camera",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1013dfb6-0e78-4594-b148-b0d265dbafa0";
+				PROVISIONING_PROFILE = "6358ad93-5306-4233-8e67-6f6342b813a2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2643,8 +2643,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "Beacon Party/Beacon Party.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Beacon Party/Beacon Party-Prefix.pch";
 				INFOPLIST_FILE = "Beacon Party/Beacon Party-Info.plist";
@@ -2659,7 +2659,7 @@
 					"$(PROJECT_DIR)/Frameworks/Camera",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1013dfb6-0e78-4594-b148-b0d265dbafa0";
+				PROVISIONING_PROFILE = "6358ad93-5306-4233-8e67-6f6342b813a2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

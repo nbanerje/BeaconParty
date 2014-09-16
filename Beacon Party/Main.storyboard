@@ -246,6 +246,16 @@ We will explore the influence of design—print, lighting, tech, costume, experi
                                     <action selector="action:" destination="qhw-gV-Hph" eventType="touchUpInside" id="a9m-Vw-TRl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDw-Fm-wYf">
+                                <rect key="frame" x="20" y="300" width="109" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Audio Visualizer">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="DL2-Gp-Kun" kind="push" id="BYR-TG-X5L"/>
+                                </connections>
+                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bgU-xv-apL">
                                 <rect key="frame" x="0.0" y="60" width="320" height="85"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -272,6 +282,25 @@ We will explore the influence of design—print, lighting, tech, costume, experi
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDZ-eH-6RS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1699" y="-1543"/>
+        </scene>
+        <!--Viz View Controller-->
+        <scene sceneID="5wm-OO-pAC">
+            <objects>
+                <viewController id="DL2-Gp-Kun" customClass="VizViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dyy-9R-wDu"/>
+                        <viewControllerLayoutGuide type="bottom" id="7ZP-YL-wby"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9qi-54-9ET">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="raR-UG-D6K"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aa5-9s-j9e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1117" y="-1853"/>
         </scene>
         <!--OpenGL Waveform View Controller - Audio Sync-->
         <scene sceneID="hjJ-uD-mJ1">

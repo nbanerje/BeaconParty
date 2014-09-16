@@ -141,6 +141,12 @@
     }
 }
 
+- (void) test {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:@{@"time":@(0.0),@"action":@"particle",@"executed":@(0)}];
+    NSMutableDictionary *dict2 = [NSMutableDictionary dictionaryWithDictionary:@{@"time":@(10.0),@"action":@"stop-particle",@"executed":@(0)}];
+    self.scheduler.sequences = [NSMutableArray arrayWithArray:@[dict,dict2]];
+}
+
 #pragma mark OMDBeaconParty Delegate
 - (void)updateWithBeacon:(CLBeacon*) beacon {
     BOOL isNewMinorValue = NO;

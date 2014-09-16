@@ -380,6 +380,12 @@
 		4956C71119B802F200661366 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4956C6F919B8021D00661366 /* CoreTelephony.framework */; };
 		4956C71319B803B900661366 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4956C71219B803B900661366 /* AirshipConfig.plist */; };
 		4956C71419B803B900661366 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4956C71219B803B900661366 /* AirshipConfig.plist */; };
+		495DA5AC19C8181E00BEEA3D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495DA5AB19C8181E00BEEA3D /* Accelerate.framework */; };
+		495DA5B819C822A700BEEA3D /* FFTAccelerate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 495DA5B619C822A700BEEA3D /* FFTAccelerate.cpp */; };
+		495DA5BB19C82BD500BEEA3D /* VisualizerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 495DA5B919C82BD500BEEA3D /* VisualizerView.mm */; };
+		495DA5BD19C82CF300BEEA3D /* MeterTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 495DA5BC19C82CF300BEEA3D /* MeterTable.cpp */; };
+		495DA5C019C82E9500BEEA3D /* particleTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 495DA5BF19C82E9500BEEA3D /* particleTexture.png */; };
+		495DA5C319C8303200BEEA3D /* VizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 495DA5C219C8303200BEEA3D /* VizViewController.m */; };
 		49A15F9219C11E4A00360208 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49A15E3619C11E4900360208 /* DataModel.xcdatamodeld */; };
 		49A1607919C15C0A00360208 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A1607819C15C0A00360208 /* AdSupport.framework */; };
 		49A4C96719B966FF002C496F /* OMDBeaconPartySchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A4C96619B966FF002C496F /* OMDBeaconPartySchedule.m */; };
@@ -430,8 +436,8 @@
 		49F5CFF419BC035A007CF934 /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = 49F5CFD919BC035A007CF934 /* CHANGELOG */; };
 		49F5CFF519BC035A007CF934 /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = 49F5CFDA19BC035A007CF934 /* VERSION */; };
 		49F5CFF619BC035A007CF934 /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = 49F5CFDA19BC035A007CF934 /* VERSION */; };
-		49F5CFF919BC04DA007CF934 /* OpenGLWaveformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F5CFF819BC04DA007CF934 /* OpenGLWaveformViewController.m */; };
-		49F5CFFA19BC04DA007CF934 /* OpenGLWaveformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F5CFF819BC04DA007CF934 /* OpenGLWaveformViewController.m */; };
+		49F5CFF919BC04DA007CF934 /* OpenGLWaveformViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 49F5CFF819BC04DA007CF934 /* OpenGLWaveformViewController.mm */; };
+		49F5CFFA19BC04DA007CF934 /* OpenGLWaveformViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 49F5CFF819BC04DA007CF934 /* OpenGLWaveformViewController.mm */; };
 		49F5D00919BD0540007CF934 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49F5D00819BD0540007CF934 /* Main.storyboard */; };
 		49F5D00A19BD0540007CF934 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49F5D00819BD0540007CF934 /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -989,6 +995,16 @@
 		4956C6FD19B8021D00661366 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4956C6FE19B8021D00661366 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4956C71219B803B900661366 /* AirshipConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = AirshipConfig.plist; sourceTree = SOURCE_ROOT; };
+		495DA5AB19C8181E00BEEA3D /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		495DA5B619C822A700BEEA3D /* FFTAccelerate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FFTAccelerate.cpp; sourceTree = "<group>"; };
+		495DA5B719C822A700BEEA3D /* FFTAccelerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFTAccelerate.h; sourceTree = "<group>"; };
+		495DA5B919C82BD500BEEA3D /* VisualizerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VisualizerView.mm; sourceTree = "<group>"; };
+		495DA5BA19C82BD500BEEA3D /* VisualizerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualizerView.h; sourceTree = "<group>"; };
+		495DA5BC19C82CF300BEEA3D /* MeterTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MeterTable.cpp; sourceTree = "<group>"; };
+		495DA5BE19C82D0200BEEA3D /* MeterTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeterTable.h; sourceTree = "<group>"; };
+		495DA5BF19C82E9500BEEA3D /* particleTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particleTexture.png; sourceTree = "<group>"; };
+		495DA5C119C8303200BEEA3D /* VizViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VizViewController.h; sourceTree = "<group>"; };
+		495DA5C219C8303200BEEA3D /* VizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VizViewController.m; sourceTree = "<group>"; };
 		497EF9FC19B80851004A4C1A /* Beacon Party.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Beacon Party.entitlements"; sourceTree = "<group>"; };
 		49A15E3719C11E4900360208 /* DataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		49A15E3819C11E4900360208 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -1039,7 +1055,7 @@
 		49F5CFD919BC035A007CF934 /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
 		49F5CFDA19BC035A007CF934 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
 		49F5CFF719BC04DA007CF934 /* OpenGLWaveformViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLWaveformViewController.h; sourceTree = "<group>"; };
-		49F5CFF819BC04DA007CF934 /* OpenGLWaveformViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLWaveformViewController.m; sourceTree = "<group>"; };
+		49F5CFF819BC04DA007CF934 /* OpenGLWaveformViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenGLWaveformViewController.mm; sourceTree = "<group>"; };
 		49F5D00819BD0540007CF934 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1048,6 +1064,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				495DA5AC19C8181E00BEEA3D /* Accelerate.framework in Frameworks */,
 				49A1607919C15C0A00360208 /* AdSupport.framework in Frameworks */,
 				49F5CFAC19BBF63C007CF934 /* iAd.framework in Frameworks */,
 				4956C70019B8021D00661366 /* CoreBluetooth.framework in Frameworks */,
@@ -1522,6 +1539,7 @@
 		493EF58419A9B04A0047A96B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				495DA5AB19C8181E00BEEA3D /* Accelerate.framework */,
 				49A1607819C15C0A00360208 /* AdSupport.framework */,
 				49F5CFAB19BBF63C007CF934 /* iAd.framework */,
 				4956C6F619B8021D00661366 /* Accounts.framework */,
@@ -1548,6 +1566,8 @@
 		493EF58D19A9B04A0047A96B /* Beacon Party */ = {
 			isa = PBXGroup;
 			children = (
+				495DA5B619C822A700BEEA3D /* FFTAccelerate.cpp */,
+				495DA5B719C822A700BEEA3D /* FFTAccelerate.h */,
 				49A4C96519B966FF002C496F /* OMDBeaconPartySchedule.h */,
 				49A4C96619B966FF002C496F /* OMDBeaconPartySchedule.m */,
 				497EF9FC19B80851004A4C1A /* Beacon Party.entitlements */,
@@ -1577,6 +1597,13 @@
 				4904946E19B6C3CF00A092E3 /* OMDScreenColorSpec.h */,
 				4904946F19B6C3CF00A092E3 /* OMDScreenColorSpec.m */,
 				4956C71219B803B900661366 /* AirshipConfig.plist */,
+				495DA5C119C8303200BEEA3D /* VizViewController.h */,
+				495DA5C219C8303200BEEA3D /* VizViewController.m */,
+				495DA5BC19C82CF300BEEA3D /* MeterTable.cpp */,
+				495DA5BE19C82D0200BEEA3D /* MeterTable.h */,
+				495DA5BF19C82E9500BEEA3D /* particleTexture.png */,
+				495DA5B919C82BD500BEEA3D /* VisualizerView.mm */,
+				495DA5BA19C82BD500BEEA3D /* VisualizerView.h */,
 			);
 			path = "Beacon Party";
 			sourceTree = "<group>";
@@ -1775,7 +1802,7 @@
 			isa = PBXGroup;
 			children = (
 				49F5CFF719BC04DA007CF934 /* OpenGLWaveformViewController.h */,
-				49F5CFF819BC04DA007CF934 /* OpenGLWaveformViewController.m */,
+				49F5CFF819BC04DA007CF934 /* OpenGLWaveformViewController.mm */,
 				49F5CFC019BC035A007CF934 /* AEFloatConverter.h */,
 				49F5CFC119BC035A007CF934 /* AEFloatConverter.m */,
 				49F5CFC219BC035A007CF934 /* EZAudio.h */,
@@ -2149,6 +2176,7 @@
 				490260CA19C219A800B28190 /* frame007.png in Resources */,
 				4902610119C219A800B28190 /* icon6.png in Resources */,
 				4902612319C219A800B28190 /* packicon.png in Resources */,
+				495DA5C019C82E9500BEEA3D /* particleTexture.png in Resources */,
 				4902601119C219A800B28190 /* animal_trex.png in Resources */,
 				4902600319C219A800B28190 /* animal_cobra.png in Resources */,
 				490260AB19C219A800B28190 /* filter0.png in Resources */,
@@ -2310,8 +2338,10 @@
 				49DEE76919BE2F1A00833F77 /* WebViewController.m in Sources */,
 				49F5CFEB19BC035A007CF934 /* EZOutput.m in Sources */,
 				49F5CFDB19BC035A007CF934 /* AEFloatConverter.m in Sources */,
+				495DA5B819C822A700BEEA3D /* FFTAccelerate.cpp in Sources */,
 				49F5CFED19BC035A007CF934 /* EZPlot.m in Sources */,
 				49F5CFDF19BC035A007CF934 /* EZAudioFile.m in Sources */,
+				495DA5BB19C82BD500BEEA3D /* VisualizerView.mm in Sources */,
 				49F5CFE319BC035A007CF934 /* EZAudioPlot.m in Sources */,
 				4902608119C219A800B28190 /* DataModel.xcdatamodeld in Sources */,
 				49A15F9219C11E4A00360208 /* DataModel.xcdatamodeld in Sources */,
@@ -2326,11 +2356,13 @@
 				49F5CFEF19BC035A007CF934 /* EZRecorder.m in Sources */,
 				49F5CFF119BC035A007CF934 /* TPCircularBuffer.c in Sources */,
 				49E3BD3019B0EADC007A8B12 /* OMDBeaconPartyScheduler.m in Sources */,
+				495DA5C319C8303200BEEA3D /* VizViewController.m in Sources */,
 				49F5CFDD19BC035A007CF934 /* EZAudio.m in Sources */,
 				49F5CFE919BC035A007CF934 /* EZMicrophone.m in Sources */,
-				49F5CFF919BC04DA007CF934 /* OpenGLWaveformViewController.m in Sources */,
+				49F5CFF919BC04DA007CF934 /* OpenGLWaveformViewController.mm in Sources */,
 				493EF59819A9B04A0047A96B /* AppDelegate.m in Sources */,
 				49A4C96719B966FF002C496F /* OMDBeaconPartySchedule.m in Sources */,
+				495DA5BD19C82CF300BEEA3D /* MeterTable.cpp in Sources */,
 				49F5CFE119BC035A007CF934 /* EZAudioPlayer.m in Sources */,
 				493EF59419A9B04A0047A96B /* main.m in Sources */,
 				493EF5C819A9B0730047A96B /* OMDBeaconParty.m in Sources */,
@@ -2348,7 +2380,7 @@
 				49A4C96819B966FF002C496F /* OMDBeaconPartySchedule.m in Sources */,
 				49D5851119B7077100ADB36D /* LARSTorch.m in Sources */,
 				49E3BD3119B0EADC007A8B12 /* OMDBeaconPartyScheduler.m in Sources */,
-				49F5CFFA19BC04DA007CF934 /* OpenGLWaveformViewController.m in Sources */,
+				49F5CFFA19BC04DA007CF934 /* OpenGLWaveformViewController.mm in Sources */,
 				49F5CFEA19BC035A007CF934 /* EZMicrophone.m in Sources */,
 				49F5CFF219BC035A007CF934 /* TPCircularBuffer.c in Sources */,
 				493EF5BD19A9B04A0047A96B /* Beacon_PartyTests.m in Sources */,

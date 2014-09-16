@@ -133,6 +133,19 @@ rainbow-spec ::=
                             [,"rand": boolean] (If set delay is set to a random number bewteen 0 and the delay value.)
                             [,"brightness": float 0-1]
                         } 
+particle-spec ::=
+                        { 
+                            "executed":0
+                            ,"time" : float in seconds from epoch
+                            ,"action": "particle"
+                        }
+stop-particle-spec ::=
+                        { 
+                            "executed":0
+                            ,"time" : float in seconds from epoch
+                            ,"action": "stop-particle"
+                        }
+                                                                        
 stop-all ::=            {
                             "executed":0
                             ,"time" : float in seconds from epoch

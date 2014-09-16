@@ -12,20 +12,18 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 #import "OMDTorch.h"
+#import "VisualizerView.h"
 
 
 @interface OMDBeaconPartyScheduler()
 
 - (void) runAction:(NSDictionary*)action;
 
-/**
- Start the loop scheduler. This is started automatically by instantiating
- the scheduler singleton.
- */
 - (void) startLoop;
 
 - (void)stopSounds:(NSTimer*)timer;
 
+- (void)removeRecordingFile;
 /**
  This value can be used to stop the scheduler. If you stop the scheduler you
  will need to restart the scheduler with the startLoop method after setting
@@ -279,9 +277,68 @@
         
     } else if([action[@"action"] isEqualToString:@"stop-all"]) {
         [self clearEffects];
+    } else if([action[@"action"] isEqualToString:@"particle"]) {
+        dispatch_async(dispatch_get_main_queue(),^{
+            VisualizerView *visualizer = [[VisualizerView alloc] initWithFrame:self.view.frame];
+            [visualizer setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+            visualizer.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |  UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+            [visualizer setBackgroundColor:[UIColor blackColor]];
+            visualizer.tag = 2;
+            [self.view insertSubview:visualizer atIndex:0];
+            NSDictionary* recorderSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                                              [NSNumber numberWithInt:kAudioFormatAppleIMA4],AVFormatIDKey,
+                                              [NSNumber numberWithInt:44100],AVSampleRateKey,
+                                              [NSNumber numberWithInt:2],AVNumberOfChannelsKey,
+                                              [NSNumber numberWithInt:16],AVLinearPCMBitDepthKey,
+                                              [NSNumber numberWithBool:NO],AVLinearPCMIsBigEndianKey,
+                                              [NSNumber numberWithBool:NO],AVLinearPCMIsFloatKey,
+                                              nil];
+            NSError* error = nil;
+            
+            // New recording path.
+            NSString *recorderFilePath = [NSString stringWithFormat:@"%@/%@.caf", [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], @"cache"];
+            NSURL *url = [NSURL fileURLWithPath:recorderFilePath];
+            
+            visualizer.audioPlayer = [[AVAudioRecorder alloc] initWithURL:url  settings:recorderSettings error:&error];
+            [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:NULL];
+            visualizer.audioPlayer.meteringEnabled = YES;
+            
+            if([visualizer.audioPlayer prepareToRecord])
+            {
+                [visualizer.audioPlayer record];
+                [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(removeRecordingFile) userInfo:nil repeats:NO];
+            }
+        });
+
+    } else if([action[@"action"] isEqualToString:@"stop-particle"]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[self.view viewWithTag:2] removeFromSuperview];
+        });
     }
     
 }
+
+- (void)removeRecordingFile
+{
+    dispatch_async(dispatch_get_main_queue(),^{
+        // Remove the data file from the recording.
+        NSString *recorderFilePath = [NSString stringWithFormat:@"%@/%@.caf", [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], @"cache"];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSError *error = nil;
+        
+        BOOL success = [fileManager removeItemAtPath:recorderFilePath error:&error];
+        
+        if(success)
+        {
+            NSLog(@"Deleted recording file");
+        }
+        else
+        {
+            NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
+        }
+    });
+}
+
 
 - (void)stopSounds:(NSTimer*)timer {
     dispatch_async(backgroundAudioQueue, ^{ if(_backgroundMusicPlayer)[_backgroundMusicPlayer stop];});
@@ -290,6 +347,7 @@
 - (void)clearEffects {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[self.view viewWithTag:1] removeFromSuperview]; //Remove the webview
+        [[self.view viewWithTag:2] removeFromSuperview]; //Remove the particle view
         _view.backgroundColor = [UIColor whiteColor];
         [_view.layer removeAllAnimations];
         _torch.continueTorch = NO;

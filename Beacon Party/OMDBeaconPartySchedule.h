@@ -20,6 +20,8 @@
 
 -(void) loadScheduleFromJsonData:(NSData*)data;
 
+-(void) test;
+
 /** Array that hold the current schedule for the event.
     if DEBUG_EPOCH is defined this gets loaded from the Sample.json file,
     but you can overwrite the array entirely to set a new

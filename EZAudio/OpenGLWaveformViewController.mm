@@ -7,10 +7,11 @@
 //
 
 #import "OpenGLWaveformViewController.h"
-
+#import "FFTAccelerate.h"
 @interface OpenGLWaveformViewController ()
 #pragma mark - UI Extras
 @property (nonatomic,weak) IBOutlet UILabel *microphoneTextLabel;
+@property (nonatomic) float *frequency;
 @end
 
 @implementation OpenGLWaveformViewController
@@ -22,14 +23,19 @@
   self = [super init];
   if(self){
     [self initializeViewController];
+      _frequency = (float *)malloc(sizeof(float)*1024);
   }
   return self;
 }
 
+-(void) dealloc {
+    free(_frequency);
+}
 -(id)initWithCoder:(NSCoder *)aDecoder {
   self = [super initWithCoder:aDecoder];
   if(self){
     [self initializeViewController];
+      _frequency = (float *)malloc(sizeof(float)*1024);
   }
   return self;
 }
@@ -126,12 +132,48 @@
  hasAudioReceived:(float **)buffer
    withBufferSize:(UInt32)bufferSize
 withNumberOfChannels:(UInt32)numberOfChannels {
+    //Number of Samples for input(time domain)/output(frequency domain)
+    //Must be Power of 2: 2^x
+    int numSamples = 1024;
+    
+    //Output Array
+    //float *frequency = (float *)malloc(sizeof(float)*numSamples);
+    
+    //Input Array
+    //float *time = (float *)malloc(sizeof(float)*numSamples);
+    
+    //Fill Input Array with Sin Wave
+    /*for (int i=0; i<numSamples; i++) {
+        
+        //DC Component frequency[0] = 0.5
+        time[i] = 0.25;
+        
+        //First Harmonic (frequency[1]=1.0)
+        time[i] += cos(2*M_PI*i/(float)numSamples);
+        
+        //Second Harmonic (frequency[2]=1.0)
+        time[i] += cos(2*M_PI*2*i/numSamples);
+        
+        //Third Harmonic (frequency[3]=1.0)
+        time[i] += cos(2*M_PI*3*i/numSamples);
+    }*/
+    
+    
+    
+    /*FFTAccelerate *fftAccel = new FFTAccelerate(numSamples);
+    fftAccel->doFFTReal(buffer[0], _frequency, numSamples);
+    delete(fftAccel);*/
+//    for (int i=0; i<numSamples; i++) {
+//        NSLog(@"index: %d, amp: %.2f",i, frequency[i]);
+//    }
+    
   // Getting audio data as an array of float buffer arrays. What does that mean? Because the audio is coming in as a stereo signal the data is split into a left and right channel. So buffer[0] corresponds to the float* data for the left channel while buffer[1] corresponds to the float* data for the right channel.
-  
   // See the Thread Safety warning above, but in a nutshell these callbacks happen on a separate audio thread. We wrap any UI updating in a GCD block on the main thread to avoid blocking that audio flow.
   dispatch_async(dispatch_get_main_queue(),^{
     // All the audio plot needs is the buffer data (float*) and the size. Internally the audio plot will handle all the drawing related code, history management, and freeing its own resources. Hence, one badass line of code gets you a pretty plot :)
     [self.audioPlot updateBuffer:buffer[0] withBufferSize:bufferSize];
+    //  [self.audioPlot updateBuffer:_frequency withBufferSize:bufferSize];
+      
   });
 }
 

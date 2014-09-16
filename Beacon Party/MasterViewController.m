@@ -31,6 +31,7 @@
         AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
         appDelegate.schedule.view = self.view;
         appDelegate.schedule.debugTextView = _debugTextView;
+        //[appDelegate.schedule test];
     }
 }
 - (void)didReceiveMemoryWarning

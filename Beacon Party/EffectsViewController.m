@@ -61,6 +61,7 @@
         } else {
             [OMDTorch shared].mode = OMDTorchModeFlash;
             [OMDTorch shared].frequency = (sender == _fastStrobeButton) ?  [NSNumber numberWithFloat:FAST_TORCH_FREQ] : [NSNumber numberWithFloat:SLOW_TORCH_FREQ];
+            [[OMDTorch shared] startTorching];
         }
     } else if (sender == _rainbowFadeButton) {
         if(_rainbowView.hidden) {

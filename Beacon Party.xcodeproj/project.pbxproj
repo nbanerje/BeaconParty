@@ -338,7 +338,6 @@
 		4902614119C219A800B28190 /* xv_border.png in Resources */ = {isa = PBXBuildFile; fileRef = 49025FF719C219A800B28190 /* xv_border.png */; };
 		4902614219C219A800B28190 /* zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = 49025FF819C219A800B28190 /* zombie.png */; };
 		4902614319C219A800B28190 /* zombie@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49025FF919C219A800B28190 /* zombie@2x.png */; };
-		4902614619C21C9100B28190 /* libcamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4902614519C21C9100B28190 /* libcamera.a */; };
 		4904947019B6C3D000A092E3 /* OMDScreenColorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4904946F19B6C3CF00A092E3 /* OMDScreenColorSpec.m */; };
 		4904947219B6D9A100A092E3 /* Sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4904947119B6D9A100A092E3 /* Sample.json */; };
 		4904947319B6D9A100A092E3 /* Sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4904947119B6D9A100A092E3 /* Sample.json */; };
@@ -406,6 +405,8 @@
 		495DA5EB19C843F300BEEA3D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 495DA5D719C843F300BEEA3D /* Icon.png */; };
 		495DA5EC19C843F300BEEA3D /* menu-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 495DA5D819C843F300BEEA3D /* menu-bg.png */; };
 		495DA5ED19C843F300BEEA3D /* photo-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 495DA5D919C843F300BEEA3D /* photo-bg.png */; };
+		495DA5F919C8BEC300BEEA3D /* libcamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495DA5F819C8BEC300BEEA3D /* libcamera.a */; };
+		495DA5FA19C8BEC300BEEA3D /* libcamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495DA5F819C8BEC300BEEA3D /* libcamera.a */; };
 		49A15F9219C11E4A00360208 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49A15E3619C11E4900360208 /* DataModel.xcdatamodeld */; };
 		49A1607919C15C0A00360208 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A1607819C15C0A00360208 /* AdSupport.framework */; };
 		49A4C96719B966FF002C496F /* OMDBeaconPartySchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A4C96619B966FF002C496F /* OMDBeaconPartySchedule.m */; };
@@ -894,7 +895,6 @@
 		49025FF719C219A800B28190 /* xv_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xv_border.png; sourceTree = "<group>"; };
 		49025FF819C219A800B28190 /* zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zombie.png; sourceTree = "<group>"; };
 		49025FF919C219A800B28190 /* zombie@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zombie@2x.png"; sourceTree = "<group>"; };
-		4902614519C21C9100B28190 /* libcamera.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcamera.a; sourceTree = "<group>"; };
 		4904946E19B6C3CF00A092E3 /* OMDScreenColorSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDScreenColorSpec.h; sourceTree = "<group>"; };
 		4904946F19B6C3CF00A092E3 /* OMDScreenColorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMDScreenColorSpec.m; sourceTree = "<group>"; };
 		4904947119B6D9A100A092E3 /* Sample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Sample.json; path = ../Sample.json; sourceTree = "<group>"; };
@@ -1045,6 +1045,7 @@
 		495DA5D719C843F300BEEA3D /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		495DA5D819C843F300BEEA3D /* menu-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-bg.png"; sourceTree = "<group>"; };
 		495DA5D919C843F300BEEA3D /* photo-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-bg.png"; sourceTree = "<group>"; };
+		495DA5F819C8BEC300BEEA3D /* libcamera.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcamera.a; sourceTree = "<group>"; };
 		497EF9FC19B80851004A4C1A /* Beacon Party.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Beacon Party.entitlements"; sourceTree = "<group>"; };
 		49A15E3719C11E4900360208 /* DataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		49A15E3819C11E4900360208 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -1106,6 +1107,7 @@
 			files = (
 				495DA5AC19C8181E00BEEA3D /* Accelerate.framework in Frameworks */,
 				49A1607919C15C0A00360208 /* AdSupport.framework in Frameworks */,
+				495DA5F919C8BEC300BEEA3D /* libcamera.a in Frameworks */,
 				49F5CFAC19BBF63C007CF934 /* iAd.framework in Frameworks */,
 				4956C70019B8021D00661366 /* CoreBluetooth.framework in Frameworks */,
 				4956C70119B8021D00661366 /* CoreLocation.framework in Frameworks */,
@@ -1123,7 +1125,6 @@
 				493EF58819A9B04A0047A96B /* CoreGraphics.framework in Frameworks */,
 				493EF58C19A9B04A0047A96B /* CoreData.framework in Frameworks */,
 				493EF58619A9B04A0047A96B /* Foundation.framework in Frameworks */,
-				4902614619C21C9100B28190 /* libcamera.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1141,6 +1142,7 @@
 				4956C70B19B802E500661366 /* libsqlite3.dylib in Frameworks */,
 				4956C70C19B802E500661366 /* libz.dylib in Frameworks */,
 				4956C70D19B802E500661366 /* MobileCoreServices.framework in Frameworks */,
+				495DA5FA19C8BEC300BEEA3D /* libcamera.a in Frameworks */,
 				4956C70E19B802E500661366 /* Security.framework in Frameworks */,
 				4956C70F19B802E500661366 /* SystemConfiguration.framework in Frameworks */,
 				493EF5B219A9B04A0047A96B /* UIKit.framework in Frameworks */,
@@ -1155,7 +1157,7 @@
 		49025E7719C219A600B28190 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				4902614519C21C9100B28190 /* libcamera.a */,
+				495DA5F819C8BEC300BEEA3D /* libcamera.a */,
 				49025E7819C219A600B28190 /* camera */,
 			);
 			path = include;

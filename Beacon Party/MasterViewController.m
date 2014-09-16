@@ -29,9 +29,10 @@
     if(!_schedule) {
         
         AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-        appDelegate.schedule.view = self.view;
+        appDelegate.schedule.view = self.pushEffects;
+        self.pushEffects.hidden = YES;
         appDelegate.schedule.debugTextView = _debugTextView;
-        //[appDelegate.schedule test];
+        [appDelegate.schedule test];
     }
 }
 - (void)didReceiveMemoryWarning

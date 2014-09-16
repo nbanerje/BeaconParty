@@ -13,5 +13,5 @@
 @interface MasterViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITextView *debugTextView;
-
+@property (strong, nonatomic) IBOutlet UIView *pushEffects;
 @end

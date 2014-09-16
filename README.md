@@ -144,6 +144,10 @@ stop-particle-spec ::=
                             "executed":0
                             ,"time" : float in seconds from epoch
                             ,"action": "stop-particle"
+                            [,"r1": float
+                            ,"g1": float
+                            ,"b1" : float
+                            ,"a1" : float]
                         }
                                                                         
 stop-all ::=            {

@@ -21,11 +21,11 @@
     return [CAEmitterLayer class];
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame color:(UIColor*) color
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setBackgroundColor:[UIColor blackColor]];
+        [self setBackgroundColor:[UIColor clearColor]];
         emitterLayer = (CAEmitterLayer *)self.layer;
         
         // 2
@@ -51,7 +51,12 @@
         
         cell.emitterCells = @[childCell];
         // 4
-        cell.color = [[UIColor colorWithRed:1.0f green:0.53f blue:0.0f alpha:0.8f] CGColor];
+        if(color) {
+            _color = color;
+            cell.color = [_color CGColor];
+        } else {
+            cell.color = [[UIColor colorWithRed:1.0f green:0.53f blue:0.0f alpha:0.8f] CGColor];
+        }
         cell.redRange = 0.46f;
         cell.greenRange = 0.49f;
         cell.blueRange = 0.67f;

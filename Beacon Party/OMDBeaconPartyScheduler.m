@@ -24,6 +24,9 @@
 - (void)stopSounds:(NSTimer*)timer;
 
 - (void)removeRecordingFile;
+- (void)showView;
+- (void)hideView;
+
 /**
  This value can be used to stop the scheduler. If you stop the scheduler you
  will need to restart the scheduler with the startLoop method after setting
@@ -64,6 +67,7 @@
         _torch = [OMDTorch shared];
         backgroundAudioQueue = dispatch_queue_create("is.ziggy.audiobackground", NULL);
         backgroundQueue = dispatch_queue_create("is.ziggy.background", NULL);
+        _initialBrightness = [UIScreen mainScreen].brightness;
         
     }
     return self;
@@ -123,9 +127,35 @@
 
     }
 }
+- (void) hideView {
+    dispatch_async(dispatch_get_main_queue(),^{
+        [UIView transitionWithView:_view
+                          duration:0.5
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        animations:NULL
+                        completion:NULL];
+        _view.hidden = YES;
+        [UIScreen mainScreen].brightness =_initialBrightness;
+    });
+}
+
+- (void) showView {
+    dispatch_async(dispatch_get_main_queue(),^{
+        [UIView transitionWithView:_view
+                          duration:0.5
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        animations:NULL
+                        completion:NULL];
+        _view.hidden = NO;
+        [UIScreen mainScreen].brightness = 1.0;
+    
+    });
+    
+}
 #define ARC4RANDOM_MAX      0x100000000
 - (void) runAction:(NSDictionary*)action {
     if ([action[@"action"] isEqualToString:@"color"] || [action[@"action"] isEqualToString:@"rainbow"]) {
+        [self showView];
         OMDScreenColorSpec *colorSpec;
         if([action[@"action"] isEqualToString:@"color"])
             colorSpec = [[OMDScreenColorSpec alloc] initWithR1:action[@"r1"] g1:action[@"g1"] b1:action[@"b1"] a1:action[@"a1"] r2:action[@"r2"] g2:action[@"g2"] b2:action[@"b2"] a2:action[@"a2"]];
@@ -160,6 +190,7 @@
         else
             dispatch_async(dispatch_get_main_queue(), [colorSpec rainbowBlock]);
     } else if([action[@"action"] isEqualToString:@"stop"]) {
+        [self hideView];
         dispatch_async(dispatch_get_main_queue(), ^{
             _view.backgroundColor = [UIColor whiteColor];
             [_view.layer removeAllAnimations];
@@ -167,6 +198,7 @@
     } else if([action[@"action"] isEqualToString:@"stop-flash"]) {
         _torch.continueTorch = NO;
     } else if([action[@"action"] isEqualToString:@"url"]) {
+        [self showView];
         dispatch_async(dispatch_get_main_queue(), ^{
             _view.backgroundColor = [UIColor whiteColor];
             [_view.layer removeAllAnimations];
@@ -181,6 +213,7 @@
             //[self.view insertSubview:aWebView belowSubview:_debugTextView];
         });
     } else if([action[@"action"] isEqualToString:@"stop-url"]) {
+        [self hideView];
         //remove any webview from the view
         dispatch_async(dispatch_get_main_queue(), ^{[[self.view viewWithTag:1] removeFromSuperview];});
     }
@@ -276,10 +309,21 @@
         
         
     } else if([action[@"action"] isEqualToString:@"stop-all"]) {
+        [self hideView];
         [self clearEffects];
     } else if([action[@"action"] isEqualToString:@"particle"]) {
+        [self showView];
         dispatch_async(dispatch_get_main_queue(),^{
-            VisualizerView *visualizer = [[VisualizerView alloc] initWithFrame:self.view.frame];
+            //Remove the view if it already exists
+            [[self.view viewWithTag:2] removeFromSuperview];
+            
+            VisualizerView *visualizer;
+            if(action[@"r1"] && action[@"g1"]&& action[@"b1"]&& action[@"a1"]) {
+                UIColor *color = [UIColor colorWithRed:((NSNumber*)action[@"r1"]).floatValue green:((NSNumber*)action[@"g1"]).floatValue blue:((NSNumber*)action[@"b1"]).floatValue alpha:((NSNumber*)action[@"a1"]).floatValue];
+                visualizer = [[VisualizerView alloc] initWithFrame:self.view.frame color:color];
+            } else {
+                visualizer = [[VisualizerView alloc] initWithFrame:self.view.frame color:nil];
+            }
             [visualizer setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
             visualizer.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |  UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
             [visualizer setBackgroundColor:[UIColor blackColor]];
@@ -311,6 +355,7 @@
         });
 
     } else if([action[@"action"] isEqualToString:@"stop-particle"]) {
+        [self hideView];
         dispatch_async(dispatch_get_main_queue(), ^{
             [[self.view viewWithTag:2] removeFromSuperview];
         });

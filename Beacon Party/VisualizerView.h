@@ -10,9 +10,9 @@
 #import <AVFoundation/AVFoundation.h>
 
 @interface VisualizerView : UIView
-
+- (id)initWithFrame:(CGRect)frame color:(UIColor*) color;
 //Add within the @interface and @end lines
 @property (strong, nonatomic) AVAudioRecorder *audioPlayer;
-
+@property (strong, nonatomic) UIColor *color;
 @end
 

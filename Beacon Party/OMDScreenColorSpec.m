@@ -91,7 +91,7 @@ static const NSString* BEACON_COLOR_ACTION = @"color";
     block = ^{
         float period = 1.0/_frequency;
         _view.backgroundColor = _color1;
-        
+        [UIScreen mainScreen].brightness = _brightness;
         [UIView animateKeyframesWithDuration:period delay:_delay options:
          UIViewKeyframeAnimationOptionRepeat animations:^{
              

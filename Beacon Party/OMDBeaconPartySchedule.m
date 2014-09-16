@@ -142,9 +142,14 @@
 }
 
 - (void) test {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:@{@"time":@(0.0),@"action":@"particle",@"executed":@(0)}];
-    NSMutableDictionary *dict2 = [NSMutableDictionary dictionaryWithDictionary:@{@"time":@(10.0),@"action":@"stop-particle",@"executed":@(0)}];
-    self.scheduler.sequences = [NSMutableArray arrayWithArray:@[dict,dict2]];
+    self.scheduler.sequences = [NSMutableArray
+                                arrayWithArray:@[
+    [NSMutableDictionary dictionaryWithDictionary:@{@"time":@(0.0),@"action":@"particle",@"executed":@(0),@"r1":@1,@"g1":@1,@"b1":@1,@"a1":@1}],
+    [NSMutableDictionary dictionaryWithDictionary:@{@"time":@(10.0),@"action":@"particle",@"executed":@(0)}],
+    [NSMutableDictionary dictionaryWithDictionary:@{@"time":@(20.0),@"action":@"stop-particle",@"executed":@(0)}]
+    
+    ]
+                                ];
 }
 
 #pragma mark OMDBeaconParty Delegate

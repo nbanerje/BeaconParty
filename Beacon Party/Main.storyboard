@@ -90,6 +90,11 @@
                                     <segue destination="Gqa-Xx-kEU" kind="push" id="amp-BG-gh5"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Tu-e5-4rg">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <accessibility key="accessibilityConfiguration">
@@ -103,6 +108,7 @@
                     <navigationItem key="navigationItem" title="Ziggy" id="a6Y-Y2-CUS"/>
                     <connections>
                         <outlet property="debugTextView" destination="Do6-rB-brD" id="WOt-Nn-ZVp"/>
+                        <outlet property="pushEffects" destination="2Tu-e5-4rg" id="4dM-8l-L0O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4eW-mt-ItJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

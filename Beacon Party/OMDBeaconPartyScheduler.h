@@ -45,7 +45,7 @@
  */
 @property (weak, nonatomic) CLBeacon *beacon;
 
-
+@property (assign, nonatomic) CGFloat initialBrightness;
 
 
 

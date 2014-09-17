@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49025E7519C2199B00B28190 /* ziggy.png in Resources */ = {isa = PBXBuildFile; fileRef = 49025E7319C2199B00B28190 /* ziggy.png */; };
-		49025E7619C2199B00B28190 /* ziggy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49025E7419C2199B00B28190 /* ziggy@2x.png */; };
 		49025FFD19C219A800B28190 /* abouticon.png in Resources */ = {isa = PBXBuildFile; fileRef = 49025E7B19C219A600B28190 /* abouticon.png */; };
 		49025FFE19C219A800B28190 /* abouticon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49025E7C19C219A600B28190 /* abouticon@2x.png */; };
 		4902601519C219A800B28190 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 49025E9419C219A600B28190 /* arrow.png */; };
@@ -285,6 +283,9 @@
 		497031CC19CA0FD9008BE73C /* spaceship1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 497031C819CA0FD9008BE73C /* spaceship1.caf */; };
 		497031CD19CA0FD9008BE73C /* spaceship2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 497031C919CA0FD9008BE73C /* spaceship2.caf */; };
 		497031CE19CA0FD9008BE73C /* spaceship3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 497031CA19CA0FD9008BE73C /* spaceship3.caf */; };
+		497031DE19CA2DEC008BE73C /* ziggy.png in Resources */ = {isa = PBXBuildFile; fileRef = 497031DD19CA2DEC008BE73C /* ziggy.png */; };
+		497031E119CA3063008BE73C /* App-Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = 497031DF19CA3063008BE73C /* App-Icon-180.png */; };
+		497031E219CA3063008BE73C /* App-Icon-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 497031E019CA3063008BE73C /* App-Icon-1024.png */; };
 		49A15F9219C11E4A00360208 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49A15E3619C11E4900360208 /* DataModel.xcdatamodeld */; };
 		49A1607919C15C0A00360208 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A1607819C15C0A00360208 /* AdSupport.framework */; };
 		49A4C96719B966FF002C496F /* OMDBeaconPartySchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A4C96619B966FF002C496F /* OMDBeaconPartySchedule.m */; };
@@ -357,8 +358,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		49025E7319C2199B00B28190 /* ziggy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ziggy.png; sourceTree = "<group>"; };
-		49025E7419C2199B00B28190 /* ziggy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ziggy@2x.png"; sourceTree = "<group>"; };
 		49025E7B19C219A600B28190 /* abouticon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abouticon.png; sourceTree = "<group>"; };
 		49025E7C19C219A600B28190 /* abouticon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "abouticon@2x.png"; sourceTree = "<group>"; };
 		49025E7D19C219A600B28190 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -771,6 +770,9 @@
 		497031C819CA0FD9008BE73C /* spaceship1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = spaceship1.caf; sourceTree = "<group>"; };
 		497031C919CA0FD9008BE73C /* spaceship2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = spaceship2.caf; sourceTree = "<group>"; };
 		497031CA19CA0FD9008BE73C /* spaceship3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = spaceship3.caf; sourceTree = "<group>"; };
+		497031DD19CA2DEC008BE73C /* ziggy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ziggy.png; sourceTree = "<group>"; };
+		497031DF19CA3063008BE73C /* App-Icon-180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "App-Icon-180.png"; sourceTree = "<group>"; };
+		497031E019CA3063008BE73C /* App-Icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "App-Icon-1024.png"; sourceTree = "<group>"; };
 		497EF9FC19B80851004A4C1A /* Beacon Party.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Beacon Party.entitlements"; sourceTree = "<group>"; };
 		49A15E3719C11E4900360208 /* DataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		49A15E3819C11E4900360208 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -863,6 +865,7 @@
 		49025E7819C219A600B28190 /* camera */ = {
 			isa = PBXGroup;
 			children = (
+				497031DD19CA2DEC008BE73C /* ziggy.png */,
 				4913304D19C9610900EC8710 /* ziggy-1.png */,
 				4913304E19C9610900EC8710 /* ziggy-2.png */,
 				4913304F19C9610900EC8710 /* ziggy-3.png */,
@@ -1115,8 +1118,6 @@
 			children = (
 				495DA5C519C843E900BEEA3D /* Images */,
 				49025E7719C219A600B28190 /* include */,
-				49025E7319C2199B00B28190 /* ziggy.png */,
-				49025E7419C2199B00B28190 /* ziggy@2x.png */,
 				49E8B7B019BE5C7300EE59FA /* KIF.xcodeproj */,
 				4956C61B19B8015E00661366 /* Airship */,
 				493EF58D19A9B04A0047A96B /* Beacon Party */,
@@ -1382,6 +1383,8 @@
 		495DA5C519C843E900BEEA3D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				497031DF19CA3063008BE73C /* App-Icon-180.png */,
+				497031E019CA3063008BE73C /* App-Icon-1024.png */,
 				4913305719C9634C00EC8710 /* firstrun-bg@2x.png */,
 				4913305819C9634C00EC8710 /* firstrun-bg.png */,
 				4913301F19C9553500EC8710 /* btn-audio.png */,
@@ -1578,7 +1581,6 @@
 				497031CC19CA0FD9008BE73C /* spaceship1.caf in Resources */,
 				4902612519C219A800B28190 /* PackItemView.xib in Resources */,
 				493EF5A919A9B04A0047A96B /* Images.xcassets in Resources */,
-				49025E7619C2199B00B28190 /* ziggy@2x.png in Resources */,
 				490260C119C219A800B28190 /* frame002@2x.png in Resources */,
 				4902611F19C219A800B28190 /* MuseoSlab-500.otf in Resources */,
 				490260C219C219A800B28190 /* frame003.png in Resources */,
@@ -1625,6 +1627,7 @@
 				4902603019C219A800B28190 /* btn-camera-flip@2x.png in Resources */,
 				4902601819C219A800B28190 /* beachball.png in Resources */,
 				49025FFD19C219A800B28190 /* abouticon.png in Resources */,
+				497031DE19CA2DEC008BE73C /* ziggy.png in Resources */,
 				490260AE19C219A800B28190 /* filter1@2x.png in Resources */,
 				490260D619C219A800B28190 /* helpicon.png in Resources */,
 				4913304019C9553500EC8710 /* btn-library@2x.png in Resources */,
@@ -1710,6 +1713,7 @@
 				4902610119C219A800B28190 /* icon6.png in Resources */,
 				4902612319C219A800B28190 /* packicon.png in Resources */,
 				495DA5C019C82E9500BEEA3D /* particleTexture.png in Resources */,
+				497031E219CA3063008BE73C /* App-Icon-1024.png in Resources */,
 				490260AB19C219A800B28190 /* filter0.png in Resources */,
 				4902612819C219A800B28190 /* packs.png in Resources */,
 				490260B019C219A800B28190 /* filter2@2x.png in Resources */,
@@ -1762,9 +1766,9 @@
 				490260D119C219A800B28190 /* genericbutton-tapped@2x.png in Resources */,
 				4902602819C219A800B28190 /* bottombar@2x.png in Resources */,
 				4902604119C219A800B28190 /* btn-email-tapped.png in Resources */,
-				49025E7519C2199B00B28190 /* ziggy.png in Resources */,
 				495DA5EB19C843F300BEEA3D /* Icon.png in Resources */,
 				4913305219C9610900EC8710 /* ziggy-1.png in Resources */,
+				497031E119CA3063008BE73C /* App-Icon-180.png in Resources */,
 				4902604319C219A800B28190 /* btn-email.png in Resources */,
 				4902605319C219A800B28190 /* btn-next.png in Resources */,
 				4902606C19C219A800B28190 /* btnUse@2x.png in Resources */,
@@ -1994,7 +1998,7 @@
 					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a5e493cf-9191-4a76-a51e-912781e13bbb";
+				PROVISIONING_PROFILE = "ebe91a31-531e-455d-b89a-5767904953ba";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2017,7 +2021,7 @@
 					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a5e493cf-9191-4a76-a51e-912781e13bbb";
+				PROVISIONING_PROFILE = "ebe91a31-531e-455d-b89a-5767904953ba";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

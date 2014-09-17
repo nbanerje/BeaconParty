@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "OMDBeaconParty.h"
+#import <CoreBluetooth/CoreBluetooth.h>
 
-@interface MasterViewController : UIViewController
+@interface MasterViewController : UIViewController <CBCentralManagerDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *debugTextView;
 @property (weak, nonatomic) IBOutlet UIView *pushEffects;
@@ -19,7 +20,7 @@
 @property (weak,nonatomic) IBOutlet UIButton *strobe;
 @property (weak,nonatomic) IBOutlet UIButton *ziggify;
 @property (weak,nonatomic) IBOutlet UIButton *eventInfo;
-
+@property (weak,nonatomic) IBOutlet UINavigationItem *navBar;
 
 -(IBAction)overlayDismissed:(id) sender;
 @end

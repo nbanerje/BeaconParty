@@ -13,11 +13,15 @@
 #import "AppDelegate.h"
 #import "WebViewController.h"
 
+#define NOTIFICATION_ALERT_VIEW 1
+
 #define DISMISSED_KEY @"dismissedOverlay"
 
 @interface MasterViewController ()
 @property (weak,nonatomic) OMDBeaconPartySchedule* schedule;
 -(void) enablePushAndBeacons;
+@property (strong,nonatomic) CBCentralManager* cbManager;
+- (void) checkBluetoothAccess;
 @end
 
 @implementation MasterViewController
@@ -44,6 +48,14 @@
                         completion:NULL];
         
     } else {
+            [self checkBluetoothAccess];
+        
+            if ([UIApplication sharedApplication].enabledRemoteNotificationTypes == UIRemoteNotificationTypeNone){
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Push Notifications Needed" message:@"To get the most out of the show please enable Push Notifications." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                alert.tag = NOTIFICATION_ALERT_VIEW;
+                [alert show];
+            }
+
         //Enable push and start the beaconing stuff
         [self enablePushAndBeacons];
     }
@@ -64,6 +76,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 -(IBAction)overlayDismissed:(id) sender {
@@ -100,4 +117,27 @@
     [appDelegate.schedule setEpoch:[NSDate dateWithTimeIntervalSince1970:0] uuid:UUID identifier:@"is.ziggy"];
     
 }
+
+#pragma mark Bluetooth Check
+- (void)checkBluetoothAccess {
+    
+    if(!_cbManager) {
+        _cbManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+    }
+    
+}
+
+- (void)centralManagerDidUpdateState:(CBCentralManager *)central {
+    if(central.state == CBCentralManagerStatePoweredOff) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bluetooth Needed" message:@"To get the most out of the show please en     able Bluetooth." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    //    if(alertView.tag == NOTIFICATION_ALERT_VIEW) {
+    //        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=General"]];
+    //    }
+}
+
 @end

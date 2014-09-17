@@ -1982,7 +1982,7 @@
 					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6358ad93-5306-4233-8e67-6f6342b813a2";
+				PROVISIONING_PROFILE = "d3ada105-da2b-4718-a062-886199b0ede6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2005,7 +2005,7 @@
 					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6358ad93-5306-4233-8e67-6f6342b813a2";
+				PROVISIONING_PROFILE = "d3ada105-da2b-4718-a062-886199b0ede6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -14,6 +14,7 @@
 @interface EffectsViewController ()
 @property (assign,nonatomic) BOOL rainbowFading;
 @property (assign,nonatomic) BOOL audioSyncing;
+@property (assign,nonatomic) CGFloat brightness;
 
 @end
 
@@ -65,6 +66,7 @@
         }
     } else if (sender == _rainbowFadeButton) {
         if(_rainbowView.hidden) {
+            _brightness = [UIScreen mainScreen].brightness;
             _rainbowView.hidden = NO;
             OMDScreenColorSpec *colorSpec = [[OMDScreenColorSpec alloc] init];
             colorSpec.frequency = 1;
@@ -73,6 +75,7 @@
         } else {
             _rainbowView.hidden = YES;
             [_rainbowView.layer removeAllAnimations];
+            [UIScreen mainScreen].brightness = _brightness;
         }
         
     }

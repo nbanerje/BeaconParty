@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreBluetooth/CoreBluetooth.h>
 #import "OMDBeaconPartySchedule.h"
 #import "UAirship.h"
 #import "UAPush.h"
@@ -20,7 +19,7 @@ typedef void (^BackgroundCompletion)(UIBackgroundFetchResult);
 extern FetchURLDataBlock fetchURLData;
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,UAPushNotificationDelegate,CBCentralManagerDelegate, UIAlertViewDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,UAPushNotificationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

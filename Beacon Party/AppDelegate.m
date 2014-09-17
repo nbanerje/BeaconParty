@@ -17,12 +17,8 @@
 #import "ShareViewController.h"
 
 
-
-#define NOTIFICATION_ALERT_VIEW 1
-
 @interface AppDelegate()
-@property (strong,nonatomic) CBCentralManager* cbManager;
-- (void) checkBluetoothAccess;
+
 @end
 
 FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* schedule, BackgroundCompletion completionHandler){
@@ -62,14 +58,6 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
     if ([UIApplication sharedApplication].backgroundRefreshStatus == UIBackgroundRefreshStatusDenied) {
         //Alert user to turn on background refresh for the app
     }
-//TODO: move these somewhere else or are they too annoying?
-    //[self checkBluetoothAccess];
-    
-//    if ([UIApplication sharedApplication].enabledRemoteNotificationTypes == UIRemoteNotificationTypeNone){
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Push Notifications Needed" message:@"To get the most out of the show please enable Push Notifications." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        alert.tag = NOTIFICATION_ALERT_VIEW;
-//        [alert show];
-//    }
     
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
@@ -304,26 +292,5 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
     }
 }
 
-#pragma mark Bluetooth Check
-- (void)checkBluetoothAccess {
-    
-    if(!_cbManager) {
-        _cbManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-    }
-    
-}
-
-- (void)centralManagerDidUpdateState:(CBCentralManager *)central {
-    if(central.state != CBCentralManagerStatePoweredOn) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bluetooth Needed" message:@"To get the most out of the show please enable Bluetooth." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-    }
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-//    if(alertView.tag == NOTIFICATION_ALERT_VIEW) {
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=General"]];
-//    }
-}
 
 @end

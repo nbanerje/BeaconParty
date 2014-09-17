@@ -113,6 +113,7 @@
                     <connections>
                         <outlet property="debugTextView" destination="Do6-rB-brD" id="WOt-Nn-ZVp"/>
                         <outlet property="eventInfo" destination="WbB-Oc-Fzd" id="ILa-6K-VbV"/>
+                        <outlet property="navBar" destination="a6Y-Y2-CUS" id="Faf-Cy-feQ"/>
                         <outlet property="overlay" destination="Gtj-G0-2nF" id="aWD-Xb-S0n"/>
                         <outlet property="pushEffects" destination="2Tu-e5-4rg" id="4dM-8l-L0O"/>
                         <outlet property="strobe" destination="IiZ-Oo-pEf" id="YCL-Bc-DoC"/>

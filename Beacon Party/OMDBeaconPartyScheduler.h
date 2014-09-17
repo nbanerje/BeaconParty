@@ -50,7 +50,7 @@
 
 @property (assign, nonatomic) BOOL userStop;
 
-@property (assign, nonatomic) BOOL actioning;
+@property (assign, nonatomic) NSInteger actioning;
 
 
 /**

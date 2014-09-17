@@ -281,6 +281,10 @@
 		495DA5ED19C843F300BEEA3D /* photo-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 495DA5D919C843F300BEEA3D /* photo-bg.png */; };
 		495DA5F919C8BEC300BEEA3D /* libcamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495DA5F819C8BEC300BEEA3D /* libcamera.a */; };
 		495DA5FA19C8BEC300BEEA3D /* libcamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495DA5F819C8BEC300BEEA3D /* libcamera.a */; };
+		497031CB19CA0FD9008BE73C /* raygun.caf in Resources */ = {isa = PBXBuildFile; fileRef = 497031C719CA0FD9008BE73C /* raygun.caf */; };
+		497031CC19CA0FD9008BE73C /* spaceship1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 497031C819CA0FD9008BE73C /* spaceship1.caf */; };
+		497031CD19CA0FD9008BE73C /* spaceship2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 497031C919CA0FD9008BE73C /* spaceship2.caf */; };
+		497031CE19CA0FD9008BE73C /* spaceship3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 497031CA19CA0FD9008BE73C /* spaceship3.caf */; };
 		49A15F9219C11E4A00360208 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49A15E3619C11E4900360208 /* DataModel.xcdatamodeld */; };
 		49A1607919C15C0A00360208 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A1607819C15C0A00360208 /* AdSupport.framework */; };
 		49A4C96719B966FF002C496F /* OMDBeaconPartySchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A4C96619B966FF002C496F /* OMDBeaconPartySchedule.m */; };
@@ -763,6 +767,10 @@
 		495DA5D819C843F300BEEA3D /* menu-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-bg.png"; sourceTree = "<group>"; };
 		495DA5D919C843F300BEEA3D /* photo-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-bg.png"; sourceTree = "<group>"; };
 		495DA5F819C8BEC300BEEA3D /* libcamera.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcamera.a; sourceTree = "<group>"; };
+		497031C719CA0FD9008BE73C /* raygun.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = raygun.caf; sourceTree = "<group>"; };
+		497031C819CA0FD9008BE73C /* spaceship1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = spaceship1.caf; sourceTree = "<group>"; };
+		497031C919CA0FD9008BE73C /* spaceship2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = spaceship2.caf; sourceTree = "<group>"; };
+		497031CA19CA0FD9008BE73C /* spaceship3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = spaceship3.caf; sourceTree = "<group>"; };
 		497EF9FC19B80851004A4C1A /* Beacon Party.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Beacon Party.entitlements"; sourceTree = "<group>"; };
 		49A15E3719C11E4900360208 /* DataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		49A15E3819C11E4900360208 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -1200,6 +1208,10 @@
 		493EF58E19A9B04A0047A96B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				497031C719CA0FD9008BE73C /* raygun.caf */,
+				497031C819CA0FD9008BE73C /* spaceship1.caf */,
+				497031C919CA0FD9008BE73C /* spaceship2.caf */,
+				497031CA19CA0FD9008BE73C /* spaceship3.caf */,
 				4904947119B6D9A100A092E3 /* Sample.json */,
 				49D5851219B70C9300ADB36D /* laugh.caf */,
 				493EF58F19A9B04A0047A96B /* Beacon Party-Info.plist */,
@@ -1563,6 +1575,7 @@
 				4913304719C9553500EC8710 /* btn-strobe.png in Resources */,
 				490260B219C219A800B28190 /* filter3@2x.png in Resources */,
 				490260B819C219A800B28190 /* filter6@2x.png in Resources */,
+				497031CC19CA0FD9008BE73C /* spaceship1.caf in Resources */,
 				4902612519C219A800B28190 /* PackItemView.xib in Resources */,
 				493EF5A919A9B04A0047A96B /* Images.xcassets in Resources */,
 				49025E7619C2199B00B28190 /* ziggy@2x.png in Resources */,
@@ -1584,6 +1597,7 @@
 				4902603D19C219A800B28190 /* btn-duplicate-tapped.png in Resources */,
 				490260B519C219A800B28190 /* filter5.png in Resources */,
 				49F5D00919BD0540007CF934 /* Main.storyboard in Resources */,
+				497031CD19CA0FD9008BE73C /* spaceship2.caf in Resources */,
 				4902606A19C219A800B28190 /* btnUse-tapped@2x.png in Resources */,
 				490260FE19C219A800B28190 /* icon3.png in Resources */,
 				4902603E19C219A800B28190 /* btn-duplicate-tapped@2x.png in Resources */,
@@ -1647,6 +1661,7 @@
 				490260F219C219A800B28190 /* home-selected.png in Resources */,
 				4913303B19C9553500EC8710 /* btn-event@2x.png in Resources */,
 				4902605119C219A800B28190 /* btn-next-tapped.png in Resources */,
+				497031CE19CA0FD9008BE73C /* spaceship3.caf in Resources */,
 				4902606919C219A800B28190 /* btnUse-tapped.png in Resources */,
 				4913303D19C9553500EC8710 /* btn-faststrobe.png in Resources */,
 				490260D219C219A800B28190 /* genericbutton.png in Resources */,
@@ -1784,6 +1799,7 @@
 				493EF59219A9B04A0047A96B /* InfoPlist.strings in Resources */,
 				4902606619C219A800B28190 /* btnCancel-tapped@2x.png in Resources */,
 				4902606B19C219A800B28190 /* btnUse.png in Resources */,
+				497031CB19CA0FD9008BE73C /* raygun.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1969,11 +1985,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Beacon Party/Beacon Party-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-					DEBUG_EPOCH,
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "Beacon Party/Beacon Party-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1982,7 +1994,7 @@
 					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6358ad93-5306-4233-8e67-6f6342b813a2";
+				PROVISIONING_PROFILE = "a5e493cf-9191-4a76-a51e-912781e13bbb";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2005,7 +2017,7 @@
 					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6358ad93-5306-4233-8e67-6f6342b813a2";
+				PROVISIONING_PROFILE = "a5e493cf-9191-4a76-a51e-912781e13bbb";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

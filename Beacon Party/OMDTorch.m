@@ -16,6 +16,7 @@
     dispatch_once(&onceToken, ^{
         shared = [[self alloc] init];
         shared.continueTorch = NO;
+        shared.frequency = [NSNumber numberWithFloat:1.0];
         shared.maxFrequency = [NSNumber numberWithFloat:MAX_TWINKLE_FREQUENCY];
         shared.offset = 0;
         shared.inverse = NO;

@@ -68,7 +68,7 @@
         backgroundAudioQueue = dispatch_queue_create("is.ziggy.audiobackground", NULL);
         backgroundQueue = dispatch_queue_create("is.ziggy.background", NULL);
         _initialBrightness = [UIScreen mainScreen].brightness;
-        _actioning = NO;
+        _actioning = 0;
         _userStop = NO;
     }
     return self;
@@ -129,7 +129,7 @@
     }
 }
 - (void) hideView {
-    self.actioning = NO;
+    self.actioning -= 1;
     dispatch_async(dispatch_get_main_queue(),^{
         [UIView transitionWithView:_view
                           duration:0.5
@@ -142,7 +142,7 @@
 }
 
 - (void) showView {
-    self.actioning = YES;
+    self.actioning += 1;
 
     if (!_userStop) {
             dispatch_async(dispatch_get_main_queue(),^{
@@ -199,16 +199,16 @@
     } else if([action[@"action"] isEqualToString:@"stop"]) {
         [self hideView];
         dispatch_async(dispatch_get_main_queue(), ^{
-            _view.backgroundColor = [UIColor whiteColor];
+            _view.backgroundColor = [UIColor blackColor];
             [_view.layer removeAllAnimations];
         });
     } else if([action[@"action"] isEqualToString:@"stop-flash"]) {
-        self.actioning = NO;
+        self.actioning -= 1;
         _torch.continueTorch = NO;
     } else if([action[@"action"] isEqualToString:@"url"]) {
         [self showView];
         dispatch_async(dispatch_get_main_queue(), ^{
-            _view.backgroundColor = [UIColor whiteColor];
+            _view.backgroundColor = [UIColor blackColor];
             [_view.layer removeAllAnimations];
             if(!_aWebView) {
                 _aWebView =[[UIWebView alloc] initWithFrame:_view.frame];
@@ -246,7 +246,7 @@
                 BOOL loop = ((NSNumber*)action[@"loop"]).boolValue;
                 if (loop) {
                     _backgroundMusicPlayer.numberOfLoops = -1;
-                    self.actioning = YES;
+                    self.actioning += 1;
                 }
             }
             [_backgroundMusicPlayer prepareToPlay];
@@ -263,7 +263,7 @@
             
         });
     } else if([action[@"action"] isEqualToString:@"stop-sound"]) {
-        self.actioning = NO;
+        self.actioning -= 1;
         dispatch_async(backgroundAudioQueue, ^{ if(_backgroundMusicPlayer)[_backgroundMusicPlayer stop];});
     } else if([action[@"action"] isEqualToString:@"vibrate"]) {
         //Not setting actioning since this is short
@@ -271,9 +271,13 @@
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         });
     } else if([action[@"action"] isEqualToString:@"flash"]) {
-        self.actioning = YES;
+        self.actioning += 1;
         //Torching is done on a seperate thread
-        _torch.frequency = action[@"frequency"];
+        if(action[@"frequency"]) {
+            _torch.frequency = action[@"frequency"];
+        } else {
+            _torch.frequency = [NSNumber numberWithFloat:1.0];
+        }
         if(action[@"brightness"]) {
             _torch.brightness = action[@"brightness"];
         } else {
@@ -291,7 +295,7 @@
         [_torch startTorching];
           
     } else if([action[@"action"] isEqualToString:@"twinkle"]) {
-        self.actioning = YES;
+        self.actioning += 1;
         //Torching is done on a seperate thread
         if (action[@"max-frequency"]) {
             _torch.maxFrequency = action[@"max-frequency"];
@@ -408,11 +412,21 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [[self.view viewWithTag:1] removeFromSuperview]; //Remove the webview
         [[self.view viewWithTag:2] removeFromSuperview]; //Remove the particle view
-        _view.backgroundColor = [UIColor whiteColor];
+        _view.backgroundColor = [UIColor blackColor];
         [_view.layer removeAllAnimations];
         _torch.continueTorch = NO;
     });
     dispatch_async(backgroundAudioQueue, ^{ if(_backgroundMusicPlayer)[_backgroundMusicPlayer stop];});
+}
+
+- (void) setUserStop:(BOOL) stop {
+    _userStop = stop;
+    if(_userStop == YES) {
+        _continueMainLoop = NO;
+        [self clearEffects];
+        self.actioning = 0;
+    }
+    //We handle starting the main loop when we reload the file
 }
 
 #pragma mark UIWebView delegate methods

@@ -32,11 +32,28 @@
 }
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if([keyPath compare:@"actioning"] == NSOrderedSame) {
-        if(((NSNumber*)change[NSKeyValueChangeNewKey]).boolValue && _schedule.scheduler.userStop) {
-            dispatch_async(dispatch_get_main_queue(), ^{_resumeButton.hidden = NO;});
+        //Actions occuring and user has stopped - show resume
+        if(((NSNumber*)change[NSKeyValueChangeNewKey]).integerValue > 0 && _schedule.scheduler.userStop) {
+            dispatch_async(dispatch_get_main_queue(), ^{_resumeButton.hidden = NO; _stopButton.hidden = YES;});
             
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{_resumeButton.hidden = YES;});
+        }
+        //No actions user but they stopped - Hide both
+        else if(((NSNumber*)change[NSKeyValueChangeNewKey]).integerValue == 0 && _schedule.scheduler.userStop) {
+            dispatch_async(dispatch_get_main_queue(), ^{_resumeButton.hidden = NO; _stopButton.hidden = YES;});
+            
+        }
+        //No actions user but they didn't stop- Hide both
+        else if(((NSNumber*)change[NSKeyValueChangeNewKey]).integerValue == 0 && !_schedule.scheduler.userStop) {
+            dispatch_async(dispatch_get_main_queue(), ^{_resumeButton.hidden = YES; _stopButton.hidden = YES;});
+            
+        }
+        //Actions occuring but user has not stopped - show stop
+        else if(((NSNumber*)change[NSKeyValueChangeNewKey]).integerValue > 0 && !_schedule.scheduler.userStop) {
+            dispatch_async(dispatch_get_main_queue(), ^{_resumeButton.hidden = YES; _stopButton.hidden = NO;});
+            
+        }
+        else {
+            dispatch_async(dispatch_get_main_queue(), ^{_resumeButton.hidden = YES;_stopButton.hidden = YES;});
         }
     }
 }
@@ -102,8 +119,8 @@
 }
 
 - (IBAction)resumeTapped:(id)sender {
-    _schedule.scheduler.userStop = YES;
-    _pushEffects.hidden = NO;
+    _schedule.scheduler.userStop = NO;
+    [_schedule setSchedule:_schedule.schedule];
 }
 
 - (IBAction)stopTapped:(id)sender {
@@ -158,7 +175,8 @@
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
     if(central.state == CBCentralManagerStatePoweredOff) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bluetooth Needed" message:@"To get the most out of the show please en     able Bluetooth." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bluetooth Needed"
+                                                        message:@"To get the most out of the show please enable Bluetooth." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
 }

@@ -124,6 +124,8 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
 {
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+    
+    [UIApplication sharedApplication].idleTimerDisabled = NO;
 
 }
 

@@ -48,7 +48,9 @@
 @property (assign, nonatomic) CGFloat initialBrightness;
 
 
+@property (assign, nonatomic) BOOL userStop;
 
+@property (assign, nonatomic) BOOL actioning;
 
 
 /**

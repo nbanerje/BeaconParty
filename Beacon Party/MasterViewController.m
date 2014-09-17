@@ -30,10 +30,21 @@
 {
     [super awakeFromNib];
 }
-
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if([keyPath compare:@"actioning"] == NSOrderedSame) {
+        if(((NSNumber*)change[NSKeyValueChangeNewKey]).boolValue && _schedule.scheduler.userStop) {
+            dispatch_async(dispatch_get_main_queue(), ^{_resumeButton.hidden = NO;});
+            
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{_resumeButton.hidden = YES;});
+        }
+    }
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
     
     // Check to see if the overlay has been dismissed before
     // If it hasn't show it again if it isn't currently on the screen
@@ -63,13 +74,20 @@
     if(!_schedule) {
         
         AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+        //Add observer for when scheduler is actioning
+        [appDelegate.schedule.scheduler addObserver:self forKeyPath:@"actioning" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:NULL];
+        
         appDelegate.schedule.view = self.pushEffects;
         self.pushEffects.hidden = YES;
 #ifdef DEBUG
         _debugTextView.hidden = NO;
         appDelegate.schedule.debugTextView = _debugTextView;
-#endif
         [appDelegate.schedule test];
+#endif
+        
+        
+        _schedule = appDelegate.schedule;
+        
     }
 }
 - (void)didReceiveMemoryWarning
@@ -81,6 +99,17 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:NO];
+}
+
+- (IBAction)resumeTapped:(id)sender {
+    _schedule.scheduler.userStop = YES;
+    _pushEffects.hidden = NO;
+}
+
+- (IBAction)stopTapped:(id)sender {
+    _schedule.scheduler.userStop = YES;
+    _pushEffects.hidden = YES;
+    _resumeButton.hidden = NO;
 }
 
 -(IBAction)overlayDismissed:(id) sender {

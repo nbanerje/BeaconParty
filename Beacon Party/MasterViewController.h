@@ -21,6 +21,10 @@
 @property (weak,nonatomic) IBOutlet UIButton *ziggify;
 @property (weak,nonatomic) IBOutlet UIButton *eventInfo;
 @property (weak,nonatomic) IBOutlet UINavigationItem *navBar;
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
+@property (weak, nonatomic) IBOutlet UIButton *resumeButton;
+- (IBAction)resumeTapped:(id)sender;
+- (IBAction)stopTapped:(id)sender;
 
 -(IBAction)overlayDismissed:(id) sender;
 @end

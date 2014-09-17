@@ -22,6 +22,8 @@
 
 -(void) test;
 
+@property (strong, nonatomic) OMDBeaconPartyScheduler *scheduler;
+
 /** Array that hold the current schedule for the event.
     if DEBUG_EPOCH is defined this gets loaded from the Sample.json file,
     but you can overwrite the array entirely to set a new

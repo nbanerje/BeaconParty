@@ -76,10 +76,32 @@
                                     <segue destination="nip-qR-61k" kind="push" id="pmF-gd-3kb"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Tu-e5-4rg" userLabel="Push Effects">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLX-Ku-XN1">
+                                <rect key="frame" x="250" y="60" width="70" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Resume">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resumeTapped:" destination="sG2-qQ-E6d" eventType="touchUpInside" id="zi3-Kn-esi"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Tu-e5-4rg" userLabel="Push Effects">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0O9-zg-gcw">
+                                        <rect key="frame" x="268" y="63" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Stop">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="stopTapped:" destination="sG2-qQ-E6d" eventType="touchUpInside" id="5Ps-cJ-9tp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gtj-G0-2nF" userLabel="Overlay">
                                 <rect key="frame" x="0.0" y="65" width="320" height="503"/>
@@ -116,6 +138,8 @@
                         <outlet property="navBar" destination="a6Y-Y2-CUS" id="Faf-Cy-feQ"/>
                         <outlet property="overlay" destination="Gtj-G0-2nF" id="aWD-Xb-S0n"/>
                         <outlet property="pushEffects" destination="2Tu-e5-4rg" id="4dM-8l-L0O"/>
+                        <outlet property="resumeButton" destination="fLX-Ku-XN1" id="Xig-dF-sFA"/>
+                        <outlet property="stopButton" destination="0O9-zg-gcw" id="ncI-hG-0Uj"/>
                         <outlet property="strobe" destination="IiZ-Oo-pEf" id="YCL-Bc-DoC"/>
                         <outlet property="ziggify" destination="NTl-q0-Q4u" id="GCS-m5-7Nd"/>
                     </connections>

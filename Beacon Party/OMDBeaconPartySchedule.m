@@ -10,7 +10,6 @@
 #import "AppDelegate.h" //To grab block to update schedule file
 
 @interface OMDBeaconPartySchedule()
-@property (strong, nonatomic) OMDBeaconPartyScheduler *scheduler;
 @property (strong, nonatomic) OMDBeaconParty *beaconParty;
 @property (strong,nonatomic) CLBeacon *currentBeacon;
 
@@ -79,7 +78,7 @@
     _scheduler.epoch = epoch;
     
 #ifdef DEBUG_EPOCH
-    _scheduler.epoch = [NSDate dateWithTimeIntervalSinceNow:0];
+    //_scheduler.epoch = [NSDate dateWithTimeIntervalSinceNow:0];
 #endif
     _scheduler.debugTextView = _debugTextView;
     
@@ -146,7 +145,7 @@
                                 arrayWithArray:@[
     [NSMutableDictionary dictionaryWithDictionary:@{@"time":@([[NSDate date] timeIntervalSince1970]),@"action":@"particle",@"executed":@(0),@"r1":@(1),@"g1":@(0.75),@"b1":@(0),@"a1":@(1)}],
    
-    [NSMutableDictionary dictionaryWithDictionary:@{@"time":@([[NSDate date] timeIntervalSince1970]+8),@"action":@"stop-particle",@"executed":@(0)}]
+    [NSMutableDictionary dictionaryWithDictionary:@{@"time":@([[NSDate date] timeIntervalSince1970]+10),@"action":@"stop-particle",@"executed":@(0)}]
     
     ]
                                 ];

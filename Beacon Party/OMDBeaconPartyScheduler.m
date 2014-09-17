@@ -68,7 +68,8 @@
         backgroundAudioQueue = dispatch_queue_create("is.ziggy.audiobackground", NULL);
         backgroundQueue = dispatch_queue_create("is.ziggy.background", NULL);
         _initialBrightness = [UIScreen mainScreen].brightness;
-        
+        _actioning = NO;
+        _userStop = NO;
     }
     return self;
 }
@@ -128,6 +129,7 @@
     }
 }
 - (void) hideView {
+    self.actioning = NO;
     dispatch_async(dispatch_get_main_queue(),^{
         [UIView transitionWithView:_view
                           duration:0.5
@@ -140,16 +142,21 @@
 }
 
 - (void) showView {
-    dispatch_async(dispatch_get_main_queue(),^{
-        [UIView transitionWithView:_view
-                          duration:0.5
-                           options:UIViewAnimationOptionTransitionCrossDissolve
-                        animations:NULL
-                        completion:NULL];
-        _view.hidden = NO;
-        [UIScreen mainScreen].brightness = 1.0;
-    
-    });
+    self.actioning = YES;
+
+    if (!_userStop) {
+            dispatch_async(dispatch_get_main_queue(),^{
+                _initialBrightness = [UIScreen mainScreen].brightness;
+            [UIView transitionWithView:_view
+                              duration:0.5
+                               options:UIViewAnimationOptionTransitionCrossDissolve
+                            animations:NULL
+                            completion:NULL];
+            _view.hidden = NO;
+            [UIScreen mainScreen].brightness = 1.0;
+        
+        });
+    }
     
 }
 #define ARC4RANDOM_MAX      0x100000000
@@ -196,6 +203,7 @@
             [_view.layer removeAllAnimations];
         });
     } else if([action[@"action"] isEqualToString:@"stop-flash"]) {
+        self.actioning = NO;
         _torch.continueTorch = NO;
     } else if([action[@"action"] isEqualToString:@"url"]) {
         [self showView];
@@ -218,6 +226,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{[[self.view viewWithTag:1] removeFromSuperview];});
     }
     else if([action[@"action"] isEqualToString:@"sound"]) {
+        //Setting actioning only is looping - see below
         NSString *localSoundName = action[@"local-file"];
         NSURL *soundUrl;
         if(localSoundName) {
@@ -237,6 +246,7 @@
                 BOOL loop = ((NSNumber*)action[@"loop"]).boolValue;
                 if (loop) {
                     _backgroundMusicPlayer.numberOfLoops = -1;
+                    self.actioning = YES;
                 }
             }
             [_backgroundMusicPlayer prepareToPlay];
@@ -253,12 +263,15 @@
             
         });
     } else if([action[@"action"] isEqualToString:@"stop-sound"]) {
+        self.actioning = NO;
         dispatch_async(backgroundAudioQueue, ^{ if(_backgroundMusicPlayer)[_backgroundMusicPlayer stop];});
     } else if([action[@"action"] isEqualToString:@"vibrate"]) {
+        //Not setting actioning since this is short
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         });
     } else if([action[@"action"] isEqualToString:@"flash"]) {
+        self.actioning = YES;
         //Torching is done on a seperate thread
         _torch.frequency = action[@"frequency"];
         if(action[@"brightness"]) {
@@ -278,6 +291,7 @@
         [_torch startTorching];
           
     } else if([action[@"action"] isEqualToString:@"twinkle"]) {
+        self.actioning = YES;
         //Torching is done on a seperate thread
         if (action[@"max-frequency"]) {
             _torch.maxFrequency = action[@"max-frequency"];

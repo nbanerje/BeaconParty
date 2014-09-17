@@ -9,6 +9,21 @@
             "items":[
                 {
                     "image":"ziggy.png"
+                },
+                {
+                    "image":"ziggy-1.png"
+                },
+                {
+                    "image":"ziggy-2.png"
+                },
+                {
+                    "image":"ziggy-3.png"
+                },
+                {
+                    "image":"ziggy-4.png"
+                },
+                {
+                    "image":"ziggy-5.png"
                 }
             ]
         }

@@ -12,7 +12,7 @@
 #import "UAirship.h"
 #import "UAPush.h"
 
-#define FETCH_URL_STR @"http://omdesignllc.com/sample.json"
+#define UUID @"BF5094D9-5849-47ED-8FA1-983A748A9586"
 
 typedef void(^FetchURLDataBlock)(NSString*, OMDBeaconPartySchedule*, void (^)(UIBackgroundFetchResult));
 typedef void (^BackgroundCompletion)(UIBackgroundFetchResult);

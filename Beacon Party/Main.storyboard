@@ -20,34 +20,31 @@
             </objects>
             <point key="canvasLocation" x="-2881" y="-1744"/>
         </scene>
-        <!--Master View Controller - Ziggy-->
+        <!--Master View Controller - Design Rocks-->
         <scene sceneID="SOg-OO-rAa">
             <objects>
                 <viewController id="sG2-qQ-E6d" customClass="MasterViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3bi-1a-AW1"/>
-                        <viewControllerLayoutGuide type="bottom" id="11k-lI-3wE"/>
+                        <viewControllerLayoutGuide type="top" id="UuQ-HU-5xJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="35T-vR-7rk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SbH-3g-nvC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Do6-rB-brD">
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Do6-rB-brD">
                                 <rect key="frame" x="0.0" y="484" width="320" height="84"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="84" id="BaB-gQ-GEg"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="tlM-ed-cog">
-                                <rect key="frame" x="0.0" y="63" width="320" height="505"/>
+                                <rect key="frame" x="0.0" y="65" width="320" height="510"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTl-q0-Q4u">
-                                <rect key="frame" x="0.0" y="304" width="779" height="64"/>
+                                <rect key="frame" x="3" y="363" width="779" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="Ziggy Yourself"/>
                                 <state key="normal" title="Ziggy Yourself!" image="btn-ziggify.png">
@@ -58,215 +55,133 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IiZ-Oo-pEf">
-                                <rect key="frame" x="-2" y="236" width="428" height="69"/>
+                                <rect key="frame" x="1" y="295" width="428" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="Visual Effects"/>
                                 <state key="normal" title="Visual Effects" image="btn-strobe.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="qhw-gV-Hph" kind="push" id="rTX-ah-AyZ"/>
+                                    <segue destination="qhw-gV-Hph" kind="push" id="FV6-QX-SDW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbB-Oc-Fzd">
-                                <rect key="frame" x="-3" y="438" width="450" height="71"/>
+                                <rect key="frame" x="0.0" y="428" width="450" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="About"/>
                                 <state key="normal" title="About the Event" image="btn-event.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="wU9-q2-9iD" kind="push" id="cuD-fV-IfX"/>
+                                    <segue destination="nip-qR-61k" kind="push" id="pmF-gd-3kb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrV-C9-KMX">
-                                <rect key="frame" x="-2" y="367" width="387" height="71"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" label="Settings"/>
-                                <state key="normal" title="Settings" image="btn-settings.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Gqa-Xx-kEU" kind="push" id="amp-BG-gh5"/>
-                                </connections>
-                            </button>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Tu-e5-4rg">
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Tu-e5-4rg" userLabel="Push Effects">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gtj-G0-2nF" userLabel="Overlay">
+                                <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="firstrun-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="9Ub-0N-2oR">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="503"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mr3-oW-wlu">
+                                        <rect key="frame" x="129" y="221" width="62" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Continue">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="overlayDismissed:" destination="sG2-qQ-E6d" eventType="touchUpInside" id="vTH-si-LEx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <accessibility key="accessibilityConfiguration">
                             <accessibilityTraits key="traits" none="YES" image="YES"/>
                         </accessibility>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Do6-rB-brD" secondAttribute="centerX" id="CJ6-lC-1Hv"/>
-                            <constraint firstAttribute="bottom" secondItem="Do6-rB-brD" secondAttribute="bottom" id="n8P-Sa-0vc"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Ziggy" id="a6Y-Y2-CUS"/>
+                    <navigationItem key="navigationItem" title="Design Rocks" id="a6Y-Y2-CUS"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="debugTextView" destination="Do6-rB-brD" id="WOt-Nn-ZVp"/>
+                        <outlet property="eventInfo" destination="WbB-Oc-Fzd" id="ILa-6K-VbV"/>
+                        <outlet property="overlay" destination="Gtj-G0-2nF" id="aWD-Xb-S0n"/>
                         <outlet property="pushEffects" destination="2Tu-e5-4rg" id="4dM-8l-L0O"/>
+                        <outlet property="strobe" destination="IiZ-Oo-pEf" id="YCL-Bc-DoC"/>
+                        <outlet property="ziggify" destination="NTl-q0-Q4u" id="GCS-m5-7Nd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4eW-mt-ItJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2291" y="-1744"/>
-        </scene>
-        <!--About Event View Controller-->
-        <scene sceneID="ERG-eh-5u1">
-            <objects>
-                <viewController id="wU9-q2-9iD" customClass="AboutEventViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="nGy-Kx-OV5"/>
-                        <viewControllerLayoutGuide type="bottom" id="khk-LR-rIK"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="J9e-MT-WUI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xt6-i2-6tK">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="About the Event" id="ZW7-Fk-4gQ"/>
-                                </items>
-                            </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0d-UP-tnu">
-                                <rect key="frame" x="34" y="79" width="80" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Buy Tickets">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="nip-qR-61k" kind="push" id="2GC-io-Oyl"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mi2-Ey-aAu">
-                                <rect key="frame" x="213" y="79" width="58" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Sponsor">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="nip-qR-61k" kind="push" id="8s3-td-ucN"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AhL-3A-zWm">
-                                <rect key="frame" x="0.0" y="117" width="320" height="306"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Design Rocks, a featured event of Design Week Portland, is an immersive concert experience and a meditation on the intersection of design and music.
-
-We will explore the influence of design—print, lighting, tech, costume, experience—on the rock ’n’ roll art form.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="g4Q-8n-LnG"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="daC-2i-2hM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1699" y="-1010"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Y2P-wI-ySa">
-            <objects>
-                <viewController id="Gqa-Xx-kEU" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="WGF-L6-WjI"/>
-                        <viewControllerLayoutGuide type="bottom" id="P8w-K4-DSh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="VXS-Ec-fyy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uf8-hk-38U">
-                                <rect key="frame" x="-9" y="11" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Settings" id="9Ut-mb-AlG"/>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="fwC-bp-Jgq"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eIn-zM-nTx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1699" y="-285"/>
+            <point key="canvasLocation" x="-2285" y="-1593"/>
         </scene>
         <!--Effects View Controller-->
         <scene sceneID="vrJ-Tz-xMD">
             <objects>
                 <viewController id="qhw-gV-Hph" customClass="EffectsViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lhz-Yn-lCa"/>
-                        <viewControllerLayoutGuide type="bottom" id="wZn-oF-3vt"/>
+                        <viewControllerLayoutGuide type="top" id="VMR-Gq-Mbh"/>
+                        <viewControllerLayoutGuide type="bottom" id="ta2-a5-X4A"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mu9-Kb-jmv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a7g-Dm-dpE" userLabel="RainbowView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="photo-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fwb-Jc-srv">
+                                <rect key="frame" x="-5" y="45" width="325" height="523"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a7g-Dm-dpE" userLabel="RainbowView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwG-Bm-tcX">
-                                <rect key="frame" x="20" y="225" width="79" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdW-MM-ORl">
+                                <rect key="frame" x="0.0" y="427" width="413" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Audio Sync">
+                                <state key="normal" title="Audio Sync" image="btn-audiosync.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="action:" destination="qhw-gV-Hph" eventType="touchUpInside" id="TQI-d5-OBT"/>
-                                    <segue destination="tl9-VC-6px" kind="push" id="gig-E4-Fvh"/>
+                                    <segue destination="CiZ-0U-6PA" kind="push" id="3aZ-ni-tYo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVh-dz-E2v">
-                                <rect key="frame" x="20" y="263" width="99" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVh-dz-E2v">
+                                <rect key="frame" x="0.0" y="358" width="436" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Rainbow Fade">
+                                <state key="normal" title="Rainbow Fade" image="btn-rainbow.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="action:" destination="qhw-gV-Hph" eventType="touchUpInside" id="KEc-f1-KCC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WzM-pl-au8">
-                                <rect key="frame" x="20" y="187" width="84" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WzM-pl-au8">
+                                <rect key="frame" x="0.0" y="292" width="419" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Slow Strobe">
+                                <state key="normal" title="Slow Strobe" image="btn-slowstrobe.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="action:" destination="qhw-gV-Hph" eventType="touchUpInside" id="Fka-H4-8Qi"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z47-Gv-Oe8">
-                                <rect key="frame" x="20" y="149" width="80" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z47-Gv-Oe8">
+                                <rect key="frame" x="0.0" y="224" width="414" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Fast Strobe">
+                                <state key="normal" title="Fast Strobe" image="btn-faststrobe.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="action:" destination="qhw-gV-Hph" eventType="touchUpInside" id="a9m-Vw-TRl"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdW-MM-ORl">
-                                <rect key="frame" x="20" y="300" width="60" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Particles">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="CiZ-0U-6PA" kind="push" id="3aZ-ni-tYo"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -274,7 +189,6 @@ We will explore the influence of design—print, lighting, tech, costume, experi
                     </view>
                     <navigationItem key="navigationItem" id="9q9-f5-vgF"/>
                     <connections>
-                        <outlet property="audioSyncButton" destination="zwG-Bm-tcX" id="tvX-pX-UcN"/>
                         <outlet property="fastStrobeButton" destination="z47-Gv-Oe8" id="9TN-Cd-PV4"/>
                         <outlet property="rainbowFadeButton" destination="IVh-dz-E2v" id="lPn-C1-diN"/>
                         <outlet property="rainbowView" destination="a7g-Dm-dpE" id="tb8-ba-Xzz"/>
@@ -283,15 +197,15 @@ We will explore the influence of design—print, lighting, tech, costume, experi
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDZ-eH-6RS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1699" y="-1543"/>
+            <point key="canvasLocation" x="-1830" y="-1593"/>
         </scene>
         <!--Viz View Controller-->
         <scene sceneID="kfa-7b-oG2">
             <objects>
                 <viewController id="CiZ-0U-6PA" customClass="VizViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Uzs-GQ-5Xr"/>
-                        <viewControllerLayoutGuide type="bottom" id="v1f-FF-eVD"/>
+                        <viewControllerLayoutGuide type="top" id="CjB-nS-WEs"/>
+                        <viewControllerLayoutGuide type="bottom" id="30m-fk-yFm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JtQ-wk-hgS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -304,87 +218,13 @@ We will explore the influence of design—print, lighting, tech, costume, experi
             </objects>
             <point key="canvasLocation" x="-1356" y="-1744"/>
         </scene>
-        <!--OpenGL Waveform View Controller - Audio Sync-->
-        <scene sceneID="hjJ-uD-mJ1">
-            <objects>
-                <viewController id="tl9-VC-6px" customClass="OpenGLWaveformViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="F0l-fv-cGY"/>
-                        <viewControllerLayoutGuide type="bottom" id="M47-md-kKW"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ltw-El-ftO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAL-Om-43Y" customClass="EZAudioPlotGL">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uzf-FL-Aaq">
-                                        <rect key="frame" x="20" y="517" width="51" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <connections>
-                                            <action selector="toggleMicrophone:" destination="tl9-VC-6px" eventType="valueChanged" id="Px0-7V-uZS"/>
-                                        </connections>
-                                    </switch>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gpF-GE-kT8">
-                                        <rect key="frame" x="187" y="519" width="113" height="29"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <segments>
-                                            <segment title="Buffer"/>
-                                            <segment title="Rolling"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="changePlotType:" destination="tl9-VC-6px" eventType="valueChanged" id="q9y-h0-7ad"/>
-                                        </connections>
-                                    </segmentedControl>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZq-7s-82n">
-                                        <rect key="frame" x="20" y="488" width="280" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Uzf-FL-Aaq" secondAttribute="bottom" constant="20" id="J4Z-f1-k5h"/>
-                                    <constraint firstItem="WZq-7s-82n" firstAttribute="leading" secondItem="EAL-Om-43Y" secondAttribute="leading" constant="20" id="NBl-NT-OhD"/>
-                                    <constraint firstAttribute="trailing" secondItem="gpF-GE-kT8" secondAttribute="trailing" constant="20" id="OX0-zF-ULV"/>
-                                    <constraint firstItem="Uzf-FL-Aaq" firstAttribute="top" secondItem="WZq-7s-82n" secondAttribute="bottom" constant="8" id="U7B-6g-1ft"/>
-                                    <constraint firstAttribute="bottom" secondItem="gpF-GE-kT8" secondAttribute="bottom" constant="21" id="lIZ-5d-GDM"/>
-                                    <constraint firstItem="Uzf-FL-Aaq" firstAttribute="leading" secondItem="EAL-Om-43Y" secondAttribute="leading" constant="20" id="phJ-gk-CBj"/>
-                                    <constraint firstAttribute="trailing" secondItem="WZq-7s-82n" secondAttribute="trailing" constant="20" id="w88-LK-1sm"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="EAL-Om-43Y" firstAttribute="leading" secondItem="Ltw-El-ftO" secondAttribute="leading" id="D9I-3w-9EB"/>
-                            <constraint firstAttribute="bottom" secondItem="EAL-Om-43Y" secondAttribute="bottom" id="HtT-P3-SEO"/>
-                            <constraint firstAttribute="trailing" secondItem="EAL-Om-43Y" secondAttribute="trailing" id="taN-uv-ia8"/>
-                            <constraint firstItem="EAL-Om-43Y" firstAttribute="top" secondItem="Ltw-El-ftO" secondAttribute="top" id="wUH-SP-yK5"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Audio Sync" id="j4L-bC-wot">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="d2u-3N-ftf"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="audioPlot" destination="EAL-Om-43Y" id="ddu-OE-7pY"/>
-                        <outlet property="microphoneTextLabel" destination="WZq-7s-82n" id="zv3-mX-n3p"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g1f-Im-ziW" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1108" y="-1292"/>
-        </scene>
         <!--Web View Controller-->
         <scene sceneID="Z9G-od-ZMV">
             <objects>
                 <viewController id="nip-qR-61k" customClass="WebViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rEy-gt-Qei"/>
-                        <viewControllerLayoutGuide type="bottom" id="UoP-cO-DHc"/>
+                        <viewControllerLayoutGuide type="top" id="qID-Cv-mRV"/>
+                        <viewControllerLayoutGuide type="bottom" id="aX6-Ak-mbc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="THM-Sx-Vp4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -398,16 +238,12 @@ We will explore the influence of design—print, lighting, tech, costume, experi
                                     <outlet property="delegate" destination="nip-qR-61k" id="8Iq-jL-BEv"/>
                                 </connections>
                             </webView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5HD-BA-agH">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5HD-BA-agH">
                                 <rect key="frame" x="150" y="274" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerY" secondItem="5HD-BA-agH" secondAttribute="centerY" id="1VN-a6-4ci"/>
-                            <constraint firstAttribute="centerX" secondItem="5HD-BA-agH" secondAttribute="centerX" id="YAU-dm-aTl"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Bse-ld-TWa">
                         <barButtonItem key="backBarButtonItem" title="Back" id="vFS-mc-0a4"/>
@@ -419,15 +255,15 @@ We will explore the influence of design—print, lighting, tech, costume, experi
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j3w-L1-gnw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1108" y="-577"/>
+            <point key="canvasLocation" x="-1356" y="-1039"/>
         </scene>
         <!--Gallery View Controller-->
         <scene sceneID="uMQ-Zu-zoQ">
             <objects>
                 <viewController wantsFullScreenLayout="YES" id="vki-Ze-RvA" customClass="GalleryViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ub3-w3-14m"/>
-                        <viewControllerLayoutGuide type="bottom" id="ynb-gA-iXe"/>
+                        <viewControllerLayoutGuide type="top" id="zvj-LA-cWX"/>
+                        <viewControllerLayoutGuide type="bottom" id="vqa-SW-a4b"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Yzo-WF-RSI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -437,10 +273,10 @@ We will explore the influence of design—print, lighting, tech, costume, experi
                                 <rect key="frame" x="0.0" y="64" width="320" height="503"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fB-RV-E7l" userLabel="Button - New Pic">
-                                <rect key="frame" x="59" y="110" width="55" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fB-RV-E7l" userLabel="Button - New Pic">
+                                <rect key="frame" x="59" y="110" width="55" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" backgroundImage="btn-camera.png">
+                                <state key="normal" image="btn-camera.png">
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="selected" backgroundImage="btn-newpic-tapped.png"/>
@@ -449,10 +285,10 @@ We will explore the influence of design—print, lighting, tech, costume, experi
                                     <action selector="takePhoto:" destination="vki-Ze-RvA" eventType="touchUpInside" id="wuA-jq-Puu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4H-u9-6GE" userLabel="Button - Choose Pic">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4H-u9-6GE" userLabel="Button - Choose Pic">
                                 <rect key="frame" x="195" y="96" width="72" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" backgroundImage="btn-library.png">
+                                <state key="normal" image="btn-library.png">
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="selected" backgroundImage="btn-choosepic-tapped.png"/>
@@ -480,8 +316,8 @@ We will explore the influence of design—print, lighting, tech, costume, experi
             <objects>
                 <viewController storyboardIdentifier="PreviewView" id="wTT-Zq-mZN" customClass="PreviewViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ztv-lK-L0b"/>
-                        <viewControllerLayoutGuide type="bottom" id="xfU-CJ-2pu"/>
+                        <viewControllerLayoutGuide type="top" id="6GF-Oh-CSs"/>
+                        <viewControllerLayoutGuide type="bottom" id="MFT-LP-qVR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0KZ-7p-Rad">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -495,7 +331,7 @@ We will explore the influence of design—print, lighting, tech, costume, experi
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Make it Awesome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wen-JE-f9L">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Glam it up!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wen-JE-f9L">
                                         <rect key="frame" x="75" y="9" width="170" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -606,15 +442,15 @@ We will explore the influence of design—print, lighting, tech, costume, experi
             <objects>
                 <viewController storyboardIdentifier="ShareView" id="qlr-yW-wk9" customClass="ShareViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="nBp-f7-TnC"/>
-                        <viewControllerLayoutGuide type="bottom" id="JDV-m4-W80"/>
+                        <viewControllerLayoutGuide type="top" id="zRe-CJ-vUb"/>
+                        <viewControllerLayoutGuide type="bottom" id="Rp3-Np-uJ4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rYF-24-r6F">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x20-qI-Xev">
-                                <rect key="frame" x="0.0" y="60" width="320" height="406"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="323"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XFX-HB-J0w" userLabel="View - Top bar">
@@ -698,6 +534,7 @@ We will explore the influence of design—print, lighting, tech, costume, experi
     </scenes>
     <resources>
         <image name="bottombar.png" width="320" height="48"/>
+        <image name="btn-audiosync.png" width="320" height="71"/>
         <image name="btn-back-tapped.png" width="65" height="29"/>
         <image name="btn-back.png" width="65" height="29"/>
         <image name="btn-camera.png" width="55" height="45"/>
@@ -708,16 +545,19 @@ We will explore the influence of design—print, lighting, tech, costume, experi
         <image name="btn-event.png" width="320" height="71"/>
         <image name="btn-facebook-tapped.png" width="100" height="29"/>
         <image name="btn-facebook.png" width="100" height="29"/>
+        <image name="btn-faststrobe.png" width="320" height="71"/>
         <image name="btn-library.png" width="72" height="72"/>
         <image name="btn-newpic-tapped.png" width="122" height="122"/>
         <image name="btn-next-tapped.png" width="80" height="39"/>
+        <image name="btn-rainbow.png" width="320" height="71"/>
         <image name="btn-remove-tapped.png" width="95" height="29"/>
         <image name="btn-remove.png" width="95" height="29"/>
-        <image name="btn-settings.png" width="320" height="71"/>
+        <image name="btn-slowstrobe.png" width="320" height="71"/>
         <image name="btn-strobe.png" width="320" height="69"/>
         <image name="btn-twitter-tapped.png" width="100" height="29"/>
         <image name="btn-twitter.png" width="100" height="29"/>
         <image name="btn-ziggify.png" width="320" height="71"/>
+        <image name="firstrun-bg.png" width="320" height="568"/>
         <image name="menu-bg.png" width="320" height="568"/>
         <image name="photo-bg.png" width="320" height="568"/>
         <image name="topbar.png" width="320" height="44"/>
@@ -727,7 +567,4 @@ We will explore the influence of design—print, lighting, tech, costume, experi
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="2GC-io-Oyl"/>
-    </inferredMetricsTieBreakers>
 </document>

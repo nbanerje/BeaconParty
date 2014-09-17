@@ -17,7 +17,7 @@
 #import "ShareViewController.h"
 
 
-#define UUID @"BF5094D9-5849-47ED-8FA1-983A748A9586"
+
 #define NOTIFICATION_ALERT_VIEW 1
 
 @interface AppDelegate()
@@ -62,14 +62,14 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
     if ([UIApplication sharedApplication].backgroundRefreshStatus == UIBackgroundRefreshStatusDenied) {
         //Alert user to turn on background refresh for the app
     }
+//TODO: move these somewhere else or are they too annoying?
+    //[self checkBluetoothAccess];
     
-    [self checkBluetoothAccess];
-    
-    if ([UIApplication sharedApplication].enabledRemoteNotificationTypes == UIRemoteNotificationTypeNone){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Push Notifications Needed" message:@"To get the most out of the show please enable Push Notifications." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        alert.tag = NOTIFICATION_ALERT_VIEW;
-        [alert show];
-    }
+//    if ([UIApplication sharedApplication].enabledRemoteNotificationTypes == UIRemoteNotificationTypeNone){
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Push Notifications Needed" message:@"To get the most out of the show please enable Push Notifications." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        alert.tag = NOTIFICATION_ALERT_VIEW;
+//        [alert show];
+//    }
     
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
@@ -112,7 +112,6 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
                                          UIRemoteNotificationTypeSound |
                                          UIRemoteNotificationTypeAlert);
     
-    [[UAPush shared] setPushEnabled:YES];
     
     [[UAPush shared] addTagsToCurrentDevice:[UATagUtils createTags:UATagTypeCountry|UATagTypeDeviceType|UATagTypeLanguage|UATagTypeTimeZone|UATagTypeTimeZoneAbbreviation]];
     
@@ -122,10 +121,8 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
     [[UAPush shared] addTagToCurrentDevice:build];
     [[UAPush shared] updateRegistration];
     
-    
-    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     _schedule = [OMDBeaconPartySchedule shared];
-    [_schedule setEpoch:[NSDate dateWithTimeIntervalSince1970:0] uuid:UUID identifier:@"is.ziggy"];    
+        
 
     return YES;
 }

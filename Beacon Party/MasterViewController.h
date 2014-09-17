@@ -12,6 +12,14 @@
 
 @interface MasterViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UITextView *debugTextView;
-@property (strong, nonatomic) IBOutlet UIView *pushEffects;
+@property (weak, nonatomic) IBOutlet UITextView *debugTextView;
+@property (weak, nonatomic) IBOutlet UIView *pushEffects;
+@property (weak, nonatomic) IBOutlet UIView *overlay;
+
+@property (weak,nonatomic) IBOutlet UIButton *strobe;
+@property (weak,nonatomic) IBOutlet UIButton *ziggify;
+@property (weak,nonatomic) IBOutlet UIButton *eventInfo;
+
+
+-(IBAction)overlayDismissed:(id) sender;
 @end

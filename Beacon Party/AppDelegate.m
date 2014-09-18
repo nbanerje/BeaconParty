@@ -30,6 +30,7 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
                                           completionHandler(UIBackgroundFetchResultFailed);
                                       } else {
                                           if(data.length >0) {
+                                              schedule.scheduler.userStop = NO;
                                               [schedule loadScheduleFromJsonData:data];
                                               [OMDBeaconPartySchedule saveData:data];
                                               NSLog(@"fetch data");
@@ -58,8 +59,6 @@ FetchURLDataBlock fetchURLData  = ^ (NSString* url,OMDBeaconPartySchedule* sched
     if ([UIApplication sharedApplication].backgroundRefreshStatus == UIBackgroundRefreshStatusDenied) {
         //Alert user to turn on background refresh for the app
     }
-    
-    [UIApplication sharedApplication].idleTimerDisabled = YES;
     
     [UAPush setDefaultPushEnabledValue:NO];
     

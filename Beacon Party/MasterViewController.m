@@ -32,28 +32,51 @@
 }
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if([keyPath compare:@"actioning"] == NSOrderedSame) {
+        if(((NSNumber*)change[NSKeyValueChangeNewKey]).integerValue > 0) {
+            [UIApplication sharedApplication].idleTimerDisabled = YES;
+        } else {
+            [UIApplication sharedApplication].idleTimerDisabled = NO;
+        }
+        
         //Actions occuring and user has stopped - show resume
         if(((NSNumber*)change[NSKeyValueChangeNewKey]).integerValue > 0 && _schedule.scheduler.userStop) {
-            dispatch_async(dispatch_get_main_queue(), ^{_resumeButton.hidden = NO; _stopButton.hidden = YES;});
-            
-        }
-        //No actions user but they stopped - Hide both
-        else if(((NSNumber*)change[NSKeyValueChangeNewKey]).integerValue == 0 && _schedule.scheduler.userStop) {
-            dispatch_async(dispatch_get_main_queue(), ^{_resumeButton.hidden = NO; _stopButton.hidden = YES;});
-            
-        }
-        //No actions user but they didn't stop- Hide both
-        else if(((NSNumber*)change[NSKeyValueChangeNewKey]).integerValue == 0 && !_schedule.scheduler.userStop) {
-            dispatch_async(dispatch_get_main_queue(), ^{_resumeButton.hidden = YES; _stopButton.hidden = YES;});
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //_resumeButton.hidden = NO;
+                _stopButton.hidden = NO;
+                
+            });
             
         }
         //Actions occuring but user has not stopped - show stop
         else if(((NSNumber*)change[NSKeyValueChangeNewKey]).integerValue > 0 && !_schedule.scheduler.userStop) {
-            dispatch_async(dispatch_get_main_queue(), ^{_resumeButton.hidden = YES; _stopButton.hidden = NO;});
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //_resumeButton.hidden = YES;
+                _stopButton.hidden = NO;
+            });
             
         }
+        //No actions user but they stopped - Hide both
+        else if(((NSNumber*)change[NSKeyValueChangeNewKey]).integerValue == 0 && _schedule.scheduler.userStop) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //_resumeButton.hidden = NO;
+                _stopButton.hidden = YES;
+            });
+            
+        }
+        //No actions user but they didn't stop- Hide both
+        else if(((NSNumber*)change[NSKeyValueChangeNewKey]).integerValue == 0 && !_schedule.scheduler.userStop) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //_resumeButton.hidden = YES;
+                _stopButton.hidden = YES;
+            });
+            
+        }
+        
         else {
-            dispatch_async(dispatch_get_main_queue(), ^{_resumeButton.hidden = YES;_stopButton.hidden = YES;});
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //_resumeButton.hidden = YES;
+                _stopButton.hidden = YES;
+            });
         }
     }
 }
@@ -99,6 +122,8 @@
 #ifdef DEBUG
         _debugTextView.hidden = NO;
         appDelegate.schedule.debugTextView = _debugTextView;
+#endif
+#if !(defined DEBUG_EPOCH) && defined DEBUG
         [appDelegate.schedule test];
 #endif
         
@@ -120,13 +145,14 @@
 
 - (IBAction)resumeTapped:(id)sender {
     _schedule.scheduler.userStop = NO;
-    [_schedule setSchedule:_schedule.schedule];
+    _resumeButton.hidden = YES;
+    _stopButton.hidden = NO;
 }
 
 - (IBAction)stopTapped:(id)sender {
     _schedule.scheduler.userStop = YES;
     _pushEffects.hidden = YES;
-    _resumeButton.hidden = NO;
+    //_resumeButton.hidden = NO;
 }
 
 -(IBAction)overlayDismissed:(id) sender {

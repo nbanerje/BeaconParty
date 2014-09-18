@@ -65,7 +65,7 @@
         _continueMainLoop = YES;
         _numLoops = 0;
         _torch = [OMDTorch shared];
-        backgroundAudioQueue = dispatch_queue_create("is.ziggy.audiobackground", NULL);
+        backgroundAudioQueue = dispatch_queue_create("is.ziggy.audiobackground", DISPATCH_QUEUE_SERIAL);
         backgroundQueue = dispatch_queue_create("is.ziggy.background", NULL);
         _initialBrightness = [UIScreen mainScreen].brightness;
         _actioning = 0;
@@ -98,8 +98,10 @@
                     for (NSMutableDictionary *action in filteredarray) {
                         if([[NSNumber numberWithBool:NO] compare:action[@"executed"]] == NSOrderedSame) {
                             [action setValue:@1 forKey:@"executed"];
-                            DLog(@"Dispatching action %@", [action debugDescription]);
-                            [self runAction:action];
+                            if(!_userStop) {
+                                DLog(@"Dispatching action %@", [action debugDescription]);
+                                [self runAction:action];
+                            }
                         }
                     }
                     
@@ -136,7 +138,7 @@
                            options:UIViewAnimationOptionTransitionCrossDissolve
                         animations:NULL
                         completion:NULL];
-        _view.hidden = YES;
+        self.view.hidden = YES;
         [UIScreen mainScreen].brightness =_initialBrightness;
     });
 }
@@ -152,7 +154,7 @@
                                options:UIViewAnimationOptionTransitionCrossDissolve
                             animations:NULL
                             completion:NULL];
-            _view.hidden = NO;
+            self.view.hidden = NO;
             [UIScreen mainScreen].brightness = 1.0;
         
         });
@@ -405,7 +407,9 @@
 
 
 - (void)stopSounds:(NSTimer*)timer {
-    dispatch_async(backgroundAudioQueue, ^{ if(_backgroundMusicPlayer)[_backgroundMusicPlayer stop];});
+    dispatch_async(backgroundAudioQueue, ^{
+        if(_backgroundMusicPlayer)[_backgroundMusicPlayer stop];
+    });
 }
 
 - (void)clearEffects {
@@ -416,7 +420,9 @@
         [_view.layer removeAllAnimations];
         _torch.continueTorch = NO;
     });
-    dispatch_async(backgroundAudioQueue, ^{ if(_backgroundMusicPlayer)[_backgroundMusicPlayer stop];});
+    dispatch_async(backgroundAudioQueue, ^{
+        if(_backgroundMusicPlayer)[_backgroundMusicPlayer stop];
+    });
 }
 
 - (void) setUserStop:(BOOL) stop {

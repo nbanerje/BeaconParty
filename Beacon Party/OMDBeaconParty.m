@@ -101,7 +101,7 @@
         UAPush *shared = [UAPush shared];
         BOOL updateTags = NO;
         
-        if(closestBeacon.minor!= _bestBeacon.minor) {
+        if(_bestBeacon && closestBeacon.minor!= _bestBeacon.minor) {
             updateTags = YES;
              DLog(@"Found better beacon minor:%@", [_bestBeacon debugDescription]);
         }

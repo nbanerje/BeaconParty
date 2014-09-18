@@ -40,7 +40,7 @@
                     if(distance>=0.0){
                         if(distance == 0) {
                             if(_inverse) frequency = _maxFrequency.floatValue;
-                            else frequency = 0.0;
+                            else frequency = 1.0;
                         }
                         else {
                             if(_inverse) frequency = distance * _maxFrequency.floatValue + _offset.floatValue;

@@ -101,11 +101,11 @@
     } else {
             [self checkBluetoothAccess];
         
-            if ([UIApplication sharedApplication].enabledRemoteNotificationTypes == UIRemoteNotificationTypeNone){
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Push Notifications Needed" message:@"To get the most out of the show please enable Push Notifications." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                alert.tag = NOTIFICATION_ALERT_VIEW;
-                [alert show];
-            }
+//            if ([UIApplication sharedApplication].enabledRemoteNotificationTypes == UIRemoteNotificationTypeNone){
+//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Push Notifications Needed" message:@"To get the most out of the show please enable Push Notifications." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//                alert.tag = NOTIFICATION_ALERT_VIEW;
+//                [alert show];
+//            }
 
         //Enable push and start the beaconing stuff
         [self enablePushAndBeacons];

@@ -29,6 +29,14 @@
 
 @property (assign, nonatomic) CGFloat brightness;
 
+/** used to define the first color to blink
+ */
+@property (strong, nonatomic) UIColor *color1;
+
+/** used to define the second color to blink
+ */
+@property (strong, nonatomic) UIColor *color2;
+
 - (instancetype)initWithR1:(NSNumber*)r1 g1:(NSNumber*)g1 b1:(NSNumber*)b1 a1:(NSNumber*)a1
                         r2:(NSNumber*)r2 g2:(NSNumber*)g2 b2:(NSNumber*)b2 a2:(NSNumber*)a2;
 

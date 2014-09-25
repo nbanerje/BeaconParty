@@ -12,13 +12,7 @@ static const NSString* BEACON_COLOR_ACTION = @"color";
 
 @interface OMDScreenColorSpec()
 
-/** used to define the first color to blink
- */
-@property (strong, nonatomic) UIColor *color1;
 
-/** used to define the second color to blink
- */
-@property (strong, nonatomic) UIColor *color2;
 
 
 @end

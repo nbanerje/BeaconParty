@@ -7,15 +7,20 @@
 //
 
 #import "EffectsViewController.h"
-#import "OMDTorch.h"
 #import "OMDScreenColorSpec.h"
+#import "OMDTorch.h"
 #define FAST_TORCH_FREQ 40.0
 #define SLOW_TORCH_FREQ 4.0
+
+#define FAST_MODE 1
+#define SLOW_MODE 2
+#define RAINBOW_MODE 3
+
 @interface EffectsViewController ()
 @property (assign,nonatomic) BOOL rainbowFading;
 @property (assign,nonatomic) BOOL audioSyncing;
 @property (assign,nonatomic) CGFloat brightness;
-
+@property (assign,nonatomic) NSInteger mode;
 @end
 
 @implementation EffectsViewController
@@ -42,6 +47,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)willMoveToParentViewController:(UIViewController *)parent {
+    [OMDTorch shared].continueTorch = NO;
+}
+
 /*
 #pragma mark - Navigation
 
@@ -54,28 +63,55 @@
 */
 
 - (IBAction)action:(id)sender {
-    if(sender == _fastStrobeButton || sender == _slowStrobeButton) {
-        if([OMDTorch shared].continueTorch && sender == _fastStrobeButton && [OMDTorch shared].frequency.floatValue == FAST_TORCH_FREQ) {
-            [OMDTorch shared].continueTorch = NO;
-        } else if([OMDTorch shared].continueTorch && sender == _slowStrobeButton && [OMDTorch shared].frequency.floatValue == SLOW_TORCH_FREQ) {
-            [OMDTorch shared].continueTorch = NO;
-        } else {
-            [OMDTorch shared].mode = OMDTorchModeFlash;
-            [OMDTorch shared].frequency = (sender == _fastStrobeButton) ?  [NSNumber numberWithFloat:FAST_TORCH_FREQ] : [NSNumber numberWithFloat:SLOW_TORCH_FREQ];
-            [[OMDTorch shared] startTorching];
-        }
-    } else if (sender == _rainbowFadeButton) {
-        if(_rainbowView.hidden) {
-            _brightness = [UIScreen mainScreen].brightness;
-            _rainbowView.hidden = NO;
-            OMDScreenColorSpec *colorSpec = [[OMDScreenColorSpec alloc] init];
-            colorSpec.frequency = 1;
-            colorSpec.view = _rainbowView;
-            [colorSpec rainbowBlock]();
-        } else {
+    if (sender == _fastStrobeButton || sender == _slowStrobeButton || sender == _rainbowFadeButton) {
+        OMDScreenColorSpec *colorSpec = [[OMDScreenColorSpec alloc] init];
+        colorSpec.view = _rainbowView;
+        
+        if ((sender == _fastStrobeButton && _mode == FAST_MODE) ||
+            (sender == _slowStrobeButton && _mode == SLOW_MODE) ||
+            (sender == _rainbowFadeButton && _mode == RAINBOW_MODE)
+            ) {
             _rainbowView.hidden = YES;
             [_rainbowView.layer removeAllAnimations];
             [UIScreen mainScreen].brightness = _brightness;
+        } else {
+            _brightness = [UIScreen mainScreen].brightness;
+            _rainbowView.hidden = NO;
+
+            if (sender == _fastStrobeButton) {
+                _mode = FAST_MODE;
+                colorSpec.frequency = 5;
+                colorSpec.color1 = [UIColor blackColor];
+                colorSpec.color2 = [UIColor whiteColor];
+                [colorSpec block]();
+                
+            } else if (sender == _slowStrobeButton) {
+                _mode = SLOW_MODE;
+                colorSpec.frequency = 1;
+                colorSpec.color1 = [UIColor blackColor];
+                colorSpec.color2 = [UIColor whiteColor];
+                [colorSpec block]();
+            } else if (sender == _rainbowFadeButton) {
+                _mode = RAINBOW_MODE;
+                colorSpec.frequency = 1;
+                [colorSpec rainbowBlock]();
+                
+            }
+
+        }
+        
+        if(sender == _fastStrobeButton || sender == _slowStrobeButton) {
+            if([OMDTorch shared].continueTorch && sender == _fastStrobeButton && [OMDTorch shared].frequency.floatValue == FAST_TORCH_FREQ) {
+                [OMDTorch shared].continueTorch = NO;
+            } else if([OMDTorch shared].continueTorch && sender == _slowStrobeButton && [OMDTorch shared].frequency.floatValue == SLOW_TORCH_FREQ) {
+                [OMDTorch shared].continueTorch = NO;
+            } else {
+                [OMDTorch shared].mode = OMDTorchModeFlash;
+                [OMDTorch shared].frequency = (sender == _fastStrobeButton) ?  [NSNumber numberWithFloat:FAST_TORCH_FREQ] : [NSNumber numberWithFloat:SLOW_TORCH_FREQ];
+                [[OMDTorch shared] startTorching];
+            }
+        } else {
+            [OMDTorch shared].continueTorch = NO;
         }
         
     }
